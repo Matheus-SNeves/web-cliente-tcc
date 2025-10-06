@@ -1,0 +1,130 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    flex-shrink: 0;
+}
+
+.admin-container {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 220px;
+    background-color: #f0ebe5;
+    padding: 20px;
+    flex-shrink: 0;
+    border-right: 1px solid #e0d9cf;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-item {
+    padding: 12px 15px;
+    text-decoration: none;
+    color: #4a3e30;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.nav-item:hover {
+    background-color: #d4c6b6;
+}
+
+.nav-item.active {
+    background-color: #BF946F;
+    color: white;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.page h2 {
+    margin-top: 0;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0d9cf;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    border: 1px solid #d4c6b6;
+    padding: 12px;
+    text-align: left;
+    white-space: nowrap;
+}
+th {
+    background-color: #f0ebe5;
+}
+
+#logout-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #BF946F;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+    .admin-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 10px;
+        border-right: none;
+        border-bottom: 1px solid #e0d9cf;
+    }
+
+    .sidebar nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .nav-item {
+        padding: 8px 12px;
+    }
+
+    .content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        padding: 10px;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+    }
+
+    table {
+        font-size: 14px;
+    }
+}

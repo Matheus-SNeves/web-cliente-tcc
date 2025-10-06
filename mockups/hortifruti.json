@@ -1,0 +1,429 @@
+{
+  "hortifruti": [
+    {
+      "id": 1,
+      "nome": "Abacaxi (unidade)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/123/123261.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 9.99},
+        {"supermercado_id": 2, "preco": 10.20},
+        {"supermercado_id": 3, "preco": 9.80},
+        {"supermercado_id": 4, "preco": 10.50},
+        {"supermercado_id": 5, "preco": 9.50},
+        {"supermercado_id": 6, "preco": 10.10},
+        {"supermercado_id": 7, "preco": 9.90},
+        {"supermercado_id": 8, "preco": 10.00},
+        {"supermercado_id": 9, "preco": 10.70},
+        {"supermercado_id": 10, "preco": 9.75}
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Abacate (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/2503/2503796.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 11.90},
+        {"supermercado_id": 2, "preco": 12.10},
+        {"supermercado_id": 3, "preco": 11.80},
+        {"supermercado_id": 4, "preco": 12.40},
+        {"supermercado_id": 5, "preco": 11.50},
+        {"supermercado_id": 6, "preco": 12.00},
+        {"supermercado_id": 7, "preco": 11.95},
+        {"supermercado_id": 8, "preco": 11.85},
+        {"supermercado_id": 9, "preco": 12.50},
+        {"supermercado_id": 10, "preco": 11.70}
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Banana (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/6532/6532383.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 5.99},
+        {"supermercado_id": 2, "preco": 6.10},
+        {"supermercado_id": 3, "preco": 5.89},
+        {"supermercado_id": 4, "preco": 6.25},
+        {"supermercado_id": 5, "preco": 5.50},
+        {"supermercado_id": 6, "preco": 6.05},
+        {"supermercado_id": 7, "preco": 5.95},
+        {"supermercado_id": 8, "preco": 5.90},
+        {"supermercado_id": 9, "preco": 6.40},
+        {"supermercado_id": 10, "preco": 5.80}
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Goiaba (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/1135/1135526.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 8.90},
+        {"supermercado_id": 2, "preco": 9.10},
+        {"supermercado_id": 3, "preco": 8.80},
+        {"supermercado_id": 4, "preco": 9.25},
+        {"supermercado_id": 5, "preco": 8.50},
+        {"supermercado_id": 6, "preco": 9.00},
+        {"supermercado_id": 7, "preco": 8.95},
+        {"supermercado_id": 8, "preco": 8.85},
+        {"supermercado_id": 9, "preco": 9.40},
+        {"supermercado_id": 10, "preco": 8.70}
+      ]
+    },
+    {
+      "id": 5,
+      "nome": "Laranja (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/123/123228.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 4.49},
+        {"supermercado_id": 2, "preco": 4.60},
+        {"supermercado_id": 3, "preco": 4.39},
+        {"supermercado_id": 4, "preco": 4.75},
+        {"supermercado_id": 5, "preco": 4.10},
+        {"supermercado_id": 6, "preco": 4.55},
+        {"supermercado_id": 7, "preco": 4.45},
+        {"supermercado_id": 8, "preco": 4.40},
+        {"supermercado_id": 9, "preco": 4.90},
+        {"supermercado_id": 10, "preco": 4.30}
+      ]
+    },
+    {
+      "id": 6,
+      "nome": "Limão (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/6866/6866595.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 6.99},
+        {"supermercado_id": 2, "preco": 7.10},
+        {"supermercado_id": 3, "preco": 6.89},
+        {"supermercado_id": 4, "preco": 7.25},
+        {"supermercado_id": 5, "preco": 6.50},
+        {"supermercado_id": 6, "preco": 7.05},
+        {"supermercado_id": 7, "preco": 6.95},
+        {"supermercado_id": 8, "preco": 6.90},
+        {"supermercado_id": 9, "preco": 7.40},
+        {"supermercado_id": 10, "preco": 6.80}
+      ]
+    },
+    {
+      "id": 7,
+      "nome": "Maçã (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/1202/1202063.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 11.49},
+        {"supermercado_id": 2, "preco": 11.60},
+        {"supermercado_id": 3, "preco": 11.39},
+        {"supermercado_id": 4, "preco": 11.75},
+        {"supermercado_id": 5, "preco": 11.00},
+        {"supermercado_id": 6, "preco": 11.55},
+        {"supermercado_id": 7, "preco": 11.45},
+        {"supermercado_id": 8, "preco": 11.40},
+        {"supermercado_id": 9, "preco": 11.90},
+        {"supermercado_id": 10, "preco": 11.30}
+      ]
+    },
+    {
+      "id": 8,
+      "nome": "Mamão (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/680/680936.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 7.99},
+        {"supermercado_id": 2, "preco": 8.10},
+        {"supermercado_id": 3, "preco": 7.89},
+        {"supermercado_id": 4, "preco": 8.25},
+        {"supermercado_id": 5, "preco": 7.50},
+        {"supermercado_id": 6, "preco": 8.05},
+        {"supermercado_id": 7, "preco": 7.95},
+        {"supermercado_id": 8, "preco": 7.90},
+        {"supermercado_id": 9, "preco": 8.40},
+        {"supermercado_id": 10, "preco": 7.80}
+      ]
+    },
+    {
+      "id": 9,
+      "nome": "Manga (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/1135/1135559.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 9.49},
+        {"supermercado_id": 2, "preco": 9.60},
+        {"supermercado_id": 3, "preco": 9.39},
+        {"supermercado_id": 4, "preco": 9.75},
+        {"supermercado_id": 5, "preco": 9.00},
+        {"supermercado_id": 6, "preco": 9.55},
+        {"supermercado_id": 7, "preco": 9.45},
+        {"supermercado_id": 8, "preco": 9.40},
+        {"supermercado_id": 9, "preco": 9.90},
+        {"supermercado_id": 10, "preco": 9.30}
+      ]
+    },
+    {
+      "id": 10,
+      "nome": "Melancia (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/3608/3608538.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 4.49},
+        {"supermercado_id": 2, "preco": 4.60},
+        {"supermercado_id": 3, "preco": 4.39},
+        {"supermercado_id": 4, "preco": 4.75},
+        {"supermercado_id": 5, "preco": 4.10},
+        {"supermercado_id": 6, "preco": 4.55},
+        {"supermercado_id": 7, "preco": 4.45},
+        {"supermercado_id": 8, "preco": 4.40},
+        {"supermercado_id": 9, "preco": 4.90},
+        {"supermercado_id": 10, "preco": 4.30}
+      ]
+    },
+    {
+      "id": 11,
+      "nome": "Morango (bandeja)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/3075/3075926.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 11.99},
+        {"supermercado_id": 2, "preco": 12.10},
+        {"supermercado_id": 3, "preco": 11.89},
+        {"supermercado_id": 4, "preco": 12.25},
+        {"supermercado_id": 5, "preco": 11.50},
+        {"supermercado_id": 6, "preco": 12.05},
+        {"supermercado_id": 7, "preco": 11.95},
+        {"supermercado_id": 8, "preco": 11.90},
+        {"supermercado_id": 9, "preco": 12.40},
+        {"supermercado_id": 10, "preco": 11.80}
+      ]
+    },
+    {
+      "id": 12,
+      "nome": "Pera (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/123/123239.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 13.99},
+        {"supermercado_id": 2, "preco": 14.10},
+        {"supermercado_id": 3, "preco": 13.89},
+        {"supermercado_id": 4, "preco": 14.25},
+        {"supermercado_id": 5, "preco": 13.50},
+        {"supermercado_id": 6, "preco": 14.05},
+        {"supermercado_id": 7, "preco": 13.95},
+        {"supermercado_id": 8, "preco": 13.90},
+        {"supermercado_id": 9, "preco": 14.40},
+        {"supermercado_id": 10, "preco": 13.80}
+      ]
+    },
+    {
+      "id": 13,
+      "nome": "Uva (bandeja)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/1412/1412542.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 14.99},
+        {"supermercado_id": 2, "preco": 15.10},
+        {"supermercado_id": 3, "preco": 14.89},
+        {"supermercado_id": 4, "preco": 15.25},
+        {"supermercado_id": 5, "preco": 14.50},
+        {"supermercado_id": 6, "preco": 15.05},
+        {"supermercado_id": 7, "preco": 14.95},
+        {"supermercado_id": 8, "preco": 14.90},
+        {"supermercado_id": 9, "preco": 15.40},
+        {"supermercado_id": 10, "preco": 14.80}
+      ]
+    },
+    {
+      "id": 14,
+      "nome": "Alface (unidade)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/3032/3032524.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 4.49},
+        {"supermercado_id": 2, "preco": 4.60},
+        {"supermercado_id": 3, "preco": 4.39},
+        {"supermercado_id": 4, "preco": 4.75},
+        {"supermercado_id": 5, "preco": 4.10},
+        {"supermercado_id": 6, "preco": 4.55},
+        {"supermercado_id": 7, "preco": 4.45},
+        {"supermercado_id": 8, "preco": 4.40},
+        {"supermercado_id": 9, "preco": 4.90},
+        {"supermercado_id": 10, "preco": 4.30}
+      ]
+    },
+    {
+      "id": 15,
+      "nome": "Batata (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/3416/3416636.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 5.49},
+        {"supermercado_id": 2, "preco": 5.60},
+        {"supermercado_id": 3, "preco": 5.39},
+        {"supermercado_id": 4, "preco": 5.75},
+        {"supermercado_id": 5, "preco": 5.10},
+        {"supermercado_id": 6, "preco": 5.55},
+        {"supermercado_id": 7, "preco": 5.45},
+        {"supermercado_id": 8, "preco": 5.40},
+        {"supermercado_id": 9, "preco": 5.90},
+        {"supermercado_id": 10, "preco": 5.30}
+      ]
+    },
+    {
+      "id": 16,
+      "nome": "Berinjela (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/2754/2754026.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 6.99},
+        {"supermercado_id": 2, "preco": 7.10},
+        {"supermercado_id": 3, "preco": 6.89},
+        {"supermercado_id": 4, "preco": 7.25},
+        {"supermercado_id": 5, "preco": 6.50},
+        {"supermercado_id": 6, "preco": 7.05},
+        {"supermercado_id": 7, "preco": 6.95},
+        {"supermercado_id": 8, "preco": 6.90},
+        {"supermercado_id": 9, "preco": 7.40},
+        {"supermercado_id": 10, "preco": 6.80}
+      ]
+    },
+    {
+      "id": 17,
+      "nome": "Brócolis (unidade)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/4977/4977365.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 7.99},
+        {"supermercado_id": 2, "preco": 8.10},
+        {"supermercado_id": 3, "preco": 7.89},
+        {"supermercado_id": 4, "preco": 8.25},
+        {"supermercado_id": 5, "preco": 7.50},
+        {"supermercado_id": 6, "preco": 8.05},
+        {"supermercado_id": 7, "preco": 7.95},
+        {"supermercado_id": 8, "preco": 7.90},
+        {"supermercado_id": 9, "preco": 8.40},
+        {"supermercado_id": 10, "preco": 7.80}
+      ]
+    },
+    {
+      "id": 18,
+      "nome": "Cebola (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/5582/5582507.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 5.49},
+        {"supermercado_id": 2, "preco": 5.60},
+        {"supermercado_id": 3, "preco": 5.39},
+        {"supermercado_id": 4, "preco": 5.75},
+        {"supermercado_id": 5, "preco": 5.10},
+        {"supermercado_id": 6, "preco": 5.55},
+        {"supermercado_id": 7, "preco": 5.45},
+        {"supermercado_id": 8, "preco": 5.40},
+        {"supermercado_id": 9, "preco": 5.90},
+        {"supermercado_id": 10, "preco": 5.30}
+      ]
+    },
+    {
+      "id": 19,
+      "nome": "Cenoura (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/883/883760.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 6.99},
+        {"supermercado_id": 2, "preco": 7.10},
+        {"supermercado_id": 3, "preco": 6.89},
+        {"supermercado_id": 4, "preco": 7.25},
+        {"supermercado_id": 5, "preco": 6.50},
+        {"supermercado_id": 6, "preco": 7.05},
+        {"supermercado_id": 7, "preco": 6.95},
+        {"supermercado_id": 8, "preco": 6.90},
+        {"supermercado_id": 9, "preco": 7.40},
+        {"supermercado_id": 10, "preco": 6.80}
+      ]
+    },
+    {
+      "id": 20,
+      "nome": "Chuchu (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/11903/11903891.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 4.49},
+        {"supermercado_id": 2, "preco": 4.60},
+        {"supermercado_id": 3, "preco": 4.39},
+        {"supermercado_id": 4, "preco": 4.75},
+        {"supermercado_id": 5, "preco": 4.10},
+        {"supermercado_id": 6, "preco": 4.55},
+        {"supermercado_id": 7, "preco": 4.45},
+        {"supermercado_id": 8, "preco": 4.40},
+        {"supermercado_id": 9, "preco": 4.90},
+        {"supermercado_id": 10, "preco": 4.30}
+      ]
+    },
+    {
+      "id": 21,
+      "nome": "Couve-flor (unidade)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/1135/1135481.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 9.49},
+        {"supermercado_id": 2, "preco": 9.60},
+        {"supermercado_id": 3, "preco": 9.39},
+        {"supermercado_id": 4, "preco": 9.75},
+        {"supermercado_id": 5, "preco": 9.00},
+        {"supermercado_id": 6, "preco": 9.55},
+        {"supermercado_id": 7, "preco": 9.45},
+        {"supermercado_id": 8, "preco": 9.40},
+        {"supermercado_id": 9, "preco": 9.90},
+        {"supermercado_id": 10, "preco": 9.30}
+      ]
+    },
+    {
+      "id": 22,
+      "nome": "Pepino (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/7315/7315766.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 5.99},
+        {"supermercado_id": 2, "preco": 6.10},
+        {"supermercado_id": 3, "preco": 5.89},
+        {"supermercado_id": 4, "preco": 6.25},
+        {"supermercado_id": 5, "preco": 5.50},
+        {"supermercado_id": 6, "preco": 6.05},
+        {"supermercado_id": 7, "preco": 5.95},
+        {"supermercado_id": 8, "preco": 5.90},
+        {"supermercado_id": 9, "preco": 6.40},
+        {"supermercado_id": 10, "preco": 5.80}
+      ]
+    },
+    {
+      "id": 23,
+      "nome": "Pimentão (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/2503/2503825.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 11.49},
+        {"supermercado_id": 2, "preco": 11.60},
+        {"supermercado_id": 3, "preco": 11.39},
+        {"supermercado_id": 4, "preco": 11.75},
+        {"supermercado_id": 5, "preco": 11.00},
+        {"supermercado_id": 6, "preco": 11.55},
+        {"supermercado_id": 7, "preco": 11.45},
+        {"supermercado_id": 8, "preco": 11.40},
+        {"supermercado_id": 9, "preco": 11.90},
+        {"supermercado_id": 10, "preco": 11.30}
+      ]
+    },
+    {
+      "id": 24,
+      "nome": "Repolho (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/5346/5346282.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 4.99},
+        {"supermercado_id": 2, "preco": 5.10},
+        {"supermercado_id": 3, "preco": 4.89},
+        {"supermercado_id": 4, "preco": 5.25},
+        {"supermercado_id": 5, "preco": 4.50},
+        {"supermercado_id": 6, "preco": 5.05},
+        {"supermercado_id": 7, "preco": 4.95},
+        {"supermercado_id": 8, "preco": 4.90},
+        {"supermercado_id": 9, "preco": 5.40},
+        {"supermercado_id": 10, "preco": 4.80}
+      ]
+    },
+    {
+      "id": 25,
+      "nome": "Tomate (kg)",
+      "imagem": "https://cdn-icons-png.flaticon.com/512/1202/1202125.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 8.99},
+        {"supermercado_id": 2, "preco": 9.10},
+        {"supermercado_id": 3, "preco": 8.89},
+        {"supermercado_id": 4, "preco": 9.25},
+        {"supermercado_id": 5, "preco": 8.50},
+        {"supermercado_id": 6, "preco": 9.05},
+        {"supermercado_id": 7, "preco": 8.95},
+        {"supermercado_id": 8, "preco": 8.90},
+        {"supermercado_id": 9, "preco": 9.40},
+        {"supermercado_id": 10, "preco": 8.80}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "padaria": [
+    {
+      "id": 1,
+      "nome": "Pão Francês (kg)",
+      "imagem": "https://cdn.2rscms.com.br/imgcache/5054/uploads/5054/layout/Linha%20Gold%20Paes/pao-frances-12h.png.webp",
+      "precos": [
+        {"supermercado_id": 1, "preco": 14.90},
+        {"supermercado_id": 2, "preco": 15.20},
+        {"supermercado_id": 3, "preco": 14.80},
+        {"supermercado_id": 4, "preco": 15.50},
+        {"supermercado_id": 5, "preco": 14.50},
+        {"supermercado_id": 6, "preco": 15.10},
+        {"supermercado_id": 7, "preco": 14.95},
+        {"supermercado_id": 8, "preco": 15.00},
+        {"supermercado_id": 9, "preco": 15.80},
+        {"supermercado_id": 10, "preco": 14.70}
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Pão de Forma Bauducco",
+      "imagem": "https://www.sondadelivery.com.br/Arquivos/ProdutosSku/1000042805/7891962064048.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 7.90},
+        {"supermercado_id": 2, "preco": 8.10},
+        {"supermercado_id": 3, "preco": 7.80},
+        {"supermercado_id": 4, "preco": 8.30},
+        {"supermercado_id": 5, "preco": 7.50},
+        {"supermercado_id": 6, "preco": 8.00},
+        {"supermercado_id": 7, "preco": 7.95},
+        {"supermercado_id": 8, "preco": 7.85},
+        {"supermercado_id": 9, "preco": 8.50},
+        {"supermercado_id": 10, "preco": 7.70}
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Coxinha (unidade)",
+      "imagem": "https://s2-receitas.glbimg.com/bIdRn-YixxjTCpd3kJ_bOz1cFnY=/0x0:196x258/984x0/smart/filters:strip_icc()/s.glbimg.com/po/rc/media/2013/05/07/22_17_32_458_images.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 5.90},
+        {"supermercado_id": 2, "preco": 6.10},
+        {"supermercado_id": 3, "preco": 5.80},
+        {"supermercado_id": 4, "preco": 6.30},
+        {"supermercado_id": 5, "preco": 5.50},
+        {"supermercado_id": 6, "preco": 6.00},
+        {"supermercado_id": 7, "preco": 5.95},
+        {"supermercado_id": 8, "preco": 5.85},
+        {"supermercado_id": 9, "preco": 6.50},
+        {"supermercado_id": 10, "preco": 5.70}
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Pão de Queijo (unidade)",
+      "imagem": "https://www.valedosabor.com.br/wp-content/uploads/2025/02/Pao-de-Queijo-Mineiro-Pao-de-queijo-com-polvilho-azedo-500x500.webp",
+      "precos": [
+        {"supermercado_id": 1, "preco": 4.90},
+        {"supermercado_id": 2, "preco": 5.10},
+        {"supermercado_id": 3, "preco": 4.80},
+        {"supermercado_id": 4, "preco": 5.30},
+        {"supermercado_id": 5, "preco": 4.50},
+        {"supermercado_id": 6, "preco": 5.00},
+        {"supermercado_id": 7, "preco": 4.95},
+        {"supermercado_id": 8, "preco": 4.85},
+        {"supermercado_id": 9, "preco": 5.50},
+        {"supermercado_id": 10, "preco": 4.70}
+      ]
+    },
+    {
+      "id": 5,
+      "nome": "Bolo de Chocolate (fatia)",
+      "imagem": "https://static.itdg.com.br/images/360-240/3b03a942ab534200a0a80eb324828ccb/246606-postprocess-71802381-1893-4fbe-b302-726bfca18774.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 9.90},
+        {"supermercado_id": 2, "preco": 10.10},
+        {"supermercado_id": 3, "preco": 9.80},
+        {"supermercado_id": 4, "preco": 10.30},
+        {"supermercado_id": 5, "preco": 9.50},
+        {"supermercado_id": 6, "preco": 10.00},
+        {"supermercado_id": 7, "preco": 9.95},
+        {"supermercado_id": 8, "preco": 9.85},
+        {"supermercado_id": 9, "preco": 10.50},
+        {"supermercado_id": 10, "preco": 9.70}
+      ]
+    },
+    {
+      "id": 6,
+      "nome": "Pudim de Leite (fatia)",
+      "imagem": "https://static.itdg.com.br/images/360-240/707f63812d06b57480d0177887226947/318825-original.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 7.90},
+        {"supermercado_id": 2, "preco": 8.10},
+        {"supermercado_id": 3, "preco": 7.80},
+        {"supermercado_id": 4, "preco": 8.30},
+        {"supermercado_id": 5, "preco": 7.50},
+        {"supermercado_id": 6, "preco": 8.00},
+        {"supermercado_id": 7, "preco": 7.95},
+        {"supermercado_id": 8, "preco": 7.85},
+        {"supermercado_id": 9, "preco": 8.50},
+        {"supermercado_id": 10, "preco": 7.70}
+      ]
+    },
+    {
+      "id": 7,
+      "nome": "Croissant (unidade)",
+      "imagem": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Croissant-Petr_Kratochvil.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 6.50},
+        {"supermercado_id": 2, "preco": 6.80},
+        {"supermercado_id": 3, "preco": 6.30},
+        {"supermercado_id": 4, "preco": 7.00},
+        {"supermercado_id": 5, "preco": 6.00},
+        {"supermercado_id": 6, "preco": 6.70},
+        {"supermercado_id": 7, "preco": 6.40},
+        {"supermercado_id": 8, "preco": 6.60},
+        {"supermercado_id": 9, "preco": 7.20},
+        {"supermercado_id": 10, "preco": 6.20}
+      ]
+    },
+    {
+      "id": 8,
+      "nome": "Sonho (unidade)",
+      "imagem": "https://media.istockphoto.com/id/460900113/pt/foto/sonho-brasileira.jpg?s=612x612&w=0&k=20&c=_9dD7iYHZPGHoYdE4ptdL5aCiY54D5IQiaRLxxUf4fA=",
+      "precos": [
+        {"supermercado_id": 1, "preco": 5.50},
+        {"supermercado_id": 2, "preco": 5.80},
+        {"supermercado_id": 3, "preco": 5.30},
+        {"supermercado_id": 4, "preco": 6.00},
+        {"supermercado_id": 5, "preco": 5.00},
+        {"supermercado_id": 6, "preco": 5.70},
+        {"supermercado_id": 7, "preco": 5.40},
+        {"supermercado_id": 8, "preco": 5.60},
+        {"supermercado_id": 9, "preco": 6.20},
+        {"supermercado_id": 10, "preco": 5.20}
+      ]
+    },
+    {
+      "id": 9,
+      "nome": "Bisnaga (pacote)",
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfnbfLETl7pMbhmlk6JumAd0bqbs7fyjw54A&s",
+      "precos": [
+        {"supermercado_id": 1, "preco": 7.00},
+        {"supermercado_id": 2, "preco": 7.30},
+        {"supermercado_id": 3, "preco": 6.80},
+        {"supermercado_id": 4, "preco": 7.50},
+        {"supermercado_id": 5, "preco": 6.50},
+        {"supermercado_id": 6, "preco": 7.20},
+        {"supermercado_id": 7, "preco": 6.90},
+        {"supermercado_id": 8, "preco": 7.10},
+        {"supermercado_id": 9, "preco": 7.80},
+        {"supermercado_id": 10, "preco": 6.70}
+      ]
+    },
+    {
+      "id": 10,
+      "nome": "Torradas Bauducco",
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIwCiOOJRKtQ_jaKjemBAFfTO5N4iHBW_Y7w&s",
+      "precos": [
+        {"supermercado_id": 1, "preco": 4.80},
+        {"supermercado_id": 2, "preco": 5.00},
+        {"supermercado_id": 3, "preco": 4.60},
+        {"supermercado_id": 4, "preco": 5.20},
+        {"supermercado_id": 5, "preco": 4.40},
+        {"supermercado_id": 6, "preco": 4.90},
+        {"supermercado_id": 7, "preco": 4.70},
+        {"supermercado_id": 8, "preco": 4.85},
+        {"supermercado_id": 9, "preco": 5.40},
+        {"supermercado_id": 10, "preco": 4.50}
+      ]
+    },
+    {
+      "id": 11,
+      "nome": "Rosca Doce",
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNlXHja5U-K_fC5RdqCG6lXQcWi9F_c3XfCA&s",
+      "precos": [
+        {"supermercado_id": 1, "preco": 12.00},
+        {"supermercado_id": 2, "preco": 12.40},
+        {"supermercado_id": 3, "preco": 11.80},
+        {"supermercado_id": 4, "preco": 12.80},
+        {"supermercado_id": 5, "preco": 11.50},
+        {"supermercado_id": 6, "preco": 12.20},
+        {"supermercado_id": 7, "preco": 11.90},
+        {"supermercado_id": 8, "preco": 12.10},
+        {"supermercado_id": 9, "preco": 13.00},
+        {"supermercado_id": 10, "preco": 11.70}
+      ]
+    },
+    {
+      "id": 12,
+      "nome": "Broa de Milho",
+      "imagem": "https://receitadaboa.com.br/wp-content/uploads/2024/07/Imagem-ilustrativa-de-broa-de-milho.webp",
+      "precos": [
+        {"supermercado_id": 1, "preco": 6.00},
+        {"supermercado_id": 2, "preco": 6.30},
+        {"supermercado_id": 3, "preco": 5.80},
+        {"supermercado_id": 4, "preco": 6.50},
+        {"supermercado_id": 5, "preco": 5.50},
+        {"supermercado_id": 6, "preco": 6.20},
+        {"supermercado_id": 7, "preco": 5.90},
+        {"supermercado_id": 8, "preco": 6.10},
+        {"supermercado_id": 9, "preco": 6.80},
+        {"supermercado_id": 10, "preco": 5.70}
+      ]
+    },
+    {
+      "id": 13,
+      "nome": "Pão de Leite",
+      "imagem": "https://receitadaboa.com.br/wp-content/uploads/2024/07/imagem-ilustrativa-de-dois-paes-de-leite.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 8.50},
+        {"supermercado_id": 2, "preco": 8.80},
+        {"supermercado_id": 3, "preco": 8.20},
+        {"supermercado_id": 4, "preco": 9.00},
+        {"supermercado_id": 5, "preco": 8.00},
+        {"supermercado_id": 6, "preco": 8.70},
+        {"supermercado_id": 7, "preco": 8.40},
+        {"supermercado_id": 8, "preco": 8.60},
+        {"supermercado_id": 9, "preco": 9.20},
+        {"supermercado_id": 10, "preco": 8.10}
+      ]
+    },
+    {
+      "id": 14,
+      "nome": "Carolina Recheada",
+      "imagem": "https://grupodocedoce.com.br/storage/produtos/177/panutti-carolina-de-brigadeiro-com-chocolate-ao-leite-1583408831.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 3.50},
+        {"supermercado_id": 2, "preco": 3.70},
+        {"supermercado_id": 3, "preco": 3.30},
+        {"supermercado_id": 4, "preco": 3.90},
+        {"supermercado_id": 5, "preco": 3.00},
+        {"supermercado_id": 6, "preco": 3.60},
+        {"supermercado_id": 7, "preco": 3.40},
+        {"supermercado_id": 8, "preco": 3.55},
+        {"supermercado_id": 9, "preco": 4.00},
+        {"supermercado_id": 10, "preco": 3.20}
+      ]
+    },
+    {
+      "id": 15,
+      "nome": "Mini Pizza",
+      "imagem": "https://acarnequeomundoprefere.com.br/uploads/media/image/33-11-24.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 5.00},
+        {"supermercado_id": 2, "preco": 5.30},
+        {"supermercado_id": 3, "preco": 4.80},
+        {"supermercado_id": 4, "preco": 5.50},
+        {"supermercado_id": 5, "preco": 4.50},
+        {"supermercado_id": 6, "preco": 5.20},
+        {"supermercado_id": 7, "preco": 4.90},
+        {"supermercado_id": 8, "preco": 5.10},
+        {"supermercado_id": 9, "preco": 5.80},
+        {"supermercado_id": 10, "preco": 4.70}
+      ]
+    }
+  ]
+}

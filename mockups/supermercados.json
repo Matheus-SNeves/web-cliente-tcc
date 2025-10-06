@@ -1,0 +1,64 @@
+{
+    "supermercado": [
+        {
+            "id": 1,
+            "nome": "Guarani",
+            "endereco": "Rua Comendador Guimarães, 500 - Centro",
+            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW0EQMFHGwxZEIgFj2Vp9y4AIE142p3jAFfQ&s"
+        },
+        {
+            "id": 2,
+            "nome": "Antonelli",
+            "endereco": "Praça Paul P. Harris, 26 - Centro",
+            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfpAosMbzlNpuG6aAiBo0vQBXp02jR5BmsRw&s"
+        },
+        {
+            "id": 3,
+            "nome": "Unidos",
+            "endereco": "R. Galvão Bueno, 121 - Centro",
+            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhSMlwjzPjwG0buOJIz9BI1hnkvaf34uYA3g&s"
+        },
+        {
+            "id": 4,
+            "nome": "Spasso Sabores",
+            "endereco": "Av. Dr. Carlos Burgos, 3200 - Lot. Nardini",
+            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGG_pQBZOsIVByZ2GUtv2wiLjT3Y8cBPxG5A&s"
+        },
+        {
+            "id": 5,
+            "nome": "Tenda atacado",
+            "endereco": "Rod. João Beira, 286 - Conj. Hab. Alberto Marques",
+            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJJu7DXBG7CGjoHBu45Tgyo4EJ8hZyhFNDKw&s"
+        },
+        {
+            "id": 6,
+            "nome": "Daolio",
+            "endereco": "R. Peixoto Gomide, 22 - Centro",
+            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ68Iz52l5NjzgAPnWQCFzsJoXsvSF46gXM1Q&s"
+        },
+        {
+            "id": 7,
+            "nome": "Poupe bem",
+            "endereco": "R. Maria Roza Federice, 107 - Parque Modelo",
+            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaNUhJQweNY2YlhmKLP35lhtKrmAoUm26dFA&s"
+        },
+        {
+            "id": 8,
+            "nome": "Mendonça",
+            "endereco": "Rua Comendador Guimarães, 22 - Centro",
+            "imagem": "https://phygital-files.mercafacil.com/mendonca/uploads/empresa/logo_500x500_pxl_e_commerce_bdfd9161-4ebc-4d39-ab25-fe313aa9f18c.png"
+        },
+        {
+            "id": 9,
+            "nome": "Brunhara",
+            "endereco": "Av. Europa,497- Jardim Camandocaia",
+            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfcYmtDbgD73locihOO6QtAnTWHj_qIOfaGw&s"
+        },
+        {
+            "id": 10,
+            "nome": "Terin",
+            "endereco": "Av. Orlando Audrai B. Bueno, 324 - JD. São Dimas",
+            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREo7K5SqCJjM9bVnQpi_ZeA6bFu7kRr5JGhg&s"
+        }
+    ]
+}

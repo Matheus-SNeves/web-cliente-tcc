@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Market - Home</title>
+    <link rel="stylesheet" href="../styles/global.css"> 
+    <link rel="stylesheet" href="../styles/home.css">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <img src="../assets/logo.png" alt="Logo Speed Market" id="logo">
+        <div class="search-container">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="search-input" placeholder="Buscar por produto...">
+            <button class="clear-search-btn" id="clear-search-btn">&times;</button>
+        </div>
+        <div class="user-actions">
+            <a href="conta.html" class="icon-btn" aria-label="Minha Conta">
+                <i class="fa-solid fa-user"></i>
+            </a>
+        </div>
+    </header>
+
+    <div id="search-results-container" class="hidden">
+        <h2 id="search-results-title"></h2>
+        <div id="search-results-grid" class="products-grid">
+        </div>
+    </div>
+
+    <main id="main-content">
+        <h2 class="section-title">Navegue por Categorias</h2>
+        <div class="selecoes">
+        </div>
+
+        <h2 class="section-title">Supermercados Populares</h2>
+        <div class="ultLojas">
+        </div>
+        <a href="supermercados.html" id="see-all-stores-btn">Ver Todos os Supermercados</a>
+    </main>
+
+    <button id="cart-button" class="cart-button">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="cart-count" class="cart-count">0</span>
+    </button>
+    
+    <div id="cart-overlay" class="cart-overlay hidden">
+        <div class="cart-modal">
+            <div class="cart-header">
+                <h2>Meu Carrinho</h2>
+                <button id="close-cart-btn" class="close-btn">&times;</button>
+            </div>
+            <div id="cart-items-container" class="cart-items">
+            </div>
+            <div class="cart-summary">
+                <div id="delivery-address-section">
+                    <p><strong>Endereço de Entrega:</strong></p>
+                    <div id="address-display">
+                        <span id="current-address">Nenhum endereço selecionado</span>
+                        <button id="change-address-btn">Trocar</button>
+                    </div>
+                </div>
+                <div class="cart-total">
+                    <h3>Total:</h3>
+                    <h3 id="cart-total-price">R$ 0,00</h3>
+                </div>
+                <button id="checkout-btn" class="checkout-btn disabled">Continuar</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="generic-modal-overlay" class="modal-overlay hidden">
+    </div>
+    
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Sobre Nós</h4>
+                <p>Speed Market é seu comparador de preços online para economizar tempo e dinheiro nas suas compras de supermercado.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="home.html">Início</a></li>
+                    <li><a href="conta.html">Minha Conta</a></li>
+                    <li><a href="#">Termos de Serviço</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Siga-nos</h4>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Speed Market. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script src="../scripts/cart-logic.js"></script>
+    <script src="../scripts/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Speed Market</title>
+    <link rel="stylesheet" href="../styles/produtos.css">
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header class="category-header">
+        <a href="javascript:history.back()" class="back-btn">&#8592; Voltar</a>
+        <h1 id="page-title">Carregando...</h1>
+    </header>
+
+    <main id="products-container" class="products-grid">
+    </main>
+    
+    <div id="product-action-modal" class="modal-overlay hidden">
+    </div>
+
+    <button id="cart-button" class="cart-button">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="cart-count" class="cart-count">0</span>
+    </button>
+    
+    <script src="../scripts/cart-logic.js"></script>
+    <script src="../scripts/produtos.js"></script>
+</body>
+</html>

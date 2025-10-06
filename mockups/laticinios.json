@@ -1,0 +1,259 @@
+{
+  "laticinios": [
+    {
+      "id": 1,
+      "nome": "Leite Integral Italac",
+      "imagem": "https://static.paodeacucar.com/img/uploads/1/194/531194.jpg?im=Resize,width=200",
+      "precos": [
+        {"supermercado_id": 1, "preco": 5.49},
+        {"supermercado_id": 2, "preco": 5.60},
+        {"supermercado_id": 3, "preco": 5.39},
+        {"supermercado_id": 4, "preco": 5.70},
+        {"supermercado_id": 5, "preco": 5.10},
+        {"supermercado_id": 6, "preco": 5.55},
+        {"supermercado_id": 7, "preco": 5.45},
+        {"supermercado_id": 8, "preco": 5.48},
+        {"supermercado_id": 9, "preco": 5.80},
+        {"supermercado_id": 10, "preco": 5.30}
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Iogurte Danone",
+      "imagem": "https://prezunic.vtexassets.com/arquivos/ids/176895/651b003e55eb5aeb9c760e80.jpg?v=638318651505230000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 14.90},
+        {"supermercado_id": 2, "preco": 15.10},
+        {"supermercado_id": 3, "preco": 14.80},
+        {"supermercado_id": 4, "preco": 15.30},
+        {"supermercado_id": 5, "preco": 14.50},
+        {"supermercado_id": 6, "preco": 15.00},
+        {"supermercado_id": 7, "preco": 14.95},
+        {"supermercado_id": 8, "preco": 14.85},
+        {"supermercado_id": 9, "preco": 15.50},
+        {"supermercado_id": 10, "preco": 14.70}
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Manteiga com sal",
+      "imagem": "https://queijospresident.com.br/uploads/1537203219-manteiga-extra-com-sal.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 9.90},
+        {"supermercado_id": 2, "preco": 10.10},
+        {"supermercado_id": 3, "preco": 9.80},
+        {"supermercado_id": 4, "preco": 10.30},
+        {"supermercado_id": 5, "preco": 9.50},
+        {"supermercado_id": 6, "preco": 10.00},
+        {"supermercado_id": 7, "preco": 9.95},
+        {"supermercado_id": 8, "preco": 9.85},
+        {"supermercado_id": 9, "preco": 10.50},
+        {"supermercado_id": 10, "preco": 9.70}
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Requeijão Catupiry",
+      "imagem": "https://www.sondadelivery.com.br/img.aspx/sku/1533134/530/7896353301184.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 10.90},
+        {"supermercado_id": 2, "preco": 11.10},
+        {"supermercado_id": 3, "preco": 10.80},
+        {"supermercado_id": 4, "preco": 11.30},
+        {"supermercado_id": 5, "preco": 10.50},
+        {"supermercado_id": 6, "preco": 11.00},
+        {"supermercado_id": 7, "preco": 10.95},
+        {"supermercado_id": 8, "preco": 10.85},
+        {"supermercado_id": 9, "preco": 11.50},
+        {"supermercado_id": 10, "preco": 10.70}
+      ]
+    },
+    {
+      "id": 5,
+      "nome": "Creme de Leite Nestlé",
+      "imagem": "https://m.media-amazon.com/images/I/612J-hUiO6L._UF894,1000_QL80_.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 4.49},
+        {"supermercado_id": 2, "preco": 4.55},
+        {"supermercado_id": 3, "preco": 4.40},
+        {"supermercado_id": 4, "preco": 4.60},
+        {"supermercado_id": 5, "preco": 4.20},
+        {"supermercado_id": 6, "preco": 4.50},
+        {"supermercado_id": 7, "preco": 4.45},
+        {"supermercado_id": 8, "preco": 4.48},
+        {"supermercado_id": 9, "preco": 4.70},
+        {"supermercado_id": 10, "preco": 4.30}
+      ]
+    },
+    {
+      "id": 6,
+      "nome": "Leite Condensado Moça",
+      "imagem": "https://cdn.shopify.com/s/files/1/0587/8487/4575/files/41cb8668-846a-442e-a784-6147e22bf35b@3x.png?v=1743011140",
+      "precos": [
+        {"supermercado_id": 1, "preco": 6.90},
+        {"supermercado_id": 2, "preco": 7.10},
+        {"supermercado_id": 3, "preco": 6.80},
+        {"supermercado_id": 4, "preco": 7.30},
+        {"supermercado_id": 5, "preco": 6.50},
+        {"supermercado_id": 6, "preco": 7.00},
+        {"supermercado_id": 7, "preco": 6.95},
+        {"supermercado_id": 8, "preco": 6.85},
+        {"supermercado_id": 9, "preco": 7.50},
+        {"supermercado_id": 10, "preco": 6.70}
+      ]
+    },
+    {
+      "id": 7,
+      "nome": "Queijo Parmesão Ralado",
+      "imagem": "https://queijospresident.com.br/uploads/1651165792-PRESIDENT_QUEIJO_PARMESAO_RALADO_50G-MD.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 8.50},
+        {"supermercado_id": 2, "preco": 8.70},
+        {"supermercado_id": 3, "preco": 8.30},
+        {"supermercado_id": 4, "preco": 8.90},
+        {"supermercado_id": 5, "preco": 8.00},
+        {"supermercado_id": 6, "preco": 8.60},
+        {"supermercado_id": 7, "preco": 8.40},
+        {"supermercado_id": 8, "preco": 8.55},
+        {"supermercado_id": 9, "preco": 9.00},
+        {"supermercado_id": 10, "preco": 8.20}
+      ]
+    },
+    {
+      "id": 8,
+      "nome": "Doce de Leite",
+      "imagem": "https://images.tcdn.com.br/img/img_prod/834515/doce_de_leite_aviacao_tradicional_pote_400_g_3_1_20200819105811.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 12.50},
+        {"supermercado_id": 2, "preco": 12.80},
+        {"supermercado_id": 3, "preco": 12.20},
+        {"supermercado_id": 4, "preco": 13.00},
+        {"supermercado_id": 5, "preco": 12.00},
+        {"supermercado_id": 6, "preco": 12.70},
+        {"supermercado_id": 7, "preco": 12.40},
+        {"supermercado_id": 8, "preco": 12.60},
+        {"supermercado_id": 9, "preco": 13.20},
+        {"supermercado_id": 10, "preco": 12.10}
+      ]
+    },
+    {
+      "id": 9,
+      "nome": "Leite Fermentado Yakult",
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ_k4pcqT9IPGyTOFmmDz99GIZLITDbrQtOw&s",
+      "precos": [
+        {"supermercado_id": 1, "preco": 7.90},
+        {"supermercado_id": 2, "preco": 8.10},
+        {"supermercado_id": 3, "preco": 7.70},
+        {"supermercado_id": 4, "preco": 8.30},
+        {"supermercado_id": 5, "preco": 7.50},
+        {"supermercado_id": 6, "preco": 8.00},
+        {"supermercado_id": 7, "preco": 7.80},
+        {"supermercado_id": 8, "preco": 7.95},
+        {"supermercado_id": 9, "preco": 8.50},
+        {"supermercado_id": 10, "preco": 7.60}
+      ]
+    },
+    {
+      "id": 10,
+      "nome": "Sobremesa Láctea Danette",
+      "imagem": "https://prezunic.vtexassets.com/arquivos/ids/176920-800-auto?v=638318661206330000&width=800&height=auto&aspect=true",
+      "precos": [
+        {"supermercado_id": 1, "preco": 5.20},
+        {"supermercado_id": 2, "preco": 5.40},
+        {"supermercado_id": 3, "preco": 5.00},
+        {"supermercado_id": 4, "preco": 5.50},
+        {"supermercado_id": 5, "preco": 4.80},
+        {"supermercado_id": 6, "preco": 5.30},
+        {"supermercado_id": 7, "preco": 5.10},
+        {"supermercado_id": 8, "preco": 5.25},
+        {"supermercado_id": 9, "preco": 5.70},
+        {"supermercado_id": 10, "preco": 4.90}
+      ]
+    },
+    {
+      "id": 11,
+      "nome": "Leite Desnatado",
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYAj7TZiG-brPym-eim_BM7zfYHKyhXQyHPw&s",
+      "precos": [
+        {"supermercado_id": 1, "preco": 5.60},
+        {"supermercado_id": 2, "preco": 5.80},
+        {"supermercado_id": 3, "preco": 5.40},
+        {"supermercado_id": 4, "preco": 5.90},
+        {"supermercado_id": 5, "preco": 5.20},
+        {"supermercado_id": 6, "preco": 5.70},
+        {"supermercado_id": 7, "preco": 5.50},
+        {"supermercado_id": 8, "preco": 5.65},
+        {"supermercado_id": 9, "preco": 6.00},
+        {"supermercado_id": 10, "preco": 5.30}
+      ]
+    },
+    {
+      "id": 12,
+      "nome": "Queijo Cottage",
+      "imagem": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTXkWAmodIDzc4MclnJ-aP46KDmir9PVA4etfyk-bcRmBUvzuADQAKAiuLO_PlrmBeHXJHmp9248X7MKS70KYrljeSoTjxNDNMUQZf_L7F1O3kmE9qgE8Nw7g",
+      "precos": [
+        {"supermercado_id": 1, "preco": 11.50},
+        {"supermercado_id": 2, "preco": 11.80},
+        {"supermercado_id": 3, "preco": 11.20},
+        {"supermercado_id": 4, "preco": 12.00},
+        {"supermercado_id": 5, "preco": 11.00},
+        {"supermercado_id": 6, "preco": 11.70},
+        {"supermercado_id": 7, "preco": 11.40},
+        {"supermercado_id": 8, "preco": 11.60},
+        {"supermercado_id": 9, "preco": 12.20},
+        {"supermercado_id": 10, "preco": 11.10}
+      ]
+    },
+    {
+      "id": 13,
+      "nome": "Iogurte Natural",
+      "imagem": "https://carrefourbrfood.vtexassets.com/arquivos/ids/185653010/iogurte-integral-nestle-tradicional-170g-1.jpg?v=638756709034770000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 4.50},
+        {"supermercado_id": 2, "preco": 4.70},
+        {"supermercado_id": 3, "preco": 4.30},
+        {"supermercado_id": 4, "preco": 4.90},
+        {"supermercado_id": 5, "preco": 4.00},
+        {"supermercado_id": 6, "preco": 4.60},
+        {"supermercado_id": 7, "preco": 4.40},
+        {"supermercado_id": 8, "preco": 4.55},
+        {"supermercado_id": 9, "preco": 5.00},
+        {"supermercado_id": 10, "preco": 4.20}
+      ]
+    },
+    {
+      "id": 14,
+      "nome": "Nata (Creme de Leite Fresco)",
+      "imagem": "https://static.paodeacucar.com/img/uploads/1/950/32909950.png?im=Resize,width=200",
+      "precos": [
+        {"supermercado_id": 1, "preco": 9.50},
+        {"supermercado_id": 2, "preco": 9.80},
+        {"supermercado_id": 3, "preco": 9.20},
+        {"supermercado_id": 4, "preco": 10.00},
+        {"supermercado_id": 5, "preco": 9.00},
+        {"supermercado_id": 6, "preco": 9.70},
+        {"supermercado_id": 7, "preco": 9.40},
+        {"supermercado_id": 8, "preco": 9.60},
+        {"supermercado_id": 9, "preco": 10.20},
+        {"supermercado_id": 10, "preco": 9.10}
+      ]
+    },
+    {
+      "id": 15,
+      "nome": "Bebida Láctea",
+      "imagem": "https://drogal.vtexassets.com/arquivos/ids/237683/117739.jpg?v=638633767128070000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 3.80},
+        {"supermercado_id": 2, "preco": 4.00},
+        {"supermercado_id": 3, "preco": 3.60},
+        {"supermercado_id": 4, "preco": 4.20},
+        {"supermercado_id": 5, "preco": 3.40},
+        {"supermercado_id": 6, "preco": 3.90},
+        {"supermercado_id": 7, "preco": 3.70},
+        {"supermercado_id": 8, "preco": 3.85},
+        {"supermercado_id": 9, "preco": 4.40},
+        {"supermercado_id": 10, "preco": 3.50}
+      ]
+    }
+  ]
+}

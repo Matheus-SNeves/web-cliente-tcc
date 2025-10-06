@@ -1,0 +1,259 @@
+{
+  "limpeza": [
+    {
+      "id": 1,
+      "nome": "Sabão em Pó Omo",
+      "imagem": "https://cdn.awsli.com.br/2500x2500/541/541574/produto/309795016/omo-8m751mc97q.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 24.99},
+        {"supermercado_id": 2, "preco": 25.50},
+        {"supermercado_id": 3, "preco": 24.80},
+        {"supermercado_id": 4, "preco": 25.90},
+        {"supermercado_id": 5, "preco": 23.90},
+        {"supermercado_id": 6, "preco": 25.20},
+        {"supermercado_id": 7, "preco": 24.90},
+        {"supermercado_id": 8, "preco": 25.10},
+        {"supermercado_id": 9, "preco": 26.00},
+        {"supermercado_id": 10, "preco": 24.50}
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Amaciante Comfort",
+      "imagem": "https://cdn.awsli.com.br/2500x2500/1358/1358824/produto/247053411/esqu-0662-11-yv8b62opp3.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 17.90},
+        {"supermercado_id": 2, "preco": 18.20},
+        {"supermercado_id": 3, "preco": 17.50},
+        {"supermercado_id": 4, "preco": 18.50},
+        {"supermercado_id": 5, "preco": 17.00},
+        {"supermercado_id": 6, "preco": 18.10},
+        {"supermercado_id": 7, "preco": 17.80},
+        {"supermercado_id": 8, "preco": 17.95},
+        {"supermercado_id": 9, "preco": 18.80},
+        {"supermercado_id": 10, "preco": 17.40}
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Detergente Ypê",
+      "imagem": "https://www.sorpack.com.br/storage/empresas/14012344000125/produtos/tWnqgRTGeTlERZG9vfHZc8X4LcQyJLDFqyHYm3Dy_principal.jpeg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 2.49},
+        {"supermercado_id": 2, "preco": 2.55},
+        {"supermercado_id": 3, "preco": 2.40},
+        {"supermercado_id": 4, "preco": 2.60},
+        {"supermercado_id": 5, "preco": 2.20},
+        {"supermercado_id": 6, "preco": 2.50},
+        {"supermercado_id": 7, "preco": 2.45},
+        {"supermercado_id": 8, "preco": 2.48},
+        {"supermercado_id": 9, "preco": 2.70},
+        {"supermercado_id": 10, "preco": 2.30}
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Água Sanitária Qboa",
+      "imagem": "https://www.qboa.com.br/wp-content/uploads/2020/10/Agua-Sanitarias_QBOA_.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 4.99},
+        {"supermercado_id": 2, "preco": 5.10},
+        {"supermercado_id": 3, "preco": 4.80},
+        {"supermercado_id": 4, "preco": 5.20},
+        {"supermercado_id": 5, "preco": 4.50},
+        {"supermercado_id": 6, "preco": 5.05},
+        {"supermercado_id": 7, "preco": 4.90},
+        {"supermercado_id": 8, "preco": 4.95},
+        {"supermercado_id": 9, "preco": 5.30},
+        {"supermercado_id": 10, "preco": 4.70}
+      ]
+    },
+    {
+      "id": 5,
+      "nome": "Desinfetante Pinho Sol",
+      "imagem": "https://cdn.awsli.com.br/2500x2500/1935/1935087/produto/100363451/desinfetante-pinho-sol-original-500-ml-a2a0e304.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 7.90},
+        {"supermercado_id": 2, "preco": 8.10},
+        {"supermercado_id": 3, "preco": 7.80},
+        {"supermercado_id": 4, "preco": 8.20},
+        {"supermercado_id": 5, "preco": 7.50},
+        {"supermercado_id": 6, "preco": 8.00},
+        {"supermercado_id": 7, "preco": 7.95},
+        {"supermercado_id": 8, "preco": 7.85},
+        {"supermercado_id": 9, "preco": 8.30},
+        {"supermercado_id": 10, "preco": 7.70}
+      ]
+    },
+    {
+      "id": 6,
+      "nome": "Limpador Multiuso Veja",
+      "imagem": "https://elastobor.vtexassets.com/arquivos/ids/190082/LIMPADOR-MULTIUSO-VEJA-GOLD-ORIGINAL-500ML.jpg?v=637276451181070000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 6.50},
+        {"supermercado_id": 2, "preco": 6.70},
+        {"supermercado_id": 3, "preco": 6.30},
+        {"supermercado_id": 4, "preco": 6.80},
+        {"supermercado_id": 5, "preco": 6.00},
+        {"supermercado_id": 6, "preco": 6.60},
+        {"supermercado_id": 7, "preco": 6.40},
+        {"supermercado_id": 8, "preco": 6.55},
+        {"supermercado_id": 9, "preco": 7.00},
+        {"supermercado_id": 10, "preco": 6.20}
+      ]
+    },
+    {
+      "id": 7,
+      "nome": "Esponja de Aço Bombril",
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWLioMFKb9qNK0sdYm6qnzcuVQrRcxS8PkaQ&s",
+      "precos": [
+        {"supermercado_id": 1, "preco": 3.20},
+        {"supermercado_id": 2, "preco": 3.30},
+        {"supermercado_id": 3, "preco": 3.10},
+        {"supermercado_id": 4, "preco": 3.40},
+        {"supermercado_id": 5, "preco": 2.90},
+        {"supermercado_id": 6, "preco": 3.25},
+        {"supermercado_id": 7, "preco": 3.15},
+        {"supermercado_id": 8, "preco": 3.22},
+        {"supermercado_id": 9, "preco": 3.50},
+        {"supermercado_id": 10, "preco": 3.00}
+      ]
+    },
+    {
+      "id": 8,
+      "nome": "Saco de Lixo 30L",
+      "imagem": "https://condortatix2.vtexassets.com/arquivos/ids/155699/Saco_de_Lixo_30_Litros_Reforca_962.jpg?v=638833435998100000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 10.50},
+        {"supermercado_id": 2, "preco": 10.70},
+        {"supermercado_id": 3, "preco": 10.30},
+        {"supermercado_id": 4, "preco": 10.90},
+        {"supermercado_id": 5, "preco": 9.90},
+        {"supermercado_id": 6, "preco": 10.60},
+        {"supermercado_id": 7, "preco": 10.40},
+        {"supermercado_id": 8, "preco": 10.55},
+        {"supermercado_id": 9, "preco": 11.00},
+        {"supermercado_id": 10, "preco": 10.20}
+      ]
+    },
+    {
+      "id": 9,
+      "nome": "Álcool 70% 1L",
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREDHSJ173lIHWo_DGixbFQS1s52T36HB9x6Q&s",
+      "precos": [
+        {"supermercado_id": 1, "preco": 9.80},
+        {"supermercado_id": 2, "preco": 10.00},
+        {"supermercado_id": 3, "preco": 9.60},
+        {"supermercado_id": 4, "preco": 10.20},
+        {"supermercado_id": 5, "preco": 9.20},
+        {"supermercado_id": 6, "preco": 9.90},
+        {"supermercado_id": 7, "preco": 9.70},
+        {"supermercado_id": 8, "preco": 9.85},
+        {"supermercado_id": 9, "preco": 10.50},
+        {"supermercado_id": 10, "preco": 9.50}
+      ]
+    },
+    {
+      "id": 10,
+      "nome": "Papel Toalha",
+      "imagem": "https://m.media-amazon.com/images/I/71rV1BPX9AL.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 5.50},
+        {"supermercado_id": 2, "preco": 5.70},
+        {"supermercado_id": 3, "preco": 5.30},
+        {"supermercado_id": 4, "preco": 5.90},
+        {"supermercado_id": 5, "preco": 4.99},
+        {"supermercado_id": 6, "preco": 5.60},
+        {"supermercado_id": 7, "preco": 5.40},
+        {"supermercado_id": 8, "preco": 5.55},
+        {"supermercado_id": 9, "preco": 6.00},
+        {"supermercado_id": 10, "preco": 5.20}
+      ]
+    },
+    {
+      "id": 11,
+      "nome": "Lustra Móveis",
+      "imagem": "https://cdn.awsli.com.br/600x450/1935/1935087/produto/100366404/lustra-moveis-poliflor-lavanda-200-ml-8d8cdff8.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 8.50},
+        {"supermercado_id": 2, "preco": 8.70},
+        {"supermercado_id": 3, "preco": 8.30},
+        {"supermercado_id": 4, "preco": 8.90},
+        {"supermercado_id": 5, "preco": 7.90},
+        {"supermercado_id": 6, "preco": 8.60},
+        {"supermercado_id": 7, "preco": 8.40},
+        {"supermercado_id": 8, "preco": 8.55},
+        {"supermercado_id": 9, "preco": 9.00},
+        {"supermercado_id": 10, "preco": 8.20}
+      ]
+    },
+    {
+      "id": 12,
+      "nome": "Sabão em Barra Ypê",
+      "imagem": "https://cdn.awsli.com.br/600x1000/1027/1027618/produto/55867977/51206cb51c.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 12.00},
+        {"supermercado_id": 2, "preco": 12.20},
+        {"supermercado_id": 3, "preco": 11.80},
+        {"supermercado_id": 4, "preco": 12.50},
+        {"supermercado_id": 5, "preco": 11.50},
+        {"supermercado_id": 6, "preco": 12.10},
+        {"supermercado_id": 7, "preco": 11.90},
+        {"supermercado_id": 8, "preco": 12.05},
+        {"supermercado_id": 9, "preco": 12.80},
+        {"supermercado_id": 10, "preco": 11.70}
+      ]
+    },
+    {
+      "id": 13,
+      "nome": "Vassoura",
+      "imagem": "https://cepel.vteximg.com.br/arquivos/ids/166710-410-410/bettanin-amarela.png?v=637013038988770000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 15.00},
+        {"supermercado_id": 2, "preco": 15.30},
+        {"supermercado_id": 3, "preco": 14.70},
+        {"supermercado_id": 4, "preco": 15.80},
+        {"supermercado_id": 5, "preco": 14.00},
+        {"supermercado_id": 6, "preco": 15.20},
+        {"supermercado_id": 7, "preco": 14.90},
+        {"supermercado_id": 8, "preco": 15.10},
+        {"supermercado_id": 9, "preco": 16.00},
+        {"supermercado_id": 10, "preco": 14.50}
+      ]
+    },
+    {
+      "id": 14,
+      "nome": "Pano de Chão",
+      "imagem": "https://cdn.awsli.com.br/1593/1593430/produto/123863854/7dc0d4c96c.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 4.50},
+        {"supermercado_id": 2, "preco": 4.70},
+        {"supermercado_id": 3, "preco": 4.30},
+        {"supermercado_id": 4, "preco": 4.90},
+        {"supermercado_id": 5, "preco": 3.99},
+        {"supermercado_id": 6, "preco": 4.60},
+        {"supermercado_id": 7, "preco": 4.40},
+        {"supermercado_id": 8, "preco": 4.55},
+        {"supermercado_id": 9, "preco": 5.00},
+        {"supermercado_id": 10, "preco": 4.20}
+      ]
+    },
+    {
+      "id": 15,
+      "nome": "Rodo",
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT8FLnjHa_Tq7r0SzKkHZaD3Ps_R2lqsOJtA&s",
+      "precos": [
+        {"supermercado_id": 1, "preco": 11.00},
+        {"supermercado_id": 2, "preco": 11.30},
+        {"supermercado_id": 3, "preco": 10.80},
+        {"supermercado_id": 4, "preco": 11.50},
+        {"supermercado_id": 5, "preco": 10.20},
+        {"supermercado_id": 6, "preco": 11.10},
+        {"supermercado_id": 7, "preco": 10.90},
+        {"supermercado_id": 8, "preco": 11.05},
+        {"supermercado_id": 9, "preco": 11.80},
+        {"supermercado_id": 10, "preco": 10.70}
+      ]
+    }
+  ]
+}

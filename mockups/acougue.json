@@ -1,0 +1,259 @@
+{
+  "acougue": [
+    {
+      "id": 1,
+      "nome": "Picanha (kg)",
+      "imagem": "https://aogosto.com.br/delivery/wp-content/uploads/2024/11/Design-sem-nome-2024-11-28T131640.644.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 64.99},
+        {"supermercado_id": 2, "preco": 65.50},
+        {"supermercado_id": 3, "preco": 63.90},
+        {"supermercado_id": 4, "preco": 66.20},
+        {"supermercado_id": 5, "preco": 62.90},
+        {"supermercado_id": 6, "preco": 65.80},
+        {"supermercado_id": 7, "preco": 64.50},
+        {"supermercado_id": 8, "preco": 63.75},
+        {"supermercado_id": 9, "preco": 66.90},
+        {"supermercado_id": 10, "preco": 64.25}
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Contrafilé (kg)",
+      "imagem": "https://frisa.com.br/wp-content/uploads/2016/02/Frisa-Premium-contrafile.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 47.90},
+        {"supermercado_id": 2, "preco": 48.50},
+        {"supermercado_id": 3, "preco": 46.99},
+        {"supermercado_id": 4, "preco": 49.00},
+        {"supermercado_id": 5, "preco": 45.90},
+        {"supermercado_id": 6, "preco": 48.20},
+        {"supermercado_id": 7, "preco": 47.50},
+        {"supermercado_id": 8, "preco": 47.80},
+        {"supermercado_id": 9, "preco": 49.50},
+        {"supermercado_id": 10, "preco": 46.80}
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Alcatra (kg)",
+      "imagem": "https://bkt-meuminerva.s3.sa-east-1.amazonaws.com/media/catalog/product/1/3/1338_1.jpg?optimize=high&bg-color=255,255,255&fit=bounds&height=200&width=200&canvas=200:200",
+      "precos": [
+        {"supermercado_id": 1, "preco": 44.90},
+        {"supermercado_id": 2, "preco": 45.50},
+        {"supermercado_id": 3, "preco": 43.99},
+        {"supermercado_id": 4, "preco": 46.00},
+        {"supermercado_id": 5, "preco": 42.90},
+        {"supermercado_id": 6, "preco": 45.20},
+        {"supermercado_id": 7, "preco": 44.50},
+        {"supermercado_id": 8, "preco": 44.80},
+        {"supermercado_id": 9, "preco": 46.50},
+        {"supermercado_id": 10, "preco": 43.80}
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Fraldinha (kg)",
+      "imagem": "https://frisa.com.br/wp-content/uploads/2015/12/Frisa-Grill-fraldinha.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 39.90},
+        {"supermercado_id": 2, "preco": 40.50},
+        {"supermercado_id": 3, "preco": 38.99},
+        {"supermercado_id": 4, "preco": 41.00},
+        {"supermercado_id": 5, "preco": 37.90},
+        {"supermercado_id": 6, "preco": 40.20},
+        {"supermercado_id": 7, "preco": 39.50},
+        {"supermercado_id": 8, "preco": 39.80},
+        {"supermercado_id": 9, "preco": 41.50},
+        {"supermercado_id": 10, "preco": 38.80}
+      ]
+    },
+    {
+      "id": 5,
+      "nome": "Patinho Moído (kg)",
+      "imagem": "https://brf.my.salesforce.com/servlet/servlet.ImageServer?id=015U6000007FLHp&oid=00D410000012TJa&lastMod=1737456600000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 34.90},
+        {"supermercado_id": 2, "preco": 35.50},
+        {"supermercado_id": 3, "preco": 33.99},
+        {"supermercado_id": 4, "preco": 36.00},
+        {"supermercado_id": 5, "preco": 32.90},
+        {"supermercado_id": 6, "preco": 35.20},
+        {"supermercado_id": 7, "preco": 34.50},
+        {"supermercado_id": 8, "preco": 34.80},
+        {"supermercado_id": 9, "preco": 36.50},
+        {"supermercado_id": 10, "preco": 33.80}
+      ]
+    },
+    {
+      "id": 6,
+      "nome": "Acém (kg)",
+      "imagem": "https://coopsp.vtexassets.com/arquivos/ids/233935/14445.jpg?v=638336927926630000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 27.90},
+        {"supermercado_id": 2, "preco": 28.50},
+        {"supermercado_id": 3, "preco": 26.99},
+        {"supermercado_id": 4, "preco": 29.00},
+        {"supermercado_id": 5, "preco": 25.90},
+        {"supermercado_id": 6, "preco": 28.20},
+        {"supermercado_id": 7, "preco": 27.50},
+        {"supermercado_id": 8, "preco": 27.80},
+        {"supermercado_id": 9, "preco": 29.50},
+        {"supermercado_id": 10, "preco": 26.80}
+      ]
+    },
+    {
+      "id": 7,
+      "nome": "Filé Mignon (kg)",
+      "imagem": "https://frigorificobroering.com.br/wp-content/uploads/2023/12/FILE-MIGNON-1-1024x1024.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 74.90},
+        {"supermercado_id": 2, "preco": 75.50},
+        {"supermercado_id": 3, "preco": 73.99},
+        {"supermercado_id": 4, "preco": 76.00},
+        {"supermercado_id": 5, "preco": 72.90},
+        {"supermercado_id": 6, "preco": 75.20},
+        {"supermercado_id": 7, "preco": 74.50},
+        {"supermercado_id": 8, "preco": 74.80},
+        {"supermercado_id": 9, "preco": 76.50},
+        {"supermercado_id": 10, "preco": 73.80}
+      ]
+    },
+    {
+      "id": 8,
+      "nome": "Peito de Frango (kg)",
+      "imagem": "https://www.carnesperdizes.com.br/cdn/shop/products/PEITODEFRANGO_800x.jpg?v=1679014130",
+      "precos": [
+        {"supermercado_id": 1, "preco": 19.90},
+        {"supermercado_id": 2, "preco": 20.50},
+        {"supermercado_id": 3, "preco": 18.99},
+        {"supermercado_id": 4, "preco": 21.00},
+        {"supermercado_id": 5, "preco": 17.90},
+        {"supermercado_id": 6, "preco": 20.20},
+        {"supermercado_id": 7, "preco": 19.50},
+        {"supermercado_id": 8, "preco": 19.80},
+        {"supermercado_id": 9, "preco": 21.50},
+        {"supermercado_id": 10, "preco": 18.80}
+      ]
+    },
+    {
+      "id": 9,
+      "nome": "Coxa e Sobrecoxa de Frango (kg)",
+      "imagem": "https://www.auroraalimentos.com.br/wp-content/uploads/2022/04/FILE-DE-COXAS-E-SOBRECOXAS-AURORA-3KG-1665-768x768-1.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 15.90},
+        {"supermercado_id": 2, "preco": 16.50},
+        {"supermercado_id": 3, "preco": 14.99},
+        {"supermercado_id": 4, "preco": 17.00},
+        {"supermercado_id": 5, "preco": 13.90},
+        {"supermercado_id": 6, "preco": 16.20},
+        {"supermercado_id": 7, "preco": 15.50},
+        {"supermercado_id": 8, "preco": 15.80},
+        {"supermercado_id": 9, "preco": 17.50},
+        {"supermercado_id": 10, "preco": 14.80}
+      ]
+    },
+    {
+      "id": 10,
+      "nome": "Linguiça de Frango (kg)",
+      "imagem": "https://www.searafoodsolutions.com.br/files/2025/07/5185_LING_FRANGO_CHURRASCO_5kg.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 17.90},
+        {"supermercado_id": 2, "preco": 18.50},
+        {"supermercado_id": 3, "preco": 16.99},
+        {"supermercado_id": 4, "preco": 19.00},
+        {"supermercado_id": 5, "preco": 15.90},
+        {"supermercado_id": 6, "preco": 18.20},
+        {"supermercado_id": 7, "preco": 17.50},
+        {"supermercado_id": 8, "preco": 17.80},
+        {"supermercado_id": 9, "preco": 19.50},
+        {"supermercado_id": 10, "preco": 16.80}
+      ]
+    },
+    {
+      "id": 11,
+      "nome": "Costela Suína (kg)",
+      "imagem": "https://phygital-files.mercafacil.com/goiana/uploads/produto/costela_suina_perd_kg_salg_ba34e7d9-2d04-4694-bea4-6ff14229a337.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 29.90},
+        {"supermercado_id": 2, "preco": 30.50},
+        {"supermercado_id": 3, "preco": 28.99},
+        {"supermercado_id": 4, "preco": 31.00},
+        {"supermercado_id": 5, "preco": 27.90},
+        {"supermercado_id": 6, "preco": 30.20},
+        {"supermercado_id": 7, "preco": 29.50},
+        {"supermercado_id": 8, "preco": 29.80},
+        {"supermercado_id": 9, "preco": 31.50},
+        {"supermercado_id": 10, "preco": 28.80}
+      ]
+    },
+    {
+      "id": 12,
+      "nome": "Lombo de Porco (kg)",
+      "imagem": "https://zaffari.vtexassets.com/arquivos/ids/282549/1006856-01.jpg?v=638884622213770000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 27.90},
+        {"supermercado_id": 2, "preco": 28.50},
+        {"supermercado_id": 3, "preco": 26.99},
+        {"supermercado_id": 4, "preco": 29.00},
+        {"supermercado_id": 5, "preco": 25.90},
+        {"supermercado_id": 6, "preco": 28.20},
+        {"supermercado_id": 7, "preco": 27.50},
+        {"supermercado_id": 8, "preco": 27.80},
+        {"supermercado_id": 9, "preco": 29.50},
+        {"supermercado_id": 10, "preco": 26.80}
+      ]
+    },
+    {
+      "id": 13,
+      "nome": "Linguiça Toscana Sadia (kg)",
+      "imagem": "https://www.varanda.com.br/media/tmp/webp/catalog/product/cache/1/image/1200x/9df78eab33525d08d6e5fb8d27136e95/d/e/design_sem_nome_29_png.webp",
+      "precos": [
+        {"supermercado_id": 1, "preco": 22.50},
+        {"supermercado_id": 2, "preco": 21.90},
+        {"supermercado_id": 3, "preco": 22.80},
+        {"supermercado_id": 4, "preco": 23.10},
+        {"supermercado_id": 5, "preco": 20.99},
+        {"supermercado_id": 6, "preco": 22.40},
+        {"supermercado_id": 7, "preco": 21.80},
+        {"supermercado_id": 8, "preco": 22.90},
+        {"supermercado_id": 9, "preco": 23.50},
+        {"supermercado_id": 10, "preco": 21.50}
+      ]
+    },
+    {
+      "id": 14,
+      "nome": "Coração de Frango (kg)",
+      "imagem": "https://superprix.vteximg.com.br/arquivos/ids/218837-600-600/CORACAO-SADIA--1-.png?v=638333314734670000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 32.90},
+        {"supermercado_id": 2, "preco": 33.50},
+        {"supermercado_id": 3, "preco": 31.99},
+        {"supermercado_id": 4, "preco": 34.00},
+        {"supermercado_id": 5, "preco": 30.90},
+        {"supermercado_id": 6, "preco": 33.20},
+        {"supermercado_id": 7, "preco": 32.50},
+        {"supermercado_id": 8, "preco": 32.80},
+        {"supermercado_id": 9, "preco": 34.50},
+        {"supermercado_id": 10, "preco": 31.80}
+      ]
+    },
+    {
+      "id": 15,
+      "nome": "Maminha (kg)",
+      "imagem": "https://frinscaldistribuidora.agilecdn.com.br/308_1.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 46.90},
+        {"supermercado_id": 2, "preco": 47.50},
+        {"supermercado_id": 3, "preco": 45.99},
+        {"supermercado_id": 4, "preco": 48.00},
+        {"supermercado_id": 5, "preco": 44.90},
+        {"supermercado_id": 6, "preco": 47.20},
+        {"supermercado_id": 7, "preco": 46.50},
+        {"supermercado_id": 8, "preco": 46.80},
+        {"supermercado_id": 9, "preco": 48.50},
+        {"supermercado_id": 10, "preco": 45.80}
+      ]
+    }
+  ]
+}

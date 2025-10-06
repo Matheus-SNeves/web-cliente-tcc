@@ -1,0 +1,259 @@
+{
+  "frios": [
+    {
+      "id": 1,
+      "nome": "Queijo Mussarela fatiado (kg)",
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyakn9b71wtftgU4tizRWcsHFkJ5OIw98Fhw&s",
+      "precos": [
+        {"supermercado_id": 1, "preco": 37.90},
+        {"supermercado_id": 2, "preco": 38.50},
+        {"supermercado_id": 3, "preco": 36.99},
+        {"supermercado_id": 4, "preco": 39.00},
+        {"supermercado_id": 5, "preco": 35.90},
+        {"supermercado_id": 6, "preco": 38.20},
+        {"supermercado_id": 7, "preco": 37.50},
+        {"supermercado_id": 8, "preco": 37.80},
+        {"supermercado_id": 9, "preco": 39.50},
+        {"supermercado_id": 10, "preco": 36.80}
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Queijo Prato fatiado (kg)",
+      "imagem": "https://prezunic.vtexassets.com/arquivos/ids/181565/65678b3c1ef37396807618fc.jpg?v=638368814722070000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 41.90},
+        {"supermercado_id": 2, "preco": 42.50},
+        {"supermercado_id": 3, "preco": 40.99},
+        {"supermercado_id": 4, "preco": 43.00},
+        {"supermercado_id": 5, "preco": 39.90},
+        {"supermercado_id": 6, "preco": 42.20},
+        {"supermercado_id": 7, "preco": 41.50},
+        {"supermercado_id": 8, "preco": 41.80},
+        {"supermercado_id": 9, "preco": 43.50},
+        {"supermercado_id": 10, "preco": 40.80}
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Queijo Minas Frescal (kg)",
+      "imagem": "https://queijospresident.com.br/uploads/1634676562-Queijo%20Minas.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 24.90},
+        {"supermercado_id": 2, "preco": 25.50},
+        {"supermercado_id": 3, "preco": 23.99},
+        {"supermercado_id": 4, "preco": 26.00},
+        {"supermercado_id": 5, "preco": 22.90},
+        {"supermercado_id": 6, "preco": 25.20},
+        {"supermercado_id": 7, "preco": 24.50},
+        {"supermercado_id": 8, "preco": 24.80},
+        {"supermercado_id": 9, "preco": 26.50},
+        {"supermercado_id": 10, "preco": 23.80}
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Presunto fatiado Sadia (kg)",
+      "imagem": "https://phygital-files.mercafacil.com/big_mart/uploads/produto/presunto_sadia_kg_5c367d87-fc67-4ad8-a11a-5f3697fa5a54.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 27.90},
+        {"supermercado_id": 2, "preco": 28.50},
+        {"supermercado_id": 3, "preco": 26.99},
+        {"supermercado_id": 4, "preco": 29.00},
+        {"supermercado_id": 5, "preco": 25.90},
+        {"supermercado_id": 6, "preco": 28.20},
+        {"supermercado_id": 7, "preco": 27.50},
+        {"supermercado_id": 8, "preco": 27.80},
+        {"supermercado_id": 9, "preco": 29.50},
+        {"supermercado_id": 10, "preco": 26.80}
+      ]
+    },
+    {
+      "id": 5,
+      "nome": "Presunto fatiado Perdigão (kg)",
+      "imagem": "https://superprix.vteximg.com.br/arquivos/ids/212479-600-600/Presunto-Cozido-Perdigao-Fatiado-200g.jpg?v=638156300612900000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 26.90},
+        {"supermercado_id": 2, "preco": 27.50},
+        {"supermercado_id": 3, "preco": 25.99},
+        {"supermercado_id": 4, "preco": 28.00},
+        {"supermercado_id": 5, "preco": 24.90},
+        {"supermercado_id": 6, "preco": 27.20},
+        {"supermercado_id": 7, "preco": 26.50},
+        {"supermercado_id": 8, "preco": 26.80},
+        {"supermercado_id": 9, "preco": 28.50},
+        {"supermercado_id": 10, "preco": 25.80}
+      ]
+    },
+    {
+      "id": 6,
+      "nome": "Salame Italiano (kg)",
+      "imagem": "https://redemix.vteximg.com.br/arquivos/ids/206265-1000-1000/3924.jpg?v=638350588944230000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 59.90},
+        {"supermercado_id": 2, "preco": 60.50},
+        {"supermercado_id": 3, "preco": 58.99},
+        {"supermercado_id": 4, "preco": 61.00},
+        {"supermercado_id": 5, "preco": 57.90},
+        {"supermercado_id": 6, "preco": 60.20},
+        {"supermercado_id": 7, "preco": 59.50},
+        {"supermercado_id": 8, "preco": 59.80},
+        {"supermercado_id": 9, "preco": 61.50},
+        {"supermercado_id": 10, "preco": 58.80}
+      ]
+    },
+    {
+      "id": 7,
+      "nome": "Mortadela Sadia (kg)",
+      "imagem": "https://superprix.vteximg.com.br/arquivos/ids/187664/733849.jpg?v=637231936408200000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 17.90},
+        {"supermercado_id": 2, "preco": 18.50},
+        {"supermercado_id": 3, "preco": 16.99},
+        {"supermercado_id": 4, "preco": 19.00},
+        {"supermercado_id": 5, "preco": 15.90},
+        {"supermercado_id": 6, "preco": 18.20},
+        {"supermercado_id": 7, "preco": 17.50},
+        {"supermercado_id": 8, "preco": 17.80},
+        {"supermercado_id": 9, "preco": 19.50},
+        {"supermercado_id": 10, "preco": 16.80}
+      ]
+    },
+    {
+      "id": 8,
+      "nome": "Peito de Peru Defumado (kg)",
+      "imagem": "https://www.arenaatacado.com.br/on/demandware.static/-/Sites-storefront-catalog-sv/default/dw86f70384/Produtos/719331-0000000035125-peito%20de%20peru%20sadia%20defumado%20peca%20kg-sadia-1.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 48.90},
+        {"supermercado_id": 2, "preco": 49.50},
+        {"supermercado_id": 3, "preco": 47.99},
+        {"supermercado_id": 4, "preco": 50.00},
+        {"supermercado_id": 5, "preco": 46.90},
+        {"supermercado_id": 6, "preco": 49.20},
+        {"supermercado_id": 7, "preco": 48.50},
+        {"supermercado_id": 8, "preco": 48.80},
+        {"supermercado_id": 9, "preco": 50.50},
+        {"supermercado_id": 10, "preco": 47.80}
+      ]
+    },
+    {
+      "id": 9,
+      "nome": "Queijo Provolone (kg)",
+      "imagem": "https://www.arenaatacado.com.br/on/demandware.static/-/Sites-storefront-catalog-sv/default/dwc06ac71f/Produtos/762407-0000000034159-queijo%20provolone%20quata%20granel%20kg-quata-1.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 55.90},
+        {"supermercado_id": 2, "preco": 56.50},
+        {"supermercado_id": 3, "preco": 54.99},
+        {"supermercado_id": 4, "preco": 57.00},
+        {"supermercado_id": 5, "preco": 53.90},
+        {"supermercado_id": 6, "preco": 56.20},
+        {"supermercado_id": 7, "preco": 55.50},
+        {"supermercado_id": 8, "preco": 55.80},
+        {"supermercado_id": 9, "preco": 57.50},
+        {"supermercado_id": 10, "preco": 54.80}
+      ]
+    },
+    {
+      "id": 10,
+      "nome": "Requeijão Cremoso (200g)",
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCsxdUftPTsl36bNr_p-7Da7ArRzkWwfo7ZQ&s",
+      "precos": [
+        {"supermercado_id": 1, "preco": 8.50},
+        {"supermercado_id": 2, "preco": 8.70},
+        {"supermercado_id": 3, "preco": 8.30},
+        {"supermercado_id": 4, "preco": 8.90},
+        {"supermercado_id": 5, "preco": 7.99},
+        {"supermercado_id": 6, "preco": 8.60},
+        {"supermercado_id": 7, "preco": 8.40},
+        {"supermercado_id": 8, "preco": 8.55},
+        {"supermercado_id": 9, "preco": 9.10},
+        {"supermercado_id": 10, "preco": 8.20}
+      ]
+    },
+    {
+      "id": 11,
+      "nome": "Manteiga com Sal (200g)",
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTVeJjicAZBaKJXN4mMNF_KXAKkVxsPW1VDQ&s",
+      "precos": [
+        {"supermercado_id": 1, "preco": 10.90},
+        {"supermercado_id": 2, "preco": 11.20},
+        {"supermercado_id": 3, "preco": 10.50},
+        {"supermercado_id": 4, "preco": 11.50},
+        {"supermercado_id": 5, "preco": 9.99},
+        {"supermercado_id": 6, "preco": 11.10},
+        {"supermercado_id": 7, "preco": 10.80},
+        {"supermercado_id": 8, "preco": 10.95},
+        {"supermercado_id": 9, "preco": 11.80},
+        {"supermercado_id": 10, "preco": 10.40}
+      ]
+    },
+    {
+      "id": 12,
+      "nome": "Iogurte Grego (100g)",
+      "imagem": "https://domolivio.vtexassets.com/arquivos/ids/539274/Iogurte-Grego-Tradicional-Batavo-100g.jpg?v=638683345819230000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 4.20},
+        {"supermercado_id": 2, "preco": 4.30},
+        {"supermercado_id": 3, "preco": 4.10},
+        {"supermercado_id": 4, "preco": 4.50},
+        {"supermercado_id": 5, "preco": 3.90},
+        {"supermercado_id": 6, "preco": 4.25},
+        {"supermercado_id": 7, "preco": 4.15},
+        {"supermercado_id": 8, "preco": 4.22},
+        {"supermercado_id": 9, "preco": 4.60},
+        {"supermercado_id": 10, "preco": 4.05}
+      ]
+    },
+    {
+      "id": 13,
+      "nome": "Queijo Gorgonzola (kg)",
+      "imagem": "https://www.svicente.com.br/on/demandware.static/-/Sites-storefront-catalog-sv/default/dwf355bd23/Produtos/967335-0000000081351-queijo%20gorgonzola%20tirolez%20granel%20kg-tirolez-1.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 75.90},
+        {"supermercado_id": 2, "preco": 76.50},
+        {"supermercado_id": 3, "preco": 74.99},
+        {"supermercado_id": 4, "preco": 77.00},
+        {"supermercado_id": 5, "preco": 73.90},
+        {"supermercado_id": 6, "preco": 76.20},
+        {"supermercado_id": 7, "preco": 75.50},
+        {"supermercado_id": 8, "preco": 75.80},
+        {"supermercado_id": 9, "preco": 77.50},
+        {"supermercado_id": 10, "preco": 74.80}
+      ]
+    },
+    {
+      "id": 14,
+      "nome": "Ricota Fresca (kg)",
+      "imagem": "https://phygital-files.mercafacil.com/supercatalao/uploads/produto/queijo_ricota_fresca_kg_21438bee-7df2-4a3b-8cc7-94f8b3e5feef.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 21.90},
+        {"supermercado_id": 2, "preco": 22.50},
+        {"supermercado_id": 3, "preco": 20.99},
+        {"supermercado_id": 4, "preco": 23.00},
+        {"supermercado_id": 5, "preco": 19.90},
+        {"supermercado_id": 6, "preco": 22.20},
+        {"supermercado_id": 7, "preco": 21.50},
+        {"supermercado_id": 8, "preco": 21.80},
+        {"supermercado_id": 9, "preco": 23.50},
+        {"supermercado_id": 10, "preco": 20.80}
+      ]
+    },
+    {
+      "id": 15,
+      "nome": "Cream Cheese (150g)",
+      "imagem": "https://prezunic.vtexassets.com/arquivos/ids/215666/685bffa7328ed80d430f989a.jpg?v=638864564878100000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 9.50},
+        {"supermercado_id": 2, "preco": 9.70},
+        {"supermercado_id": 3, "preco": 9.30},
+        {"supermercado_id": 4, "preco": 9.90},
+        {"supermercado_id": 5, "preco": 8.99},
+        {"supermercado_id": 6, "preco": 9.60},
+        {"supermercado_id": 7, "preco": 9.40},
+        {"supermercado_id": 8, "preco": 9.55},
+        {"supermercado_id": 9, "preco": 10.10},
+        {"supermercado_id": 10, "preco": 9.20}
+      ]
+    }
+  ]
+}

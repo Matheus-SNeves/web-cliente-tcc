@@ -1,0 +1,36 @@
+{
+    "icons": [
+        {
+            "nome": "Hortifrúti",
+            "imagem": "https://cdn-icons-png.flaticon.com/512/5346/5346400.png"
+        },
+        {
+            "nome": "Açougue",
+            "imagem": "https://cdn-icons-png.flaticon.com/512/1534/1534825.png"
+        },
+        {
+            "nome": "Padaria",
+            "imagem": "https://cdn-icons-png.flaticon.com/512/7547/7547106.png"
+        },
+        {
+            "nome": "Laticínios",
+            "imagem": "https://cdn-icons-png.flaticon.com/512/3070/3070925.png"
+        },
+        {
+            "nome": "Bebidas",
+            "imagem": "https://cdn-icons-png.freepik.com/256/2405/2405451.png"
+        },
+        {
+            "nome": "Frios",
+            "imagem": "https://cdn-icons-png.flaticon.com/512/869/869664.png"
+        },
+        {
+            "nome": "Limpeza",
+            "imagem": "https://cdn-icons-png.freepik.com/512/994/994928.png"
+        },
+        {
+            "nome": "Higiene",
+            "imagem": "https://cdn-icons-png.flaticon.com/512/11264/11264253.png"
+        }
+    ]
+}

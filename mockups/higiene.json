@@ -1,0 +1,259 @@
+{
+  "higiene": [
+    {
+      "id": 1,
+      "nome": "Shampoo Seda",
+      "imagem": "https://drogariavenancio.vtexassets.com/arquivos/ids/1110364/45788_z.jpg?v=638412082044530000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 14.90},
+        {"supermercado_id": 2, "preco": 15.20},
+        {"supermercado_id": 3, "preco": 14.70},
+        {"supermercado_id": 4, "preco": 15.50},
+        {"supermercado_id": 5, "preco": 14.00},
+        {"supermercado_id": 6, "preco": 15.10},
+        {"supermercado_id": 7, "preco": 14.80},
+        {"supermercado_id": 8, "preco": 14.95},
+        {"supermercado_id": 9, "preco": 15.80},
+        {"supermercado_id": 10, "preco": 14.50}
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Shampoo Elseve",
+      "imagem": "https://www.drogasil.com.br/_next/image?url=https%3A%2F%2Fproduct-data.raiadrogasil.io%2Fimages%2F3557139.webp&w=3840&q=40",
+      "precos": [
+        {"supermercado_id": 1, "preco": 21.90},
+        {"supermercado_id": 2, "preco": 22.20},
+        {"supermercado_id": 3, "preco": 21.50},
+        {"supermercado_id": 4, "preco": 22.50},
+        {"supermercado_id": 5, "preco": 21.00},
+        {"supermercado_id": 6, "preco": 22.10},
+        {"supermercado_id": 7, "preco": 21.80},
+        {"supermercado_id": 8, "preco": 21.95},
+        {"supermercado_id": 9, "preco": 22.80},
+        {"supermercado_id": 10, "preco": 21.40}
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Sabonete Dove",
+      "imagem": "https://dannycosmeticos.vtexassets.com/arquivos/ids/254207-800-800?v=637902993508570000&width=800&height=800&aspect=true",
+      "precos": [
+        {"supermercado_id": 1, "preco": 3.99},
+        {"supermercado_id": 2, "preco": 4.10},
+        {"supermercado_id": 3, "preco": 3.89},
+        {"supermercado_id": 4, "preco": 4.20},
+        {"supermercado_id": 5, "preco": 3.70},
+        {"supermercado_id": 6, "preco": 4.05},
+        {"supermercado_id": 7, "preco": 3.95},
+        {"supermercado_id": 8, "preco": 3.98},
+        {"supermercado_id": 9, "preco": 4.30},
+        {"supermercado_id": 10, "preco": 3.80}
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "Sabonete Nivea",
+      "imagem": "https://m.media-amazon.com/images/I/51dLP5QmUVL._UF1000,1000_QL80_.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 3.49},
+        {"supermercado_id": 2, "preco": 3.60},
+        {"supermercado_id": 3, "preco": 3.39},
+        {"supermercado_id": 4, "preco": 3.70},
+        {"supermercado_id": 5, "preco": 3.20},
+        {"supermercado_id": 6, "preco": 3.55},
+        {"supermercado_id": 7, "preco": 3.45},
+        {"supermercado_id": 8, "preco": 3.48},
+        {"supermercado_id": 9, "preco": 3.80},
+        {"supermercado_id": 10, "preco": 3.30}
+      ]
+    },
+    {
+      "id": 5,
+      "nome": "Creme Dental Colgate",
+      "imagem": "https://prezunic.vtexassets.com/arquivos/ids/179076/656788f91ef3739680760ee7.jpg?v=638368808930200000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 5.90},
+        {"supermercado_id": 2, "preco": 6.10},
+        {"supermercado_id": 3, "preco": 5.80},
+        {"supermercado_id": 4, "preco": 6.20},
+        {"supermercado_id": 5, "preco": 5.50},
+        {"supermercado_id": 6, "preco": 6.00},
+        {"supermercado_id": 7, "preco": 5.95},
+        {"supermercado_id": 8, "preco": 5.85},
+        {"supermercado_id": 9, "preco": 6.30},
+        {"supermercado_id": 10, "preco": 5.70}
+      ]
+    },
+    {
+      "id": 6,
+      "nome": "Desodorante Rexona",
+      "imagem": "https://drogariacristal.com/media/catalog/product/cache/dc75f304252411b8c602e1e96d99390d/d/e/desodorante_rexona_men_v8_antitranspirante_aerosol_com_150ml.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 17.90},
+        {"supermercado_id": 2, "preco": 18.10},
+        {"supermercado_id": 3, "preco": 17.80},
+        {"supermercado_id": 4, "preco": 18.30},
+        {"supermercado_id": 5, "preco": 17.50},
+        {"supermercado_id": 6, "preco": 18.00},
+        {"supermercado_id": 7, "preco": 17.95},
+        {"supermercado_id": 8, "preco": 17.85},
+        {"supermercado_id": 9, "preco": 18.50},
+        {"supermercado_id": 10, "preco": 17.70}
+      ]
+    },
+    {
+      "id": 7,
+      "nome": "Papel Higiênico Neve",
+      "imagem": "https://superprix.vteximg.com.br/arquivos/ids/211290/115467dd.jpg?v=638115397924270000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 11.90},
+        {"supermercado_id": 2, "preco": 12.10},
+        {"supermercado_id": 3, "preco": 11.80},
+        {"supermercado_id": 4, "preco": 12.30},
+        {"supermercado_id": 5, "preco": 11.50},
+        {"supermercado_id": 6, "preco": 12.00},
+        {"supermercado_id": 7, "preco": 11.95},
+        {"supermercado_id": 8, "preco": 11.85},
+        {"supermercado_id": 9, "preco": 12.50},
+        {"supermercado_id": 10, "preco": 11.70}
+      ]
+    },
+    {
+      "id": 8,
+      "nome": "Fio Dental Oral-B",
+      "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/203633-800-450?v=638080259484300000&width=800&height=450&aspect=true",
+      "precos": [
+        {"supermercado_id": 1, "preco": 9.50},
+        {"supermercado_id": 2, "preco": 9.70},
+        {"supermercado_id": 3, "preco": 9.30},
+        {"supermercado_id": 4, "preco": 9.90},
+        {"supermercado_id": 5, "preco": 9.00},
+        {"supermercado_id": 6, "preco": 9.60},
+        {"supermercado_id": 7, "preco": 9.40},
+        {"supermercado_id": 8, "preco": 9.55},
+        {"supermercado_id": 9, "preco": 10.00},
+        {"supermercado_id": 10, "preco": 9.20}
+      ]
+    },
+    {
+      "id": 9,
+      "nome": "Condicionador Seda",
+      "imagem": "https://assets.unileversolutions.com/v1/57877299.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 16.90},
+        {"supermercado_id": 2, "preco": 17.20},
+        {"supermercado_id": 3, "preco": 16.70},
+        {"supermercado_id": 4, "preco": 17.50},
+        {"supermercado_id": 5, "preco": 16.00},
+        {"supermercado_id": 6, "preco": 17.10},
+        {"supermercado_id": 7, "preco": 16.80},
+        {"supermercado_id": 8, "preco": 16.95},
+        {"supermercado_id": 9, "preco": 17.80},
+        {"supermercado_id": 10, "preco": 16.50}
+      ]
+    },
+    {
+      "id": 10,
+      "nome": "Absorvente Always",
+      "imagem": "https://images.ctfassets.net/r6s1vsrk21dt/4HDJxwiESPOnfvzEklIM3F/b221639e3a75d3d7381c6003c289413e/80807210_Ehub_AlwaysPT_PI_SuperProtecci%C3%B3n_D%C3%ADa_Suave_SinAlas_TallaP_8U.png",
+      "precos": [
+        {"supermercado_id": 1, "preco": 10.50},
+        {"supermercado_id": 2, "preco": 10.70},
+        {"supermercado_id": 3, "preco": 10.30},
+        {"supermercado_id": 4, "preco": 10.90},
+        {"supermercado_id": 5, "preco": 9.90},
+        {"supermercado_id": 6, "preco": 10.60},
+        {"supermercado_id": 7, "preco": 10.40},
+        {"supermercado_id": 8, "preco": 10.55},
+        {"supermercado_id": 9, "preco": 11.00},
+        {"supermercado_id": 10, "preco": 10.20}
+      ]
+    },
+    {
+      "id": 11,
+      "nome": "Cotonetes",
+      "imagem": "https://www.drogasil.com.br/_next/image?url=https%3A%2F%2Fproduct-data.raiadrogasil.io%2Fimages%2F3465622.webp&w=3840&q=40",
+      "precos": [
+        {"supermercado_id": 1, "preco": 6.80},
+        {"supermercado_id": 2, "preco": 7.00},
+        {"supermercado_id": 3, "preco": 6.60},
+        {"supermercado_id": 4, "preco": 7.20},
+        {"supermercado_id": 5, "preco": 6.30},
+        {"supermercado_id": 6, "preco": 6.90},
+        {"supermercado_id": 7, "preco": 6.70},
+        {"supermercado_id": 8, "preco": 6.85},
+        {"supermercado_id": 9, "preco": 7.40},
+        {"supermercado_id": 10, "preco": 6.50}
+      ]
+    },
+    {
+      "id": 12,
+      "nome": "Enxaguante Bucal Listerine",
+      "imagem": "https://www.drogaraia.com.br/_next/image?url=https%3A%2F%2Fproduct-data.raiadrogasil.io%2Fimages%2F3469672.webp&w=3840&q=40",
+      "precos": [
+        {"supermercado_id": 1, "preco": 19.90},
+        {"supermercado_id": 2, "preco": 20.20},
+        {"supermercado_id": 3, "preco": 19.50},
+        {"supermercado_id": 4, "preco": 20.50},
+        {"supermercado_id": 5, "preco": 19.00},
+        {"supermercado_id": 6, "preco": 20.10},
+        {"supermercado_id": 7, "preco": 19.80},
+        {"supermercado_id": 8, "preco": 19.95},
+        {"supermercado_id": 9, "preco": 20.80},
+        {"supermercado_id": 10, "preco": 19.40}
+      ]
+    },
+    {
+      "id": 13,
+      "nome": "Sabonete Líquido",
+      "imagem": "https://drogal.vtexassets.com/arquivos/ids/246827/127832.jpg?v=638739810637270000",
+      "precos": [
+        {"supermercado_id": 1, "preco": 13.50},
+        {"supermercado_id": 2, "preco": 13.80},
+        {"supermercado_id": 3, "preco": 13.20},
+        {"supermercado_id": 4, "preco": 14.00},
+        {"supermercado_id": 5, "preco": 13.00},
+        {"supermercado_id": 6, "preco": 13.70},
+        {"supermercado_id": 7, "preco": 13.40},
+        {"supermercado_id": 8, "preco": 13.60},
+        {"supermercado_id": 9, "preco": 14.20},
+        {"supermercado_id": 10, "preco": 13.10}
+      ]
+    },
+    {
+      "id": 14,
+      "nome": "Lâmina de Barbear Gillette",
+      "imagem": "https://io.convertiez.com.br/m/farmaponte/shop/products/images/19768/large/carga-gillette-mach3-2-unidades_10350.jpg",
+      "precos": [
+        {"supermercado_id": 1, "preco": 25.00},
+        {"supermercado_id": 2, "preco": 25.50},
+        {"supermercado_id": 3, "preco": 24.50},
+        {"supermercado_id": 4, "preco": 26.00},
+        {"supermercado_id": 5, "preco": 24.00},
+        {"supermercado_id": 6, "preco": 25.20},
+        {"supermercado_id": 7, "preco": 24.80},
+        {"supermercado_id": 8, "preco": 25.10},
+        {"supermercado_id": 9, "preco": 26.50},
+        {"supermercado_id": 10, "preco": 24.20}
+      ]
+    },
+    {
+      "id": 15,
+      "nome": "Creme de Barbear Nivea",
+      "imagem": "https://product-data.raiadrogasil.io/images/10727961.webp",
+      "precos": [
+        {"supermercado_id": 1, "preco": 22.00},
+        {"supermercado_id": 2, "preco": 22.40},
+        {"supermercado_id": 3, "preco": 21.60},
+        {"supermercado_id": 4, "preco": 22.80},
+        {"supermercado_id": 5, "preco": 21.00},
+        {"supermercado_id": 6, "preco": 22.20},
+        {"supermercado_id": 7, "preco": 21.90},
+        {"supermercado_id": 8, "preco": 22.10},
+        {"supermercado_id": 9, "preco": 23.00},
+        {"supermercado_id": 10, "preco": 21.50}
+      ]
+    }
+  ]
+}
