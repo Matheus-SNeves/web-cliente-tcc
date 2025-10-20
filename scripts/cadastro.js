@@ -6,12 +6,29 @@ const senhaInput = document.getElementById('senha');
 const btnCadastrar = document.getElementById('cadastro'); 
 const displayErro = document.querySelector('.display');
 
-btnCadastrar.addEventListener('click', async (event) => {
+const exibirErro = (mensagem) => {
+    displayErro.textContent = mensagem;
+    setTimeout(() => {
+        displayErro.textContent = '';
+    }, 5000);
+};
+
+// Funções maskCPF e maskPhone são globais de utils.js
+if (cpfInput) cpfInput.addEventListener('input', (e) => {
+    e.target.value = maskCPF(e.target.value);
+});
+
+if (telefoneInput) telefoneInput.addEventListener('input', (e) => {
+    e.target.value = maskPhone(e.target.value);
+});
+
+
+if (btnCadastrar) btnCadastrar.addEventListener('click', async (event) => {
     event.preventDefault();
 
     const nome = nomeInput.value;
-    const cpf = cpfInput.value;
-    const telefone = telefoneInput.value; // Valor do telefone
+    const cpf = cpfInput.value.replace(/\D/g, ''); 
+    const telefone = telefoneInput.value.replace(/\D/g, '');
     const email = emailInput.value;
     const senha = senhaInput.value;
 
@@ -19,11 +36,15 @@ btnCadastrar.addEventListener('click', async (event) => {
         exibirErro('Preencha todos os campos corretamente');
         return;
     }
-        console.log({ nome, cpf, telefone, email, senha });
-
+    
+    if (cpf.length !== 11) {
+        exibirErro('ERRO: CPF inválido. Deve conter 11 dígitos.');
+        return;
+    }
 
     try {
-        const response = await fetch('https://tcc-senai-tawny.vercel.app/cadastro-cliente', {
+        // API_URL é global de utils.js
+        const response = await fetch(`${API_URL}/cadastro-cliente`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -37,22 +58,12 @@ btnCadastrar.addEventListener('click', async (event) => {
             window.location.href = 'login.html';
 
         } else {
-            const errorData = await response.json();
+            const errorData = await response.json().catch(() => ({ message: 'Erro desconhecido' }));
             exibirErro(errorData.message || 'ERRO: Falha ao cadastrar. Verifique os dados.');
         }
-        if (cpf != 14){
-            exibirErro('ERRO: CPF inválido. Deve conter 14 dígitos.');
-        }
-
 
     } catch (error) {
-        exibirErro('ERRO: Não foi possível conectar ao servidor para realizar o cadastro.');
+        console.error('ERRO de Conexão:', error);
+        exibirErro('ERRO: Não foi possível conectar ao servidor. Tente novamente mais tarde.');
     }
 });
-
-function exibirErro(mensagem) {
-    if (displayErro) {
-        displayErro.textContent = mensagem;
-        displayErro.style.color = 'red';
-    }
-}

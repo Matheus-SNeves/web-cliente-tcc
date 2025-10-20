@@ -24,6 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch(`${API_URL}/${endpoint}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
+            if (response.status === 401 || response.status === 403) {
+                 localStorage.clear();
+                 alert('Sessão expirada ou acesso negado. Faça login novamente.');
+                 window.location.href = '../pages/login.html';
+                 throw new Error('Unauthorized');
+            }
             if (!response.ok) throw new Error('Falha ao buscar dados.');
             return await response.json();
         } catch (error) {
@@ -41,12 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (empresas && empresas.length > 0) {
             let tableHTML = '<table><thead><tr><th>ID</th><th>Nome</th><th>CNPJ</th><th>Email</th></tr></thead><tbody>';
             empresas.forEach(e => {
-                tableHTML += `<tr><td>${e.id}</td><td>${e.nome}</td><td>${e.cnpj}</td><td>${e.email}</td></tr>`;
+                const cnpjFormatado = e.cnpj || 'N/A';
+                tableHTML += `<tr><td>${e.id}</td><td>${e.nome}</td><td>${cnpjFormatado}</td><td>${e.email}</td></tr>`;
             });
             tableHTML += '</tbody></table>';
             container.innerHTML = tableHTML;
         } else {
-            container.innerHTML = '<p>Nenhuma empresa encontrada.</p>';
+            container.innerHTML = '<p>Nenhuma empresa cadastrada.</p>';
         }
     };
 

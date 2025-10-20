@@ -24,6 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch(`${API_URL}/${endpoint}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
+            if (response.status === 401 || response.status === 403) {
+                 localStorage.clear();
+                 alert('Sessão expirada ou acesso negado. Faça login novamente.');
+                 window.location.href = '../pages/login.html';
+                 throw new Error('Unauthorized');
+            }
             if (!response.ok) throw new Error('Falha ao buscar dados.');
             return await response.json();
         } catch (error) {

@@ -24,6 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch(`${API_URL}/${endpoint}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
+            if (response.status === 401 || response.status === 403) {
+                 localStorage.clear();
+                 alert('Sessão expirada ou acesso negado. Faça login novamente.');
+                 window.location.href = '../pages/login.html';
+                 throw new Error('Unauthorized');
+            }
             if (!response.ok) throw new Error('Falha ao buscar dados.');
             return await response.json();
         } catch (error) {
@@ -41,12 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (clientes && clientes.length > 0) {
             let tableHTML = '<table><thead><tr><th>ID</th><th>Nome</th><th>Email</th><th>CPF</th><th>Telefone</th></tr></thead><tbody>';
             clientes.forEach(c => {
-                tableHTML += `<tr><td>${c.id}</td><td>${c.nome}</td><td>${c.email}</td><td>${c.cpf || 'N/A'}</td><td>${c.telefone || 'N/A'}</td></tr>`;
+                tableHTML += `<tr><td>${c.id}</td><td>${c.nome}</td><td>${c.email}</td><td>${maskCPF(c.cpf) || 'N/A'}</td><td>${maskPhone(c.telefone) || 'N/A'}</td></tr>`;
             });
             tableHTML += '</tbody></table>';
             container.innerHTML = tableHTML;
         } else {
-            container.innerHTML = '<p>Nenhum cliente encontrado.</p>';
+            container.innerHTML = '<p>Nenhum cliente cadastrado.</p>';
         }
     };
 

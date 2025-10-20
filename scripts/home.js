@@ -1,3 +1,4 @@
+// Ícones permanecem
 const icons = {
     "hortifruti": "https://cdn-icons-png.flaticon.com/512/5346/5346400.png",
     "acougue": "https://cdn-icons-png.flaticon.com/512/1534/1534825.png",
@@ -12,85 +13,71 @@ const icons = {
 
 document.addEventListener('DOMContentLoaded', () => {
     let allData = {};
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    // REMOVIDO: Conflito de carrinho. O carrinho agora é gerenciado por cart-logic.js
+    
     const mainContent = document.getElementById('main-content');
     const searchResultsContainer = document.getElementById('search-results-container');
     const searchInput = document.getElementById('search-input');
-    const cartButton = document.getElementById('cart-button');
-    const cartOverlay = document.getElementById('cart-overlay');
-    const closeCartBtn = document.getElementById('close-cart-btn');
+    
+    // REMOVIDO: Eventos do carrinho. Agora são gerenciados globalmente por cart-logic.js
+    
     const genericModalOverlay = document.getElementById('generic-modal-overlay');
-    const API_URL = "https://tcc-senai-tawny.vercel.app";
-
-    const getFullImage = (src) => {
-        const placeholder = 'https://via.placeholder.com/100?text=Sem+Imagem';
-        if (!src) return placeholder;
-        try {
-            if (/^https?:\/\//i.test(src) || /^data:/i.test(src)) return src;
-            if (/^\/\//.test(src)) return window.location.protocol + src;
-            if (src.startsWith('/')) return API_URL.replace(/\/$/, '') + src;
-            return API_URL.replace(/\/$/, '') + '/' + src.replace(/^\//, '');
-        } catch (e) {
-            return placeholder;
-        }
-    };
+    
+    // REMOVIDO: API_URL e getFullImage. Agora são globais de utils.js
 
     const initializeApp = async () => {
-    try {
-        const token = localStorage.getItem('authToken');
-        if (!token) {
-            window.location.href = "login.html";
-            return;
+        try {
+            // 'authFetch' agora é global de utils.js
+            const [supermercadosRes, produtosRes] = await Promise.all([
+                authFetch('empresas'),
+                authFetch('produtos')
+            ]);
+
+            if (!supermercadosRes.ok || !produtosRes.ok) {
+                // authFetch já cuida de redirecionar em caso de 401/403
+                throw new Error('Erro ao carregar dados da aplicação.');
+            }
+
+            const [supermercados, produtos] = await Promise.all([
+                supermercadosRes.json(),
+                produtosRes.json()
+            ]);
+
+            // Categorias a partir dos produtos, usando imagem do objeto icons
+            const categoriasUnicas = [...new Set(produtos.map(p => p.categoria))];
+            const categorias = categoriasUnicas.map(cat => ({
+                chave: cat,
+                nome: cat.charAt(0).toUpperCase() + cat.slice(1),
+                imagem: icons[cat] || 'https://via.placeholder.com/100?text=Sem+Imagem'
+            }));
+
+            allData.categorias = categorias;
+            allData.supermercados = supermercados;
+            allData.allProducts = produtos;
+
+            allData.categoryMap = {};
+            categorias.forEach(cat => {
+                allData.categoryMap[cat.chave] = {
+                    data: produtos.filter(p => p.categoria === cat.chave),
+                    icon: cat.imagem,
+                    name: cat.nome
+                };
+            });
+
+            setupHomePage();
+            setupEventListeners();
+            
+            // ATUALIZADO: Chama a função global de updateCartUI de cart-logic.js
+            // para garantir que o contador de ícones seja exibido corretamente.
+            if (typeof updateCartUI === 'function') {
+                updateCartUI();
+            }
+
+        } catch (error) {
+            console.error("Erro ao inicializar a aplicação:", error);
+            if (mainContent) mainContent.innerHTML = "<h1>Erro ao carregar os dados. Faça login novamente.</h1>";
         }
-
-        const headers = {
-            'Authorization': `Bearer ${token}`
-        };
-
-        const [supermercadosRes, produtosRes] = await Promise.all([
-            fetch(`${API_URL}/empresas`, { headers }),
-            fetch(`${API_URL}/produtos`, { headers })
-        ]);
-
-        if (!supermercadosRes.ok || !produtosRes.ok) {
-            throw new Error('Erro de autenticação ou permissão.');
-        }
-
-        const [supermercados, produtos] = await Promise.all([
-            supermercadosRes.json(),
-            produtosRes.json()
-        ]);
-
-        // Categorias a partir dos produtos, usando imagem do objeto icons
-        const categoriasUnicas = [...new Set(produtos.map(p => p.categoria))];
-        const categorias = categoriasUnicas.map(cat => ({
-            chave: cat,
-            nome: cat.charAt(0).toUpperCase() + cat.slice(1),
-            imagem: icons[cat] || 'https://via.placeholder.com/100?text=Sem+Imagem'
-        }));
-
-        allData.categorias = categorias;
-        allData.supermercados = supermercados;
-        allData.allProducts = produtos;
-
-        allData.categoryMap = {};
-        categorias.forEach(cat => {
-            allData.categoryMap[cat.chave] = {
-                data: produtos.filter(p => p.categoria === cat.chave),
-                icon: cat.imagem,
-                name: cat.nome
-            };
-        });
-
-        setupHomePage();
-        setupEventListeners();
-        updateCartUI();
-
-    } catch (error) {
-        console.error("Erro ao inicializar a aplicação:", error);
-        if (mainContent) mainContent.innerHTML = "<h1>Erro ao carregar os dados. Faça login novamente.</h1>";
-    }
-};
+    };
 
     const setupHomePage = () => {
         const selecoesDiv = document.querySelector('.selecoes');
@@ -135,11 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        if (cartButton) cartButton.addEventListener('click', toggleCart);
-        if (closeCartBtn) closeCartBtn.addEventListener('click', toggleCart);
-        if (cartOverlay) cartOverlay.addEventListener('click', (e) => {
-            if (e.target === cartOverlay) toggleCart();
-        });
+        // REMOVIDO: Eventos de clique do carrinho (cartButton, closeCartBtn, cartOverlay)
+        // Eles agora são gerenciados por setupCartEvents() em cart-logic.js
     };
 
     const handleSearch = (e) => {
@@ -152,13 +136,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const grid = document.getElementById('search-results-grid');
             if (results.length > 0) {
-                grid.innerHTML = results.map(product => `
-                    <div class="product-item" onclick="window.location.href='comparar.html?category=${product.categoria}&productId=${product.id}'">
-                        <img src="${product.imagem}" alt="${product.nome}">
-                        <h4>${product.nome}</h4>
-                        <p>A partir de R$ ${product.precos && product.precos[0] ? product.precos[0].preco.toFixed(2).replace('.', ',') : '--'}</p>
-                    </div>
-                `).join('');
+                grid.innerHTML = results.map(product => {
+                    // Correção: Garantir que 'precos' existe e tem itens
+                    const bestPrice = (product.precos && product.precos.length > 0) ? product.precos[0].preco.toFixed(2).replace('.', ',') : '--';
+                    return `
+                        <div class="product-item" onclick="window.location.href='comparar.html?category=${product.categoria}&productId=${product.id}'">
+                            <img src="${getFullImage(product.imagem)}" alt="${product.nome}">
+                            <h4>${product.nome}</h4>
+                            <p>A partir de R$ ${bestPrice}</p>
+                        </div>
+                    `;
+                }).join('');
             } else {
                 grid.innerHTML = '<p>Nenhum produto encontrado.</p>';
             }
@@ -183,22 +171,24 @@ document.addEventListener('DOMContentLoaded', () => {
         let modalContentHTML = `
             <div class="modal-content">
                 <div class="modal-header">
-                    <img src="${category.icon}" alt="${category.name}" class="modal-logo">
+                    <img src="${getFullImage(category.icon)}" alt="${category.name}" class="modal-logo">
                     <h2 class="modal-title">${category.name}</h2>
                     <button class="close-btn">&times;</button>
                 </div>
                 <div class="modal-body">
                     <div class="modal-products">
                         ${itemsToDisplay.map(p => {
-            const productUrl = `comparar.html?category=${categoryKey}&productId=${p.id}`;
-            return `
+                            const productUrl = `comparar.html?category=${categoryKey}&productId=${p.id}`;
+                            // Correção: Garantir que 'precos' existe e tem itens
+                            const bestPrice = (p.precos && p.precos.length > 0) ? p.precos[0].preco.toFixed(2).replace('.', ',') : '--';
+                            return `
                                 <div class="product-item" onclick="window.location.href='${productUrl}'">
-                                    <img src="${p.imagem}" alt="${p.nome}">
+                                    <img src="${getFullImage(p.imagem)}" alt="${p.nome}">
                                     <h4>${p.nome}</h4>
-                                    <p>A partir de R$ ${p.precos && p.precos[0] ? p.precos[0].preco.toFixed(2).replace('.', ',') : '--'}</p>
+                                    <p>A partir de R$ ${bestPrice}</p>
                                 </div>
                             `;
-        }).join('')}
+                        }).join('')}
                     </div>
         `;
 
@@ -215,11 +205,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const showStoreCategoriesModal = (storeId) => {
         const store = allData.supermercados.find(s => s.id === storeId);
+        if (!store) return; // Proteção caso a loja não seja encontrada
+        
         genericModalOverlay.classList.remove('hidden');
         genericModalOverlay.innerHTML = `
             <div class="modal-content">
                 <div class="modal-header">
-                    <img src="${store.img}" alt="${store.nome}" class="modal-logo">
+                    <img src="${getFullImage(store.img)}" alt="${store.nome}" class="modal-logo">
                     <h2 class="modal-title">${store.nome}</h2>
                     <button class="close-btn">&times;</button>
                 </div>
@@ -227,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="modal-categories">
                         ${allData.categorias.map(cat => `
                             <div class="card-item" onclick="window.location.href='produtos.html?category=${cat.chave}&storeId=${store.id}'">
-                                <img src="${cat.imagem}" alt="${cat.nome}">
+                                <img src="${getFullImage(cat.imagem)}" alt="${cat.nome}">
                                 <h3>${cat.nome}</h3>
                             </div>
                         `).join('')}
@@ -239,107 +231,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    const toggleCart = () => {
-        cartOverlay.classList.toggle('hidden');
-        if (!cartOverlay.classList.contains('hidden')) {
-            updateCartUI();
-        }
-    };
-
-    const updateCartCount = () => {
-        const cartCount = document.getElementById('cart-count');
-        cartCount.textContent = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-    };
-
-    const saveCart = () => {
-        localStorage.setItem('cart', JSON.stringify(cart));
-    };
-
-    const updateCartUI = () => {
-        updateCartCount();
-        const cartItemsContainer = document.getElementById('cart-items-container');
-        const cartTotalPrice = document.getElementById('cart-total-price');
-        const checkoutBtn = document.getElementById('checkout-btn');
-        const cartModal = document.querySelector('.cart-modal');
-
-        if (!cartItemsContainer || !cartTotalPrice || !checkoutBtn || !cartModal) {
-            return;
-        }
-
-        if (cart.length === 0) {
-            cartItemsContainer.innerHTML = '<p style="text-align:center; padding: 20px;">Seu carrinho está vazio.</p>';
-        } else {
-            cartItemsContainer.innerHTML = cart.map((item, index) => {
-                const priceEntry = item.precos.find(p => p.supermercado_id === item.supermarket.id);
-                const price = priceEntry ? priceEntry.preco : 0;
-                return `
-                <div class="cart-item">
-                    <img src="${item.imagem}" alt="${item.nome}">
-                    <div class="cart-item-details">
-                        <h4>${item.nome}</h4>
-                        <p class="store-name">${item.supermarket.nome}</p>
-                        <div class="quantity-controls">
-                            <button data-cart-index="${index}" class="decrease-qty">-</button>
-                            <span>${item.quantity}</span>
-                            <button data-cart-index="${index}" class="increase-qty">+</button>
-                        </div>
-                    </div>
-                    <p class="cart-item-price">R$ ${(price * item.quantity).toFixed(2).replace('.', ',')}</p>
-                </div>`;
-            }).join('');
-        }
-
-        cartItemsContainer.querySelectorAll('.increase-qty').forEach(btn => btn.addEventListener('click', () => changeQuantity(btn.dataset.cartIndex, 1)));
-        cartItemsContainer.querySelectorAll('.decrease-qty').forEach(btn => btn.addEventListener('click', () => changeQuantity(btn.dataset.cartIndex, -1)));
-
-        const totalPrice = cart.reduce((total, item) => {
-            const priceEntry = item.precos.find(p => p.supermercado_id === item.supermarket.id);
-            const price = priceEntry ? priceEntry.preco : 0;
-            return total + (price * item.quantity);
-        }, 0);
-        cartTotalPrice.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
-
-        const addresses = JSON.parse(localStorage.getItem('userAddresses')) || [];
-        const selectedAddressId = localStorage.getItem('selectedAddressId');
-        const currentAddressSpan = document.getElementById('current-address');
-        let selectedAddress = null;
-
-        if (selectedAddressId) {
-            selectedAddress = addresses.find(addr => addr.id == selectedAddressId);
-        }
-        if (!selectedAddress && addresses.length > 0) {
-            selectedAddress = addresses[0];
-        }
-
-        if (selectedAddress) {
-            currentAddressSpan.textContent = `${selectedAddress.street}, ${selectedAddress.number}`;
-        } else {
-            currentAddressSpan.textContent = 'Nenhum endereço cadastrado';
-        }
-
-        document.getElementById('change-address-btn').onclick = () => window.location.href = 'conta.html';
-
-        if (cart.length > 0 && selectedAddress) {
-            checkoutBtn.classList.remove('disabled');
-            checkoutBtn.onclick = () => {
-                localStorage.setItem('checkoutCart', JSON.stringify(cart));
-                localStorage.setItem('checkoutAddress', JSON.stringify(selectedAddress));
-                window.location.href = 'pagamento.html';
-            };
-        } else {
-            checkoutBtn.classList.add('disabled');
-            checkoutBtn.onclick = null;
-        }
-    };
-
-    const changeQuantity = (index, amount) => {
-        cart[index].quantity += amount;
-        if (cart[index].quantity <= 0) {
-            cart.splice(index, 1);
-        }
-        saveCart();
-        updateCartUI();
-    };
+    // REMOVIDO: Todas as funções de carrinho (toggleCart, updateCartCount, saveCart, changeQuantity, updateCartUI)
+    // Elas agora são globais e vêm de cart-logic.js
 
     initializeApp();
 });

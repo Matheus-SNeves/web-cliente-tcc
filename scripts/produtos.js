@@ -1,171 +1,144 @@
-const icons = {
-    "hortifruti": "https://cdn-icons-png.flaticon.com/512/5346/5346400.png",
-    "acougue": "https://cdn-icons-png.flaticon.com/512/1534/1534825.png",
-    "padaria": "https://cdn-icons-png.flaticon.com/512/7547/7547106.png",
-    "laticinios": "https://cdn-icons-png.flaticon.com/512/3070/3070925.png",
-    "bebidas": "https://cdn-icons-png.freepik.com/256/2405/2405451.png",
-    "frios": "https://cdn-icons-png.flaticon.com/512/869/869664.png",
-    "limpeza": "https://cdn-icons-png.freepik.com/512/994/994928.png",
-    "higiene": "https://cdn-icons-png.flaticon.com/512/11264/11264253.png"
-};
-
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const categoryKey = urlParams.get('category');
-    const storeId = parseInt(urlParams.get('storeId'));
+    const categoryName = urlParams.get('category');
+    const supermarketId = urlParams.get('supermarket');
+    const supermarketName = urlParams.get('name');
+    const pageTitle = document.getElementById('page-title');
+    const productsContainer = document.getElementById('products-container');
 
-    const titleElement = document.getElementById('page-title');
-    const container = document.getElementById('products-container');
-    const modal = document.getElementById('product-action-modal');
+    let allProducts = [];
+    let allSupermarkets = [];
 
-    if (!titleElement || !container || !modal) {
-        console.error('Elementos da página de produtos não encontrados.');
-        return;
-    }
+    // REMOVIDO: API_URL, token, headers, authFetch, getFullImage
+    // Essas funções e variáveis agora são globais de utils.js
 
-    // MODIFICADO: URL da API
-    const API_URL = 'https://tcc-senai-tawny.vercel.app';
-
-    const getFullImage = (src) => {
-        const placeholder = 'https://via.placeholder.com/100?text=Sem+Imagem';
-        if (!src) return placeholder;
-        try {
-            if (/^https?:\/\//i.test(src) || /^data:/i.test(src)) return src;
-            if (/^\/\//.test(src)) return window.location.protocol + src;
-            if (src.startsWith('/')) return API_URL.replace(/\/$/, '') + src;
-            return API_URL.replace(/\/$/, '') + '/' + src.replace(/^\//, '');
-        } catch (e) {
-            return placeholder;
+    const updateTitle = () => {
+        if (categoryName) {
+            pageTitle.textContent = categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
+        } else if (supermarketName) {
+            pageTitle.textContent = `Produtos de ${supermarketName}`;
+        } else {
+            pageTitle.textContent = 'Produtos';
         }
     };
 
-    if (!categoryKey || !storeId) {
-        titleElement.textContent = 'Informações inválidas';
-        return;
-    }
+    const renderProducts = (products) => {
+        if (!productsContainer) return;
+        productsContainer.innerHTML = '';
 
-    try {
-        // MODIFICADO: Busca produtos da categoria e os supermercados da API.
-        // O endpoint de produtos pode ser otimizado no futuro para aceitar storeId.
-        const token = localStorage.getItem('authToken');
-        if (!token) {
-            window.location.href = 'login.html';
-            return;
-        }
-        const headers = { 'Authorization': `Bearer ${token}` };
-
-        const [productsResponse, supermarketsResponse] = await Promise.all([
-            fetch(`${API_URL}/produtos?categoria=${categoryKey}`, { headers }),
-            fetch(`${API_URL}/empresas`, { headers })
-        ]);
-
-        if (productsResponse.status === 401 || productsResponse.status === 403 || supermarketsResponse.status === 401 || supermarketsResponse.status === 403) {
-            localStorage.removeItem('authToken');
-            window.location.href = 'login.html';
-            return;
-        }
-        
-        let categoryProducts = productsResponse.ok ? await productsResponse.json() : [];
-        let allSupermarkets = supermarketsResponse.ok ? await supermarketsResponse.json() : [];
-
-        console.debug('/produtos?categoria status:', productsResponse.status, 'responseBody:', categoryProducts);
-        console.debug('/empresas status:', supermarketsResponse.status, 'responseBody:', allSupermarkets);
-
-        // Normaliza possíveis formatos: API pode retornar { produtos: [...] } ou objeto com chave de categoria
-        if (categoryProducts && !Array.isArray(categoryProducts)) {
-            // procura propriedades comuns
-            if (Array.isArray(categoryProducts.produtos)) categoryProducts = categoryProducts.produtos;
-            else if (Array.isArray(categoryProducts.items)) categoryProducts = categoryProducts.items;
-            else if (categoryProducts[categoryKey] && Array.isArray(categoryProducts[categoryKey])) categoryProducts = categoryProducts[categoryKey];
-            else {
-                // tenta extrair primeiro array encontrado
-                const firstArray = Object.values(categoryProducts).find(v => Array.isArray(v));
-                if (firstArray) categoryProducts = firstArray;
-            }
-        }
-
-        if (allSupermarkets && !Array.isArray(allSupermarkets)) {
-            if (Array.isArray(allSupermarkets.empresas)) allSupermarkets = allSupermarkets.empresas;
-            else if (Array.isArray(allSupermarkets.supermercados)) allSupermarkets = allSupermarkets.supermercados;
-            else if (Array.isArray(allSupermarkets.data)) allSupermarkets = allSupermarkets.data;
-            else {
-                const firstArray = Object.values(allSupermarkets).find(v => Array.isArray(v));
-                if (firstArray) allSupermarkets = firstArray;
-            }
-        }
-
-        // Sem fallback local; confiamos na API para retornar produtos e supermercados
-
-        const store = (allSupermarkets || []).find(s => s.id === storeId);
-
-        titleElement.textContent = store ? `Produtos em ${store.nome}` : 'Produtos';
-
-        if (!categoryProducts || categoryProducts.length === 0) {
-            container.innerHTML = '<p>Nenhum produto encontrado nesta categoria.</p>';
+        if (products.length === 0) {
+            productsContainer.innerHTML = '<p class="no-products">Nenhum produto encontrado nesta seção.</p>';
             return;
         }
 
-        container.innerHTML = '';
-        categoryProducts.forEach(item => {
-            const priceEntry = (item.precos || []).find(p => p.supermercado_id === storeId);
-            if (!priceEntry) return;
-
-            const productItem = document.createElement('div');
-            productItem.className = 'product-item';
+        products.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
             
-            const priceText = `R$ ${priceEntry.preco.toFixed(2).replace('.', ',')}`;
+            let bestPriceEntry = { preco: Infinity, supermercado_id: null };
+            
+            // Garante que product.precos é um array antes de usar 'find' ou 'reduce'
+            const productPrices = Array.isArray(product.precos) ? product.precos : [];
 
-            // Debug: log image fields to help diagnose missing images
-            try { console.debug('produto id=', item.id, 'imagem raw=', item.imagem, 'normalized=', getFullImage(item.imagem)); } catch (e) {}
+            if (supermarketId) {
+                // Se um supermercado está selecionado, busca o preço dele.
+                bestPriceEntry = productPrices.find(p => p.supermercado_id == supermarketId) || { preco: Infinity, supermercado_id: null };
+            } else {
+                // Busca o melhor preço entre todos os supermercados
+                bestPriceEntry = productPrices.reduce((best, current) => {
+                    if (current.preco < best.preco) {
+                        return current;
+                    }
+                    return best;
+                }, { preco: Infinity, supermercado_id: null });
+            }
 
-            productItem.innerHTML = `
-                <img src="${getFullImage(item.imagem)}" alt="${item.nome}">
-                <h4>${item.nome}</h4>
-                <p>${priceText}</p>
+            const bestPriceStore = allSupermarkets.find(s => s.id === bestPriceEntry.supermercado_id) || {};
+            const priceDisplay = bestPriceEntry.preco !== Infinity ? `R$ ${bestPriceEntry.preco.toFixed(2).replace('.', ',')}` : 'R$ --';
+            const storeDisplay = bestPriceEntry.preco !== Infinity ? bestPriceStore.nome : 'N/A';
+            const pricePerUnit = product.preco_por_unidade ? `R$ ${product.preco_por_unidade.toFixed(2).replace('.', ',')}/${product.unidade_medida}` : '';
+
+            productCard.innerHTML = `
+                <img src="${getFullImage(product.imagem)}" alt="${product.nome}">
+                <div class="product-info">
+                    <h4>${product.nome}</h4>
+                    ${pricePerUnit ? `<p class="unit-price">${pricePerUnit}</p>` : ''}
+                    <p class="best-price"><strong>Melhor Preço:</strong> ${priceDisplay}</p>
+                    <p class="best-store"><strong>Loja:</strong> ${storeDisplay}</p>
+                    <button class="add-to-cart-btn" 
+                        data-product-id="${product.id}" 
+                        data-product-name="${product.nome}" 
+                        data-store-id="${bestPriceStore.id}"
+                        data-store-name="${bestPriceStore.nome}"
+                        ${bestPriceEntry.preco === Infinity ? 'disabled' : ''}>
+                        <i class="fa-solid fa-cart-shopping"></i> Adicionar
+                    </button>
+                    <a href="comparar.html?category=${categoryName || product.categoria}&productId=${product.id}" class="compare-btn">Comparar Preços</a>
+                </div>
             `;
+            productsContainer.appendChild(productCard);
+        });
+        setupCartButtons(products);
+    };
 
-            productItem.addEventListener('click', () => {
-                showProductActionModal(item, store, priceText);
+    const setupCartButtons = (products) => {
+        const cartButtons = document.querySelectorAll('.add-to-cart-btn');
+        cartButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const productId = parseInt(e.currentTarget.dataset.productId);
+                const storeId = parseInt(e.currentTarget.dataset.storeId);
+                
+                const product = products.find(p => p.id === productId);
+                const supermarket = allSupermarkets.find(s => s.id === storeId);
+                
+                if (product && supermarket) {
+                    // 'addToCart' é a função global de cart-logic.js
+                    addToCart(product, supermarket);
+                }
             });
-            container.appendChild(productItem);
         });
+    };
 
-    } catch (error) {
-        console.error('Erro ao carregar os dados:', error);
-        titleElement.textContent = 'Erro ao Carregar';
-        container.innerHTML = '<p>Não foi possível carregar os produtos.</p>';
-    }
-
-    function showProductActionModal(product, store, priceText) {
-        modal.classList.remove('hidden');
-        modal.innerHTML = `
-            <div class="action-modal-content">
-                <div class="action-modal-header">
-                    <h3>${product.nome}</h3>
-                    <button class="close-btn">&times;</button>
-                </div>
-                <div class="action-modal-body">
-                    <img src="${getFullImage(product.imagem)}" alt="${product.nome}">
-                    <p>${priceText}</p>
-                </div>
-                <div class="action-modal-footer">
-                    <button class="action-btn" id="modal-add-to-cart">Adicionar no Carrinho</button>
-                    <button class="action-btn-secondary" id="modal-compare-prices">Comparar Preços</button>
-                </div>
-            </div>
-        `;
+    const fetchData = async () => {
+        updateTitle();
         
-        modal.querySelector('.close-btn').addEventListener('click', () => {
-            modal.classList.add('hidden');
-        });
-        
-        document.getElementById('modal-add-to-cart').addEventListener('click', () => {
-            addToCart(product, store);
-            modal.classList.add('hidden');
-        });
+        try {
+            // 'authFetch' é a função global de utils.js
+            const [produtosRes, supermercadosRes] = await Promise.all([
+                authFetch('produtos'),
+                authFetch('empresas')
+            ]);
 
-        document.getElementById('modal-compare-prices').addEventListener('click', () => {
-            window.location.href = `comparar.html?category=${categoryKey}&productId=${product.id}`;
-        });
-    }
+            if (!produtosRes.ok || !supermercadosRes.ok) {
+                // authFetch já trata 401/403, então só precisamos de um erro genérico
+                throw new Error('Erro ao carregar dados.');
+            }
+
+            allProducts = await produtosRes.json();
+            allSupermarkets = await supermercadosRes.json();
+
+            let filteredProducts = allProducts;
+
+            if (categoryName) {
+                filteredProducts = allProducts.filter(p => p.categoria && p.categoria.toLowerCase() === categoryName.toLowerCase());
+            } 
+            
+            if (supermarketId) {
+                const id = parseInt(supermarketId);
+                // Correção: Adicionado (p.precos || []) para evitar TypeError
+                filteredProducts = filteredProducts.filter(p => (p.precos || []).some(preco => preco.supermercado_id === id));
+            }
+
+            renderProducts(filteredProducts);
+
+        } catch (error) {
+            console.error('Erro ao buscar produtos:', error); 
+            // Se o erro for 'Unauthorized', o authFetch já terá redirecionado
+            if (error.message !== 'Unauthorized' && productsContainer) {
+                productsContainer.innerHTML = '<p>Erro ao carregar produtos. Tente novamente.</p>';
+            }
+        }
+    };
+
+    fetchData();
 });

@@ -1,8 +1,11 @@
 (function() {
     const token = localStorage.getItem('authToken');
-    const isLoginPage = window.location.pathname.endsWith('login.html');
+    const path = window.location.pathname;
+    const isPublicPage = path.endsWith('login.html') || path.endsWith('cadastro.html') || path.endsWith('index.html');
 
-    if (!token && !isLoginPage) {
+    if (!token && !isPublicPage) {
         window.location.href = 'login.html';
+    } else if (token && isPublicPage && path.endsWith('login.html')) {
+        window.location.href = 'home.html';
     }
 })();
