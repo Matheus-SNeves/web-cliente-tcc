@@ -1,3 +1,5 @@
+// scripts/home.js
+
 // Ícones permanecem
 const icons = {
     "hortifruti": "https://cdn-icons-png.flaticon.com/512/5346/5346400.png",
@@ -13,199 +15,104 @@ const icons = {
 
 document.addEventListener('DOMContentLoaded', () => {
     let allData = {};
-    // REMOVIDO: Conflito de carrinho. O carrinho agora é gerenciado por cart-logic.js
-    
-    const mainContent = document.getElementById('main-content');
-    const searchResultsContainer = document.getElementById('search-results-container');
+    const categoriesContainer = document.getElementById('categories-container');
+    const supermarketsContainer = document.getElementById('stores-container');
     const searchInput = document.getElementById('search-input');
-    
-    // REMOVIDO: Eventos do carrinho. Agora são gerenciados globalmente por cart-logic.js
-    
+    const clearSearchBtn = document.getElementById('clear-search-btn');
+    const searchResultsContainer = document.getElementById('search-results-container');
+    const searchResultsGrid = document.getElementById('search-results-grid');
     const genericModalOverlay = document.getElementById('generic-modal-overlay');
-    
-    // REMOVIDO: API_URL e getFullImage. Agora são globais de utils.js
 
-    const initializeApp = async () => {
-        try {
-            // 'authFetch' agora é global de utils.js
-            const [supermercadosRes, produtosRes] = await Promise.all([
-                authFetch('empresas'),
-                authFetch('produtos')
-            ]);
-
-            if (!supermercadosRes.ok || !produtosRes.ok) {
-                // authFetch já cuida de redirecionar em caso de 401/403
-                throw new Error('Erro ao carregar dados da aplicação.');
-            }
-
-            const [supermercados, produtos] = await Promise.all([
-                supermercadosRes.json(),
-                produtosRes.json()
-            ]);
-
-            // Categorias a partir dos produtos, usando imagem do objeto icons
-            const categoriasUnicas = [...new Set(produtos.map(p => p.categoria))];
-            const categorias = categoriasUnicas.map(cat => ({
-                chave: cat,
-                nome: cat.charAt(0).toUpperCase() + cat.slice(1),
-                imagem: icons[cat] || 'https://via.placeholder.com/100?text=Sem+Imagem'
-            }));
-
-            allData.categorias = categorias;
-            allData.supermercados = supermercados;
-            allData.allProducts = produtos;
-
-            allData.categoryMap = {};
-            categorias.forEach(cat => {
-                allData.categoryMap[cat.chave] = {
-                    data: produtos.filter(p => p.categoria === cat.chave),
-                    icon: cat.imagem,
-                    name: cat.nome
-                };
-            });
-
-            setupHomePage();
-            setupEventListeners();
-            
-            // ATUALIZADO: Chama a função global de updateCartUI de cart-logic.js
-            // para garantir que o contador de ícones seja exibido corretamente.
-            if (typeof updateCartUI === 'function') {
-                updateCartUI();
-            }
-
-        } catch (error) {
-            console.error("Erro ao inicializar a aplicação:", error);
-            if (mainContent) mainContent.innerHTML = "<h1>Erro ao carregar os dados. Faça login novamente.</h1>";
-        }
-    };
-
-    const setupHomePage = () => {
-        const selecoesDiv = document.querySelector('.selecoes');
-        if (selecoesDiv) {
-            selecoesDiv.innerHTML = allData.categorias.map(cat => `
-                <div class="card-item" data-category-key="${cat.chave}">
-                    <img src="${getFullImage(cat.imagem)}" alt="${cat.nome}">
+    // Funções de Renderização 
+    const renderCategories = (categories) => {
+        if (!categoriesContainer) return;
+        categoriesContainer.innerHTML = categories.map(cat => {
+            const iconUrl = icons[cat.chave] || icons['default']; 
+            return `
+                <div class="card-item category-card" data-category-chave="${cat.chave}" onclick="window.location.href='produtos.html?category=${cat.chave}'">
+                    <img src="${iconUrl}" alt="${cat.nome}">
                     <h3>${cat.nome}</h3>
                 </div>
-            `).join('');
-        }
-
-        const ultLojasDiv = document.querySelector('.ultLojas');
-        if (ultLojasDiv) {
-            ultLojasDiv.innerHTML = allData.supermercados.slice(0, 8).map(store => `
-                <div class="store-item" data-store-id="${store.id}">
-                    <img src="${getFullImage(store.img || store.imagem || null)}" alt="${store.nome}">
-                    <div class="store-info">
-                        <h3>${store.nome}</h3>
-                        <p>${store.endereco || ''}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
+            `;
+        }).join('');
     };
 
-    const setupEventListeners = () => {
-        if (searchInput) searchInput.addEventListener('input', handleSearch);
-        const clearBtn = document.getElementById('clear-search-btn');
-        if (clearBtn) clearBtn.addEventListener('click', clearSearch);
+    const renderSupermarkets = (supermarkets) => {
+        if (!supermarketsContainer) {
+             console.error('Elemento #supermarkets-container não encontrado.');
+             return;
+        }
+        supermarketsContainer.innerHTML = '';
 
-        document.body.addEventListener('click', (e) => {
-            const categoryCard = e.target.closest('.card-item');
-            const storeCard = e.target.closest('.store-item');
+        if (supermarkets.length === 0) {
+            supermarketsContainer.innerHTML = '<p class="no-supermarkets">Nenhum supermercado cadastrado ou carregado.</p>';
+            return;
+        }
+        
+        // Renderiza os 10 primeiros supermercados
+        supermarkets.slice(0, 10).forEach(store => {
+            const storeCard = document.createElement('div');
+            storeCard.className = 'card-item supermarket-card';
+            // Usamos template string para preencher o HTML interno
+            storeCard.innerHTML = `
+                <img src="${getFullImage(store.img)}" alt="${store.nome}">
+                <h3>${store.nome}</h3>
+                <button class="ver-produtos-btn" data-store-id="${store.id}">Ver Produtos</button>
+            `;
+            
+            // Adiciona o evento de clique ao botão "Ver Produtos"
+            const verProdutosBtn = storeCard.querySelector('.ver-produtos-btn');
+            if(verProdutosBtn) {
+                 verProdutosBtn.addEventListener('click', (e) => {
+                    const storeId = parseInt(e.target.getAttribute('data-store-id'));
+                    openSupermarketModal(storeId);
+                });
+            }
 
-            if (categoryCard && categoryCard.dataset.categoryKey) {
-                const categoryKey = categoryCard.dataset.categoryKey;
-                showProductsModal(categoryKey);
-            }
-            if (storeCard && storeCard.dataset.storeId) {
-                showStoreCategoriesModal(parseInt(storeCard.dataset.storeId));
-            }
+            // Anexa o cartão à seção principal
+            supermarketsContainer.appendChild(storeCard);
         });
-
-        // REMOVIDO: Eventos de clique do carrinho (cartButton, closeCartBtn, cartOverlay)
-        // Eles agora são gerenciados por setupCartEvents() em cart-logic.js
     };
 
-    const handleSearch = (e) => {
-        const searchTerm = e.target.value.toLowerCase().trim();
-        if (searchTerm.length > 1) {
-            const results = allData.allProducts.filter(p => p.nome.toLowerCase().includes(searchTerm));
-            mainContent.classList.add('hidden');
-            searchResultsContainer.classList.remove('hidden');
-            document.getElementById('search-results-title').textContent = `Resultados para "${searchTerm}"`;
+    const renderSearchResults = (products) => {
+        if (!searchResultsGrid) return;
+        searchResultsGrid.innerHTML = '';
 
-            const grid = document.getElementById('search-results-grid');
-            if (results.length > 0) {
-                grid.innerHTML = results.map(product => {
-                    // Correção: Garantir que 'precos' existe e tem itens
-                    const bestPrice = (product.precos && product.precos.length > 0) ? product.precos[0].preco.toFixed(2).replace('.', ',') : '--';
-                    return `
-                        <div class="product-item" onclick="window.location.href='comparar.html?category=${product.categoria}&productId=${product.id}'">
-                            <img src="${getFullImage(product.imagem)}" alt="${product.nome}">
-                            <h4>${product.nome}</h4>
-                            <p>A partir de R$ ${bestPrice}</p>
-                        </div>
-                    `;
-                }).join('');
-            } else {
-                grid.innerHTML = '<p>Nenhum produto encontrado.</p>';
-            }
-        } else {
-            clearSearch();
+        if (products.length === 0) {
+            searchResultsGrid.innerHTML = '<p class="no-products">Nenhum produto encontrado.</p>';
+            return;
         }
-    };
 
-    const clearSearch = () => {
-        searchInput.value = '';
-        mainContent.classList.remove('hidden');
-        searchResultsContainer.classList.add('hidden');
-    };
-
-    const showProductsModal = (categoryKey) => {
-        const category = allData.categoryMap[categoryKey];
-        if (!category) return;
-
-        const maxItems = 5;
-        const itemsToDisplay = category.data.slice(0, maxItems);
-
-        let modalContentHTML = `
-            <div class="modal-content">
-                <div class="modal-header">
-                    <img src="${getFullImage(category.icon)}" alt="${category.name}" class="modal-logo">
-                    <h2 class="modal-title">${category.name}</h2>
-                    <button class="close-btn">&times;</button>
+        products.forEach(product => {
+            const storeName = product.supermercado ? product.supermercado.nome : 'Loja Desconhecida';
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.innerHTML = `
+                <img src="${getFullImage(product.img)}" alt="${product.nome}">
+                <div class="product-info">
+                    <h3>${product.nome}</h3>
+                    <p class="price">R$ ${product.preco.toFixed(2).replace('.', ',')}</p>
+                    <p class="store">Loja: ${storeName}</p>
                 </div>
-                <div class="modal-body">
-                    <div class="modal-products">
-                        ${itemsToDisplay.map(p => {
-                            const productUrl = `comparar.html?category=${categoryKey}&productId=${p.id}`;
-                            // Correção: Garantir que 'precos' existe e tem itens
-                            const bestPrice = (p.precos && p.precos.length > 0) ? p.precos[0].preco.toFixed(2).replace('.', ',') : '--';
-                            return `
-                                <div class="product-item" onclick="window.location.href='${productUrl}'">
-                                    <img src="${getFullImage(p.imagem)}" alt="${p.nome}">
-                                    <h4>${p.nome}</h4>
-                                    <p>A partir de R$ ${bestPrice}</p>
-                                </div>
-                            `;
-                        }).join('')}
-                    </div>
-        `;
+                <button class="add-to-cart-btn" data-product-id="${product.id}">Adicionar</button>
+            `;
+            
+            productCard.querySelector('.add-to-cart-btn').addEventListener('click', () => {
+                 const supermarket = product.supermercado;
+                 if (supermarket) {
+                    addToCart(product, supermarket); 
+                 } else {
+                     showFeedback('Não foi possível adicionar ao carrinho. Loja desconhecida.', 'error');
+                 }
+            });
 
-        if (category.data.length > maxItems) {
-            modalContentHTML += `<button class="ver-mais-btn" onclick="window.location.href='produtos.html?category=${categoryKey}'">Ver Todos os Produtos</button>`;
-        }
-
-        modalContentHTML += `</div></div>`;
-
-        genericModalOverlay.innerHTML = modalContentHTML;
-        genericModalOverlay.classList.remove('hidden');
-        genericModalOverlay.querySelector('.close-btn').addEventListener('click', () => genericModalOverlay.classList.add('hidden'));
+            searchResultsGrid.appendChild(productCard);
+        });
     };
 
-    const showStoreCategoriesModal = (storeId) => {
-        const store = allData.supermercados.find(s => s.id === storeId);
-        if (!store) return; // Proteção caso a loja não seja encontrada
+    const openSupermarketModal = (storeId) => {
+        const store = allData.supermarkets.find(s => s.id === storeId);
+        if (!store) return;
         
         genericModalOverlay.classList.remove('hidden');
         genericModalOverlay.innerHTML = `
@@ -213,26 +120,135 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="modal-header">
                     <img src="${getFullImage(store.img)}" alt="${store.nome}" class="modal-logo">
                     <h2 class="modal-title">${store.nome}</h2>
-                    <button class="close-btn">&times;</button>
+                    <button class="close-btn modal-close-btn">&times;</button>
                 </div>
                 <div class="modal-body">
+                    <h3>Ver por Categoria</h3>
                     <div class="modal-categories">
                         ${allData.categorias.map(cat => `
                             <div class="card-item" onclick="window.location.href='produtos.html?category=${cat.chave}&storeId=${store.id}'">
-                                <img src="${getFullImage(cat.imagem)}" alt="${cat.nome}">
+                                <img src="${icons[cat.chave] || getFullImage(cat.imagem)}" alt="${cat.nome}">
                                 <h3>${cat.nome}</h3>
                             </div>
                         `).join('')}
                     </div>
+                    <button class="ver-mais-btn" onclick="window.location.href='produtos.html?storeId=${store.id}'">Ver Todos os Produtos</button>
                 </div>
             </div>`;
-        genericModalOverlay.querySelector('.close-btn').addEventListener('click', () => {
+            
+        // Correção de seletor: .modal-close-btn estava na tag button
+        genericModalOverlay.querySelector('.modal-close-btn').addEventListener('click', () => { 
             genericModalOverlay.classList.add('hidden');
         });
     };
+    
+    // Lógica de Busca
+    const searchProducts = async (query) => {
+        if (query.length < 3) {
+            searchResultsContainer.classList.add('hidden');
+            return;
+        }
 
-    // REMOVIDO: Todas as funções de carrinho (toggleCart, updateCartCount, saveCart, changeQuantity, updateCartUI)
-    // Elas agora são globais e vêm de cart-logic.js
+        try {
+            const response = await authFetch(`produtos?q=${query}`); 
+            const products = await response.json();
+            
+            // Anexar a relação Supermercado a cada Produto buscado
+            const productsWithStore = products.map(p => {
+                 const supermarketId = Number(p.id_supermercado);
+                 return {
+                    ...p,
+                    // Busca na lista de supermercados carregada na inicialização
+                    supermercado: allData.supermarkets.find(s => s.id === supermarketId) || null 
+                 };
+            });
+            
+            document.getElementById('search-results-title').textContent = `Resultados da busca por "${query}"`;
+            renderSearchResults(productsWithStore);
+            searchResultsContainer.classList.remove('hidden');
+        } catch (error) {
+            console.error('Erro na busca:', error);
+            document.getElementById('search-results-title').textContent = `Erro na busca por "${query}"`;
+            searchResultsGrid.innerHTML = '<p class="error-message">Não foi possível realizar a busca.</p>';
+            searchResultsContainer.classList.remove('hidden');
+        }
+    };
+
+    // Lógica de Inicialização
+    const initializeApp = async () => {
+        if (!localStorage.getItem('authToken')) {
+            window.location.href = 'login.html';
+            return;
+        }
+
+        try {
+            // Requisições
+            const [empresasRes, produtosRes] = await Promise.all([
+                authFetch('empresas'),
+                authFetch('produtos'),
+            ]);
+
+            // Parsing do JSON
+            const [supermarkets, allProducts] = await Promise.all([
+                empresasRes.json(),
+                produtosRes.json(),
+            ]);
+
+            const categories = Object.keys(icons).map(key => ({
+                chave: key,
+                nome: key.charAt(0).toUpperCase() + key.slice(1),
+                imagem: icons[key]
+            }));
+
+            allData = { 
+                supermarkets, 
+                allProducts, 
+                categorias: categories 
+            };
+            
+            // =======================================================
+            // DEBUG: VERIFICAÇÃO CRÍTICA DE DADOS
+            // =======================================================
+            console.log('DEBUG: Supermercados carregados:', allData.supermarkets.length);
+            // =======================================================
+            
+            // Renderização
+            renderCategories(categories);
+            renderSupermarkets(supermarkets);
+            
+        } catch (error) {
+            console.error('Erro ao carregar dados iniciais:', error);
+            if (error.message !== 'Unauthorized') {
+                 showFeedback('Erro ao carregar dados iniciais. Verifique o console.', 'error');
+                 if (supermarketsContainer) {
+                     supermarketsContainer.innerHTML = '<p class="error-message">Falha ao carregar supermercados. Verifique a conexão com a API.</p>';
+                 }
+            }
+        }
+    };
+    
+    // Event Listeners
+    let searchTimeout;
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            const query = e.target.value.trim();
+            searchTimeout = setTimeout(() => {
+                searchProducts(query);
+            }, 300); 
+        });
+    }
+
+    if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            searchResultsContainer.classList.add('hidden');
+        });
+    }
+
+    if (typeof setupCartEvents === 'function') {
+        setupCartEvents(); 
+    }
 
     initializeApp();
 });

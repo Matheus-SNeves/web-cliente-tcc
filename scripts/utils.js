@@ -1,3 +1,5 @@
+// scripts/utils.js
+
 const API_URL = 'https://tcc-senai-tawny.vercel.app';
 
 const getFullImage = (src) => {
@@ -6,7 +8,8 @@ const getFullImage = (src) => {
     try {
         if (/^https?:\/\//i.test(src) || /^data:/i.test(src)) return src;
         if (/^\/\//.test(src)) return window.location.protocol + src;
-        if (src.startsWith('/')) return API_URL.replace(/\/$/, '') + src;
+        // Garante que o API_URL não tenha barra dupla com o src
+        if (src.startsWith('/')) return API_URL.replace(/\/$/, '') + src; 
         return API_URL.replace(/\/$/, '') + '/' + src.replace(/^\//, '');
     } catch (e) {
         return placeholder;
@@ -28,39 +31,42 @@ const maskPhone = (value) => {
 };
 
 const maskCardNumber = (value) => mask(value, '#### #### #### ####');
-const maskCardExpiry = (value) => mask(value, '##/##');
-const maskCVV = (value) => mask(value, '###');
-const maskCEP = (value) => mask(value, '#####-###');
 
+// Função de fetch com autenticação e tratamento de erro 401/403
 const authFetch = async (endpoint, options = {}) => {
     const token = localStorage.getItem('authToken');
     const headers = {
         'Content-Type': 'application/json',
-        ...(options.headers || {})
+        ...options.headers,
     };
 
+    // CRÍTICO: Concatenação correta: API_URL / endpoint
+    const url = `${API_URL}/${endpoint}`; 
+    
     if (token) {
         headers['Authorization'] = `Bearer ${token}`;
     }
 
     try {
-        const response = await fetch(`${API_URL}/${endpoint}`, {
+        const response = await fetch(url, {
             ...options,
-            headers
+            headers,
         });
 
         if (response.status === 401 || response.status === 403) {
-            localStorage.clear();
-            alert('Sessão expirada ou acesso negado. Faça login novamente.');
-            const currentPage = window.location.pathname.split('/').pop();
-            const redirectTo = (currentPage === 'login.html' || currentPage === 'cadastro.html') ? 'index.html' : 'login.html';
-            window.location.href = redirectTo; 
-            throw new Error('Unauthorized');
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('user');
+            // Redireciona para login em caso de token inválido
+            window.location.href = 'login.html'; 
+            throw new Error('Unauthorized'); 
         }
 
         return response;
+
     } catch (error) {
-        console.error('Erro em authFetch:', error);
+        console.error('Erro de conexão em authFetch:', error);
         throw error;
     }
 };
@@ -95,18 +101,19 @@ const showFeedback = (message, type = 'success') => {
             0% { opacity: 0; bottom: 0px; }
             20% { opacity: 1; bottom: 20px; }
             80% { opacity: 1; bottom: 20px; }
-            100% { opacity: 0; bottom: 0px; }
-        }`;
+            100% { opacity: 0; bottom: 40px; }
+        }
+        `;
         document.head.appendChild(style);
     }
 
-    const feedbackDiv = document.createElement('div');
-    feedbackDiv.className = `feedback-popup ${type}`;
-    feedbackDiv.textContent = message;
+    const popup = document.createElement('div');
+    popup.className = `feedback-popup ${type}`;
+    popup.textContent = message;
 
-    document.body.appendChild(feedbackDiv);
+    document.body.appendChild(popup);
 
     setTimeout(() => {
-        feedbackDiv.remove();
+        popup.remove();
     }, 2500);
 };

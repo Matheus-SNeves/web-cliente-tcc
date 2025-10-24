@@ -34,10 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 const data = await response.json();
+                
                 localStorage.setItem('authToken', data.token);
-                localStorage.setItem('userName', data.cliente.nome);
-                localStorage.setItem('userEmail', data.cliente.email);
-                localStorage.setItem('user', JSON.stringify(data.cliente));
+                localStorage.setItem('userName', data.usuario.nome);
+                localStorage.setItem('userEmail', data.usuario.email);
+                localStorage.setItem('user', JSON.stringify(data.usuario));
+                
                 window.location.href = 'home.html';
             } else {
                 const errorData = await response.json().catch(() => ({ message: 'Credenciais inválidas' }));
