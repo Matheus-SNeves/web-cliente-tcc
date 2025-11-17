@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="supermarket-title">Carregando Mercado...</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/home.css"> 
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#0A3D62',
+                        'secondary': '#4CAF50',
+                        'background': '#F7F7F7',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+        /* Estilo para o botão de categoria ativo */
+        .category-filter-btn.active-filter {
+            border-width: 2px;
+            border-color: #0A3D62; /* Primary Color */
+        }
+    </style>
+</head>
+<body class="antialiased bg-background" style="font-family: 'Inter', sans-serif;">
+
+    <header class="sticky top-0 z-50 bg-white shadow-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            <a href="home.html" class="flex items-center text-gray-700 hover:text-primary transition duration-150">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                <span class="text-base font-semibold hidden sm:inline">Voltar</span>
+            </a>
+            <div class="text-center flex-grow mx-4">
+                <h1 class="text-xl font-bold text-gray-800 line-clamp-1" id="supermarket-name">Carregando Mercado...</h1>
+            </div>
+            <a href="cart.html" id="cart-button" class="p-2 rounded-full text-white bg-primary shadow-xl flex items-center justify-center relative hover:opacity-90 transition duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.433a.998.998 0 00.563.682l8.079 4.872a1 1 0 001.026-.118A1 1 0 0017 14V5a1 1 0 00-1-1h-3.232l-.249-.997a.998.998 0 00-.563-.682L8.204 2.822a1 1 0 00-1.026.118A1 1 0 006 4v5H4V4a1 1 0 00-1-1zM5.5 17a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM15.5 17a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" /></svg>
+                <span id="contagem-carrinho" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 rounded-full min-w-[24px] min-h-[24px] border-2 bg-secondary border-white hidden">0</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+        
+        <div id="supermarket-info-card" class="bg-white p-6 rounded-xl shadow-lg border border-gray-100 flex items-center space-x-4">
+            <img id="supermarket-logo" src="https://placehold.co/80x80/E0E7FF/0A3D62?text=Logo" alt="Logo do Mercado" class="w-20 h-20 object-contain rounded-full border border-gray-200 shrink-0">
+            <div class="overflow-hidden">
+                <h2 class="text-xl font-bold text-gray-800 mb-1 line-clamp-1" id="info-name"></h2>
+                <p class="text-gray-600 text-sm line-clamp-2" id="info-details">Carregando detalhes do mercado...</p>
+                <p class="text-gray-500 text-xs mt-1" id="info-time">Tempo médio: --</p>
+            </div>
+        </div>
+
+        <section>
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Navegue por Categorias</h2>
+            <div id="container-supermercado-categorias" class="flex overflow-x-scroll space-x-4 pb-4 no-scrollbar -mx-4 px-4">
+                <div class="text-gray-500 p-4 shrink-0">Carregando categorias...</div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Produtos Disponíveis</h2>
+            <div id="container-supermercado-produtos" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
+                <div class="text-gray-500 p-4 col-span-full">Carregando produtos...</div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="../scripts/utils.js"></script> 
+    <script src="../scripts/supermarket-detail.js"></script>
+</body>
+</html>

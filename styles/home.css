@@ -1,7 +1,7 @@
 .search-container {
     display: flex;
     align-items: center;
-    background: #f0ebe5;
+    background: var(--color-background);
     border: 1px solid #d4c6b6;
     border-radius: 25px;
     width: 500px;
@@ -19,7 +19,7 @@
     outline: none;
     background-color: transparent;
     font-size: 16px;
-    color: #4a3e30;
+    color: var(--color-text-dark);
 }
 
 .clear-search-btn {
@@ -32,7 +32,7 @@
 }
 
 .section-title {
-    color: #4a3e30;
+    color: var(--color-text-dark);
     font-size: 24px;
     margin-left: 50px;
     margin-bottom: 20px;
@@ -47,8 +47,8 @@
 #search-results-title {
     margin-bottom: 20px;
     font-size: 20px;
-    color: #4a3e30;
-    border-bottom: 2px solid #BF946F;
+    color: var(--color-text-dark);
+    border-bottom: 2px solid var(--color-highlight);
     padding-bottom: 5px;
 }
 
@@ -95,7 +95,7 @@
 
 .product-info h3 {
     font-size: 16px;
-    color: #4a3e30;
+    color: var(--color-text-dark);
     margin-bottom: 5px;
     white-space: nowrap;
     overflow: hidden;
@@ -105,17 +105,17 @@
 .product-info .price {
     font-size: 18px;
     font-weight: bold;
-    color: #BF946F;
+    color: var(--color-primary); /* Preço é a cor de ação */
     margin-bottom: 5px;
 }
 
 .product-info .store, .product-info .category {
     font-size: 12px;
-    color: #7a6a58;
+    color: var(--color-text-light);
 }
 
 .add-to-cart-btn {
-    background-color: #BF946F;
+    background-color: var(--color-primary);
     color: white;
     border: none;
     padding: 8px 15px;
@@ -127,7 +127,7 @@
 }
 
 .add-to-cart-btn:hover {
-    background-color: #A67C52;
+    background-color: #B51D44; /* Um pouco mais escuro que #D92353 */
 }
 
 
@@ -137,7 +137,7 @@
 }
 
 .categories-section h2, .stores-section h2 {
-    color: #4a3e30;
+    color: var(--color-text-dark);
     font-size: 26px;
     margin-bottom: 25px;
 }
@@ -178,7 +178,7 @@
 
 .card-item h3 {
     font-size: 15px;
-    color: #4a3e30;
+    color: var(--color-text-dark);
     font-weight: 500;
 }
 
@@ -202,7 +202,7 @@
 
 .ver-mais-btn {
     width: 100%;
-    background-color: #BF946F;
+    background-color: var(--color-primary);
     color: white;
     border: none;
     padding: 12px;
@@ -213,7 +213,7 @@
     flex-shrink: 0;
 }
 .ver-mais-btn:hover {
-    background-color: #A67C52;
+    background-color: #B51D44;
 }
 
 /* --- MEDIA QUERIES --- */
@@ -292,3 +292,63 @@
         grid-template-columns: 1fr 1fr;
     }
 }
+
+:root {
+            --color-primary: #D92353; /* Vermelho Forte (Ação) */
+            --color-secondary: #9FBF7E; /* Verde Musgo (Destaque) */
+            --color-background: #F2E9D8; /* Fundo Principal (Bege Claro) */
+            --color-highlight: #BF946F; /* Marrom Médio (Borda/Destaque Secundário) */
+            --color-text-dark: #734124; /* Marrom Escuro (Texto Principal) */
+            --color-text-light: #A67C52; /* Um tom mais claro do marrom para textos secundários */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text-dark);
+        }
+
+        /* Estilos para Interações - Usando as novas cores */
+        .search-input {
+            border-color: #BF946F; /* Usando cor de destaque/borda */
+            transition: all 0.2s;
+        }
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(217, 35, 83, 0.4); /* Sombra suave com Primary */
+            border-color: var(--color-primary);
+        }
+        .cart-button {
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+            background-color: var(--color-primary);
+        }
+        .cart-button:hover {
+            transform: scale(1.1);
+            background-color: #B51D44; /* Um tom mais escuro */
+            box-shadow: 0 10px 20px -5px rgba(217, 35, 83, 0.6);
+        }
+        .product-card, .supermarket-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .supermarket-card:hover {
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+            border-color: var(--color-primary);
+        }
+        .category-card {
+            transition: background-color 0.2s, transform 0.2s;
+        }
+        .category-card:hover {
+            background-color: #FAEDF0; /* Tom muito claro da cor Primary */
+            transform: scale(1.03);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        .banner-destaque {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #F87171 100%);
+            box-shadow: 0 15px 30px -10px rgba(217, 35, 83, 0.6);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

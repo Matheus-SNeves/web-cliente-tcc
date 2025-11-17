@@ -18,12 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const senha = senhaInput.value;
 
         if (!email || !senha) {
-            exibirErro('Preencha o login e a senha.');
+            exibirErro('Por favor, preencha o e-mail e a senha.');
             return;
         }
 
         try {
-            // API_URL agora é global, vindo de utils.js (que deve ser carregado no HTML)
             const response = await fetch(`${API_URL}/login`, {
                 method: 'POST',
                 headers: {

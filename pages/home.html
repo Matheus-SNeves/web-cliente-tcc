@@ -1,109 +1,117 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speed Market - Home</title>
-    <link rel="stylesheet" href="../styles/global.css"> 
-    <link rel="stylesheet" href="../styles/home.css">   
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Speed Market - Seu Mercado Rápido Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/home.css"> 
+    <style>
+        /* Define as cores do tailwind, use em seu CSS também */
+        :root {
+            --color-primary: #0A3D62; /* Azul */
+            --color-secondary: #4CAF50; /* Verde */
+            --color-background: #F7F7F7; /* Cinza Claro */
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#0A3D62',
+                        'secondary': '#4CAF50',
+                        'background': '#F7F7F7',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-    <header>
-        <img src="../assets/logo.png" alt="Logo Speed Market" id="logo">
-        <div class="search-container">
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
-            <input type="text" id="search-input" placeholder="Buscar por produto...">
-            <button class="clear-search-btn" id="clear-search-btn">&times;</button>
-        </div>
-        <div class="user-actions">
-            <a href="conta.html" class="icon-btn" aria-label="Minha Conta">
-                <i class="fa-solid fa-user"></i>
+<body class="antialiased" style="background-color: var(--color-background);">
+
+    <header class="sticky top-0 z-50 bg-white shadow-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row items-center justify-between">
+            
+            <a href="home.html" class="flex items-center mb-3 md:mb-0">
+                <img src="../assets/logo.png" alt="Logo Speed Market" class="h-8 mr-3">
+                <span class="text-xl font-extrabold" style="color: var(--color-primary);">Speed Market</span>
             </a>
+
+            <div class="search-container flex items-center w-full max-w-lg mx-auto md:mx-0 bg-gray-100 rounded-full p-2 border border-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                <input type="search" id="input-busca" placeholder="O que você está procurando hoje?" class="bg-transparent w-full px-3 py-1 focus:outline-none text-gray-700">
+                <button id="clear-search-btn" class="clear-search-btn h-6 w-6 mr-2 text-gray-500 hidden">&times;</button>
+            </div>
+
+            <div class="flex items-center mt-3 md:mt-0 space-x-4">
+                <a href="#" class="flex items-center text-sm font-semibold text-gray-600 hover:text-primary transition duration-150">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    <span id="user-location">Meu Endereço</span>
+                </a>
+
+                <div class="relative group">
+                    <button id="account-menu-button" class="flex items-center text-sm font-semibold text-gray-600 hover:text-primary transition duration-150">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                        <span id="user-name">Minha Conta</span>
+                    </button>
+                    <div id="logout-dropdown" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg py-1 hidden group-hover:block transition duration-150">
+                        <a href="#" id="botao-sair" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 hover:text-red-700 transition duration-150">
+                            Sair
+                        </a>
+                    </div>
+                </div>
+
+                <button id="cart-button" onclick="toggleCart()" class="relative p-2 rounded-full text-white transition duration-150" style="background-color: var(--color-primary)"">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                    <span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">0</span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <div id="search-results-container" class="hidden">
-        <h2 id="search-results-title"></h2>
-        <div id="search-results-grid" class="products-grid">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4" style="color: var(--color-primary);">Categorias Populares</h2>
+            <div id="container-categorias" class="flex overflow-x-auto space-x-4 pb-4">
+                </div>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4" style="color: var(--color-primary);">Produtos em Destaque</h2>
+            <div id="container-produtos-destaque" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                </div>
+        </section>
+
+        <section>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4" style="color: var(--color-primary);">Supermercados na Sua Área</h2>
+            <div id="container-mercados-area" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                </div>
+        </section>
+        
+    </main>
+
+    <div id="cart-overlay" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-50 hidden">
+        <div class="absolute right-0 top-0 h-full w-full max-w-sm bg-white shadow-xl flex flex-col">
+            <div class="p-4 border-b flex justify-between items-center">
+                <h2 class="text-xl font-bold">Seu Carrinho</h2>
+                <button id="close-cart-btn" onclick="toggleCart()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            <div id="cart-items-container" class="flex-grow overflow-y-auto p-4">
+                <p class="text-gray-500">O carrinho está vazio.</p>
+            </div>
+            <div class="p-4 border-t">
+                <p class="text-lg font-bold mb-2">Total: <span id="cart-total">R$ 0,00</span></p>
+                <button id="checkout-btn" class="w-full text-white font-bold py-3 rounded-lg transition duration-200" style="background-color: var(--color-secondary);">Finalizar Pedido</button>
+            </div>
         </div>
     </div>
 
-    <section class="categories-section">
-    <h2>Explore por Categoria</h2>
-    <div id="categories-container" class="cards-grid">
-        </div>
-</section>
 
-<section class="stores-section">
-    <h2>Lojas Próximas</h2>
-    <div id="stores-container" class="cards-grid">
-        </div>
-</section>
-
-    <button id="cart-button" class="cart-button">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span id="cart-count" class="cart-count">0</span>
-    </button>
-    
-    <div id="cart-overlay" class="cart-overlay hidden">
-        <div class="cart-modal">
-            <div class="cart-header">
-                <h2>Meu Carrinho</h2>
-                <button id="close-cart-btn" class="close-btn">&times;</button>
-            </div>
-            <div id="cart-items-container" class="cart-items">
-            </div>
-            <div class="cart-summary">
-                <div id="delivery-address-section">
-                    <p><strong>Endereço de Entrega:</strong></p>
-                    <div id="address-display">
-                        <span id="current-address">Nenhum endereço selecionado</span>
-                        <button id="change-address-btn">Trocar</button>
-                    </div>
-                </div>
-                <div class="cart-total">
-                    <h3>Total:</h3>
-                    <h3 id="cart-total-price">R$ 0,00</h3>
-                </div>
-                <button id="checkout-btn" class="checkout-btn disabled">Continuar</button>
-            </div>
-        </div>
-    </div>
-    
-    <div id="generic-modal-overlay" class="modal-overlay hidden">
-    </div>
-    
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Sobre Nós</h4>
-                <p>Speed Market é seu comparador de preços online para economizar tempo e dinheiro nas suas compras de supermercado.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Links Rápidos</h4>
-                <ul>
-                    <li><a href="home.html">Início</a></li>
-                    <li><a href="conta.html">Minha Conta</a></li>
-                    <li><a href="#">Termos de Serviço</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Siga-nos</h4>
-                <div class="social-icons">
-                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2025 Speed Market. Todos os direitos reservados.
-        </div>
-    </footer>
-
-    <script src="../scripts/utils.js"></script>
-    <script src="../scripts/cart-logic.js"></script>
+    <script src="../scripts/utils.js"></script> 
+    <script src="../scripts/cart.js"></script>
     <script src="../scripts/home.js"></script>
 </body>
 </html>

@@ -3,22 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN - Cliente Speed Market</title>
+    <title>ENTRAR - Cliente Speed Market</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/login.css">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
 </head>
 <body>
     <img src="../assets/logo.png" alt="Logo do Speed Market">
     <form>
-        <p>LOGIN</p>
+        <p>ENTRAR</p>
         <div class="display"></div> 
-        <label for="login">Login:</label>
-        <input type="email" id="login">
+        <label for="login">E-mail:</label>
+        <input type="email" id="login" placeholder="seu.email@exemplo.com">
         <label for="senha">Senha:</label>
-        <input type="password" id="senha">
-        <button id="entrar">Logar</button>
+        <input type="password" id="senha" placeholder="********">
+        <button id="entrar">Entrar</button>
         <p>Primeira vez aqui?<a href="cadastro.html">Cadastre-se</a></p>
-        </form>
-    <script src="../scripts/login.js"></script>
+    </form>
     <script src="../scripts/utils.js"></script>
+    <script src="../scripts/login.js"></script>
 </body>
 </html>
