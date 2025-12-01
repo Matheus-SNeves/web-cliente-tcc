@@ -5,6 +5,8 @@ const emailInput = document.getElementById('email');
 const senhaInput = document.getElementById('senha');
 const btnCadastrar = document.getElementById('cadastro'); 
 const displayErro = document.querySelector('.display');
+const API_URL = 'https://tcc-senai-tawny.vercel.app'; 
+
 
 const exibirErro = (mensagem) => {
     displayErro.textContent = mensagem;

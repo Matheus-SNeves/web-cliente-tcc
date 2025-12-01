@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Pedido - Speed Market</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #0A3D62;
+            --color-secondary: #4CAF50;
+            --color-background: #F7F7F7;
+        }
+
+        .input-padrao {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            width: 100%;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .btn-principal {
+            background-color: var(--color-secondary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+
+        .btn-principal:hover {
+            opacity: 0.9;
+        }
+
+        /* Classes adicionais para o checkout */
+        .resumo-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #e5e7eb;
+        }
+
+        .resumo-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#0A3D62',
+                        'secondary': '#4CAF50',
+                        'background': '#F7F7F7',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="antialiased" style="background-color: var(--color-background);">
+
+    <header class="sticky top-0 z-50 bg-white shadow-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            <a href="home.html" class="flex items-center">
+                <img src="../assets/logo.png" alt="Logo Speed Market" class="h-8 mr-3">
+                <span class="text-xl font-extrabold" style="color: var(--color-primary);">Speed Market</span>
+            </a>
+
+            <h1 class="text-2xl font-bold text-gray-800 hidden sm:block">Finalizar Pedido</h1>
+
+            <div class="flex items-center space-x-4">
+                <button id="profile-btn" class="relative p-2 rounded-full text-white"
+                    style="background-color: var(--color-primary)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                </button>
+                <a href="javascript:history.back()"
+                    class="flex items-center text-sm font-semibold text-gray-600 hover:text-primary transition duration-150">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Voltar
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            <div class="lg:col-span-2">
+                <form id="checkout-form">
+                    <section class="bg-white p-6 rounded-lg shadow-md mb-8">
+                        <h2 class="text-xl font-bold mb-4" style="color: var(--color-primary);">1. Endereço de Entrega
+                        </h2>
+                        <p class="text-gray-700 mb-4">Seu pedido será enviado para:</p>
+                        <div id="endereco-exibido" class="bg-gray-100 p-4 rounded-lg border border-gray-200">
+                            <p class="font-semibold text-gray-800">Rua da Amostra, 123 - Apto 101</p>
+                            <p class="text-sm text-gray-600">São Paulo - CEP 01000-000</p>
+                        </div>
+                        <button type="button"
+                            class="mt-3 text-sm text-primary hover:text-opacity-70 font-medium transition duration-150">
+                            Alterar Endereço
+                        </button>
+                    </section>
+
+                    <section class="bg-white p-6 rounded-lg shadow-md mb-8">
+                        <h2 class="text-xl font-bold mb-4" style="color: var(--color-primary);">2. Método de Pagamento
+                        </h2>
+
+                        <div class="space-y-4">
+                            <label for="cartao"
+                                class="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" id="cartao" name="payment-method" value="Cartão de Crédito"
+                                    class="h-4 w-4 text-secondary border-gray-300 focus:ring-secondary mr-3">
+                                <span class="text-gray-800 font-medium">Cartão de Crédito</span>
+                            </label>
+
+                            <label for="pix"
+                                class="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" id="pix" name="payment-method" value="Pix"
+                                    class="h-4 w-4 text-secondary border-gray-300 focus:ring-secondary mr-3">
+                                <span class="text-gray-800 font-medium">Pix</span>
+                                <span
+                                    class="ml-auto text-xs font-bold text-white bg-green-500 px-2 py-1 rounded-full">5% OFF</span>
+                            </label>
+
+                            <label for="dinheiro"
+                                class="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" id="dinheiro" name="payment-method" value="Dinheiro"
+                                    class="h-4 w-4 text-secondary border-gray-300 focus:ring-secondary mr-3">
+                                <span class="text-gray-800 font-medium">Dinheiro na Entrega</span>
+                            </label>
+                        </div>
+                    </section>
+
+                    <button id="confirmar-modal-btn" type="submit" class="btn-principal">
+                        Confirmar Pedido
+                    </button>
+                    <p id="checkout-message" class="text-sm text-red-500 mt-2"></p>
+                </form>
+            </div>
+
+            <div class="lg:col-span-1">
+                <section class="bg-white p-6 rounded-lg shadow-md sticky top-24">
+                    <h2 class="text-xl font-bold mb-4" style="color: var(--color-primary);">Resumo do Pedido</h2>
+
+                    <div id="resumo-carrinho" class="border-b pb-4 mb-4">
+                        <p class="text-gray-500">Carrinho vazio.</p>
+                    </div>
+
+                    <div class="text-lg font-bold flex justify-between">
+                        <span>Total:</span>
+                        <span id="total-pedido" class="text-secondary">R$ 0,00</span>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div id="confirmation-modal"
+        class="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 hidden flex justify-center items-center p-4">
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-md p-6 relative">
+            <h3 class="text-2xl font-bold mb-4" style="color: var(--color-primary);">Revisar e Confirmar</h3>
+            <p class="text-gray-600 mb-4">Você está prestes a finalizar seu pedido com os seguintes detalhes:</p>
+
+            <div class="space-y-3 p-4 bg-gray-50 rounded-lg mb-6">
+                <div class="flex justify-between">
+                    <span class="font-semibold text-gray-700">Total:</span>
+                    <span id="modal-total" class="font-bold text-secondary text-xl">R$ 0,00</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-semibold text-gray-700">Endereço de Entrega:</span>
+                    <span id="modal-endereco" class="text-sm text-gray-600"></span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="font-semibold text-gray-700">Pagamento:</span>
+                    <span id="modal-pagamento" class="text-sm text-gray-600"></span>
+                </div>
+            </div>
+
+            <div class="flex justify-between space-x-4">
+                <button id="modal-voltar-btn"
+                    class="w-full py-3 rounded-lg font-bold border border-gray-300 text-gray-700 hover:bg-gray-100 transition duration-150">
+                    Voltar
+                </button>
+                <button id="modal-confirmar-btn" class="btn-principal">
+                    Confirmar e Pagar
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="profile-modal"
+        class="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 hidden flex justify-center items-center p-4">
+
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-4xl h-[80vh] flex relative overflow-hidden">
+            
+            <button id="close-profile-modal-btn"
+                class="absolute top-2 right-4 text-gray-700 hover:text-red-500 text-3xl font-light z-10">&times;</button>
+
+            <div class="w-1/4 bg-gray-50 p-6 border-r flex flex-col justify-between">
+                <div>
+                    <h2 class="text-2xl font-bold mb-6" style="color: var(--color-primary);">Minha Conta</h2>
+                    <nav class="space-y-2">
+                        <button id="menu-dados-pessoais"
+                            class="menu-button w-full text-left p-3 rounded-lg font-semibold text-gray-600 hover:bg-gray-200 transition duration-150 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                            </svg>
+                            Dados Pessoais
+                        </button>
+                        <button id="menu-ultimos-pedidos"
+                            class="menu-button w-full text-left p-3 rounded-lg font-semibold text-gray-600 hover:bg-gray-200 transition duration-150 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                <path fill-rule="evenodd"
+                                    d="M4 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 3a1 1 0 000 2h6a1 1 0 100-2H7z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            Últimos Pedidos
+                        </button>
+                    </nav>
+                </div>
+                
+                <div class="pt-6 border-t border-gray-200">
+                    <button id="logout-btn"
+                        class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-lg transition duration-150 shadow-md flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M3 3a1 1 0 00-1 1v12a1 1 0 001 1h5a1 1 0 000-2H4V5h4a1 1 0 000-2H3zm10 0a1 1 0 00-1 1v4a1 1 0 102 0V4a1 1 0 00-1-1zm3 8a1 1 0 100 2h-3a1 1 0 100-2h3z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        Sair da Conta
+                    </button>
+                </div>
+            </div>
+
+            <div class="w-3/4 p-8 overflow-y-auto">
+                
+                <div id="content-dados" class="content-panel">
+                    <h3 class="text-xl font-bold mb-4 text-primary border-b pb-2">Seus Dados Pessoais</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-gray-100 rounded-lg">
+                            <span class="text-sm font-semibold uppercase text-gray-500 block mb-1">Nome Completo</span>
+                            <span id="profile-name-display" class="text-lg font-medium text-gray-800">Carregando Nome...</span>
+                        </div>
+                        <div class="p-4 bg-gray-100 rounded-lg">
+                            <span class="text-sm font-semibold uppercase text-gray-500 block mb-1">Email</span>
+                            <span id="profile-email-display" class="text-lg font-medium text-gray-800">carregando@email.com</span>
+                        </div>
+                        </div>
+                </div>
+
+                <div id="content-pedidos" class="content-panel hidden">
+                    <h3 class="text-xl font-bold mb-4 text-primary border-b pb-2">Histórico de Pedidos</h3>
+                    <div id="order-history-container" class="space-y-4">
+                        <p class="text-gray-500">Carregue seus pedidos clicando no menu.</p>
+                        </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="../scripts/config.js"></script>
+    <script src="../scripts/cart.js"></script>
+    <script src="../scripts/checkout.js"></script>
+    <script src="../scripts/profile_modal.js"></script> </body>
+
+</html>

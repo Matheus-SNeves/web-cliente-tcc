@@ -1,229 +1,250 @@
-// PADRONIZADO: Usando 'cart' como a chave principal do localStorage
-let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+// scripts/cart.js
+
+// Variáveis Globais de Carrinho
+window.cart = JSON.parse(localStorage.getItem('cart')) || [];
+const cartOverlay = document.getElementById('cart-overlay');
+const cartCount = document.getElementById('cart-count');
+const cartTotalElement = document.getElementById('cart-total');
+const cartItemsContainer = document.getElementById('cart-items-container');
+const checkoutBtn = document.getElementById('checkout-btn');
+
+
+// --- Funções de Utilidade ---
+
+function formatCurrency(value) {
+    return `R$ ${parseFloat(value).toFixed(2).replace('.', ',')}`;
+}
+// Torna a função global para uso em outros scripts (como profile_modal.js)
+window.formatCurrency = formatCurrency;
 
 function saveCart() {
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('cart', JSON.stringify(window.cart));
+    updateCartDisplay();
 }
 
-function canAddToCart(product, supermarket) {
-    const supermarketsInCart = [...new Set(cart.map(item => item.supermarket?.id).filter(Boolean))];
-    const isNewSupermarket = !supermarketsInCart.includes(supermarket.id);
+function calculateTotal() {
+    return window.cart.reduce((sum, item) => sum + (item.preco * item.quantity), 0);
+}
 
-    if (supermarketsInCart.length >= 1 && isNewSupermarket) {
-        for (const existingStoreId of supermarketsInCart) {
-            const itemCount = cart
-                .filter(item => item.supermarket.id === existingStoreId)
-                .reduce((sum, item) => sum + item.quantity, 0);
 
-            if (itemCount < 5) {
-                const storeName = cart.find(i => i.supermarket.id === existingStoreId).supermarket.nome;
-                showFeedback(`Adição bloqueada. Você precisa ter pelo menos 5 itens do supermercado "${storeName}" antes de adicionar de uma nova loja.`, 'error');
-                return false;
-            }
+// --- Funções de Exibição do Carrinho ---
+
+function updateCartCount() {
+    const totalCount = window.cart.reduce((sum, item) => sum + item.quantity, 0);
+    if (cartCount) cartCount.textContent = totalCount;
+}
+
+function updateCartDisplay() {
+    if (!cartItemsContainer || !cartTotalElement) return;
+
+    updateCartCount();
+    
+    cartItemsContainer.innerHTML = '';
+    const total = calculateTotal();
+    cartTotalElement.textContent = formatCurrency(total);
+
+    if (window.cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p class="text-gray-500 p-4">O carrinho está vazio.</p>';
+        if(checkoutBtn) checkoutBtn.disabled = true;
+        return;
+    }
+    
+    if(checkoutBtn) checkoutBtn.disabled = false;
+
+    window.cart.forEach(item => {
+        const itemTotal = item.preco * item.quantity;
+        const itemElement = document.createElement('div');
+        itemElement.className = 'flex items-center justify-between border-b py-3';
+        
+        itemElement.innerHTML = `
+            <div class="flex items-center space-x-3">
+                <img src="${item.img}" alt="${item.nome}" class="w-12 h-12 object-contain rounded">
+                <div>
+                    <h4 class="text-sm font-semibold text-gray-800">${item.nome}</h4>
+                    <p class="text-xs text-gray-500">${formatCurrency(item.preco)} cada</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center border rounded-lg">
+                    <button data-id="${item.id}" class="decrease-btn p-2 text-primary hover:bg-gray-100 rounded-l-lg">-</button>
+                    <span class="px-3 text-sm font-medium">${item.quantity}</span>
+                    <button data-id="${item.id}" class="increase-btn p-2 text-primary hover:bg-gray-100 rounded-r-lg">+</button>
+                </div>
+                <p class="text-sm font-bold">${formatCurrency(itemTotal)}</p>
+                <button data-id="${item.id}" class="remove-btn text-red-500 hover:text-red-700 p-1 rounded-full">&times;</button>
+            </div>
+        `;
+        cartItemsContainer.appendChild(itemElement);
+    });
+    
+    // Adiciona Listeners aos botões de +/- e remover
+    cartItemsContainer.querySelectorAll('.increase-btn').forEach(btn => btn.addEventListener('click', handleQuantityChange));
+    cartItemsContainer.querySelectorAll('.decrease-btn').forEach(btn => btn.addEventListener('click', handleQuantityChange));
+    cartItemsContainer.querySelectorAll('.remove-btn').forEach(btn => btn.addEventListener('click', removeItem));
+}
+
+
+// --- Funções de Manipulação do Carrinho ---
+
+window.addToCart = function(product) {
+    const existingItem = window.cart.find(item => item.id === product.id);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        window.cart.push({ ...product, quantity: 1 });
+    }
+    saveCart();
+    // Feedback visual (pode ser substituído por um toast)
+    console.log(`${product.nome} adicionado ao carrinho!`);
+    if(cartOverlay && cartOverlay.classList.contains('hidden')) {
+        // Opcional: abre o carrinho ou notifica
+    }
+};
+
+function handleQuantityChange(e) {
+    const id = parseInt(e.currentTarget.dataset.id);
+    const item = window.cart.find(item => item.id === id);
+    if (!item) return;
+
+    if (e.currentTarget.classList.contains('increase-btn')) {
+        item.quantity += 1;
+    } else if (e.currentTarget.classList.contains('decrease-btn')) {
+        item.quantity -= 1;
+        if (item.quantity < 1) {
+            // Remove o item se a quantidade chegar a zero
+            window.cart = window.cart.filter(i => i.id !== id);
         }
     }
-    return true;
+    saveCart();
 }
 
-function addToCart(product, supermarket) {
-    if (!canAddToCart(product, supermarket)) {
+function removeItem(e) {
+    const id = parseInt(e.currentTarget.dataset.id);
+    window.cart = window.cart.filter(item => item.id !== id);
+    saveCart();
+}
+
+
+// --- Funções de Checkout (Integração com a API) ---
+
+async function handleCheckout() {
+    if (window.cart.length === 0) {
+        alert('Seu carrinho está vazio!');
         return;
     }
 
-    const existingItem = cart.find(item => item.id === product.id && item.supermarket?.id === supermarket.id);
-
-    if (existingItem) {
-        existingItem.quantity++;
-    } else {
-        const productWithFullSupermarket = { 
-            ...product, 
-            supermarket: { 
-                id: supermarket.id, 
-                nome: supermarket.nome, 
-            },
-            quantity: 1 
-        };
-        cart.push(productWithFullSupermarket);
-    }
-    
-    saveCart();
-    // Funções 'showFeedback' e 'updateCartUI' são globais (de utils.js e deste arquivo)
-    showFeedback(`"${product.nome}" adicionado ao carrinho!`, 'success');
-    updateCartUI();
-}
-
-function removeCartItem(productId, storeId) {
-    const initialLength = cart.length;
-    cart = cart.filter(item => !(item.id === productId && item.supermarket.id === storeId));
-    if (cart.length < initialLength) {
-        saveCart();
-        updateCartUI();
-    }
-}
-
-function changeQuantity(productId, storeId, amount) {
-    const itemIndex = cart.findIndex(item => item.id === productId && item.supermarket.id === storeId);
-    if (itemIndex > -1) {
-        cart[itemIndex].quantity += amount;
-        if (cart[itemIndex].quantity <= 0) {
-            cart.splice(itemIndex, 1);
-        }
-        saveCart();
-        updateCartUI();
-    }
-}
-
-function calculateCartTotal() {
-    return cart.reduce((total, item) => {
-        // Correção: Adicionado '|| []' para evitar erro se 'precos' não existir
-        const priceEntry = (item.precos || []).find(p => p.supermercado_id === item.supermarket.id);
-        const price = priceEntry ? priceEntry.preco : 0;
-        return total + (price * item.quantity);
-    }, 0);
-}
-
-function calculateShippingFee() {
-    const baseFeePerStore = 5.00;
-    const feeBetweenStores = 2.00;
-    
-    const supermarketsInCart = [...new Set(cart.map(item => item.supermarket?.id).filter(Boolean))];
-    let totalShipping = supermarketsInCart.length * baseFeePerStore;
-
-    if (supermarketsInCart.length > 1) {
-        totalShipping += (supermarketsInCart.length - 1) * feeBetweenStores;
+    const authToken = localStorage.getItem('authToken');
+    if (!authToken) {
+        alert('Você precisa estar logado para finalizar o pedido.');
+        // Redireciona para login (opcional)
+        // window.location.href = 'login.html'; 
+        return;
     }
 
-    return totalShipping;
-}
+    // DESABILITA o botão para prevenir cliques múltiplos
+    checkoutBtn.disabled = true;
+    checkoutBtn.textContent = 'Processando...';
 
-function updateCartUI() {
-    // Recarrega o carrinho do localStorage para garantir sincronia
-    cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    
-    const cartCount = document.getElementById('cart-count');
-    const cartItemsContainer = document.getElementById('cart-items-container');
-    const cartTotalPrice = document.getElementById('cart-total-price');
-    const checkoutBtn = document.getElementById('checkout-btn');
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    
-    if (cartCount) cartCount.textContent = totalItems;
-
-    // Seletor do DOM para o modal do carrinho (pode estar em home.html, conta.html, etc.)
-    const cartModal = document.querySelector('.cart-modal');
-    
-    if (cartItemsContainer) {
-        const cartTotal = calculateCartTotal();
-        const shippingFee = calculateShippingFee();
-        const finalTotal = cartTotal + shippingFee;
-
-        if (cartTotalPrice) cartTotalPrice.textContent = `R$ ${finalTotal.toFixed(2).replace('.', ',')}`;
-
-        if (cart.length === 0) {
-            cartItemsContainer.innerHTML = '<p class="empty-cart-message">Seu carrinho está vazio.</p>';
-            if (checkoutBtn) checkoutBtn.classList.add('disabled');
-        } else {
-            cartItemsContainer.innerHTML = `
-                ${cart.map(item => {
-                    // Correção: Adicionado '|| []' para evitar erro
-                    const priceEntry = (item.precos || []).find(p => p.supermercado_id === item.supermarket.id);
-                    const price = priceEntry ? priceEntry.preco : 0;
-                    
-                    return `<div class="cart-item">
-                        <img src="${getFullImage(item.imagem)}" alt="${item.nome}">
-                        <div class="item-details">
-                            <p class="item-name">${item.nome}</p>
-                            <p class="item-store">${item.supermarket.nome}</p>
-                            <p class="item-price">R$ ${price.toFixed(2).replace('.', ',')}</p>
-                        </div>
-                        <div class="item-controls">
-                            <button class="quantity-btn remove-one" data-product-id="${item.id}" data-store-id="${item.supermarket.id}">-</button>
-                            <span class="quantity">${item.quantity}</span>
-                            <button class="quantity-btn add-one" data-product-id="${item.id}" data-store-id="${item.supermarket.id}">+</button>
-                            <button class="remove-btn" data-product-id="${item.id}" data-store-id="${item.supermarket.id}">Remover</button>
-                        </div>
-                    </div>`;
-                }).join('')}
-                <div class="cart-summary-details">
-                    <p>Subtotal: <span>R$ ${cartTotal.toFixed(2).replace('.', ',')}</span></p>
-                    <p>Taxa de Entrega: <span>R$ ${shippingFee.toFixed(2).replace('.', ',')}</span></p>
-                    <p class="final-total">Total: <span>R$ ${finalTotal.toFixed(2).replace('.', ',')}</span></p>
-                </div>
-            `;
-            
-            cartItemsContainer.querySelectorAll('.add-one').forEach(btn => btn.addEventListener('click', (e) => {
-                changeQuantity(parseInt(e.target.dataset.productId), parseInt(e.target.dataset.storeId), 1);
-            }));
-            cartItemsContainer.querySelectorAll('.remove-one').forEach(btn => btn.addEventListener('click', (e) => {
-                changeQuantity(parseInt(e.target.dataset.productId), parseInt(e.target.dataset.storeId), -1);
-            }));
-            cartItemsContainer.querySelectorAll('.remove-btn').forEach(btn => btn.addEventListener('click', (e) => {
-                removeCartItem(parseInt(e.target.dataset.productId), parseInt(e.target.dataset.storeId));
-            }));
-        }
-    }
-    
-    // Esta lógica de endereço e checkout precisa estar em todas as páginas com carrinho
-    if (cartModal) {
-        const addresses = JSON.parse(localStorage.getItem('userAddresses') || '[]');
-        const selectedAddressId = localStorage.getItem('selectedAddressId');
-        let selectedAddress = addresses.find(addr => addr.id == selectedAddressId) || addresses[0];
-
-        const currentAddressSpan = cartModal.querySelector('#current-address');
-        if (currentAddressSpan) {
-            currentAddressSpan.textContent = selectedAddress ? `${selectedAddress.street}, ${selectedAddress.number}` : 'Nenhum endereço selecionado';
-        }
+    // 1. Constrói o Payload do Pedido (conforme o schema Prisma)
+    const payload = {
+        // NOTA: O id_usuario é obtido pelo BACKEND a partir do authToken
+        valor: calculateTotal(),
         
-        const changeAddressBtn = cartModal.querySelector('#change-address-btn');
-        if (changeAddressBtn) changeAddressBtn.onclick = () => window.location.href = 'conta.html';
+        // Simula a seleção de pagamento. No front real, você teria um formulário.
+        pagamento: {
+            tipo: "PIX" // Use um dos valores do ENUM TipoPagamento: PIX, DINHEIRO, DEBITO, CREDITO
+        },
 
-        if (checkoutBtn) {
-            if (cart.length > 0 && selectedAddress) {
-                checkoutBtn.classList.remove('disabled');
-                checkoutBtn.onclick = () => {
-                    // Prepara os dados para a página de pagamento
-                    localStorage.setItem('checkoutCart', JSON.stringify(cart));
-                    localStorage.setItem('checkoutAddress', JSON.stringify(selectedAddress));
-                    window.location.href = 'pagamento.html';
-                };
-            } else {
-                checkoutBtn.classList.add('disabled');
-                checkoutBtn.onclick = () => {
-                    showFeedback(selectedAddress ? 'Seu carrinho está vazio.' : 'Selecione um endereço para continuar.', 'error');
-                };
-            }
+        // Mapeia os itens do carrinho para o formato ItensPedido
+        itens: window.cart.map(item => ({
+            id_produto: item.id,
+            quantidade: item.quantity,
+            // Preço individual para histórico pode ser adicionado aqui
+        }))
+    };
+    
+    console.log('Payload de Pedido a ser enviado:', payload);
+
+
+    try {
+        // Assume API_URL está globalmente disponível (config.js)
+        const response = await fetch(`${API_URL}/pedidos`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authToken}`
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => ({ message: 'Erro ao criar pedido' }));
+            throw new Error(errorData.message || 'Falha ao finalizar pedido: Erro no servidor.');
         }
+
+        const data = await response.json();
+        
+        // 2. Sucesso: Limpar o Carrinho
+        window.cart = [];
+        saveCart(); // Salva o carrinho vazio no localStorage
+        
+        // 3. Feedback e Fechar
+        alert(`Pedido #${data.id || data.pedido.id} criado com sucesso! Total: ${formatCurrency(payload.valor)}.`);
+        closeCart();
+
+    } catch (error) {
+        console.error('Erro no Checkout:', error);
+        alert(`Erro ao finalizar pedido: ${error.message}`);
+    } finally {
+        // REABILITA o botão
+        checkoutBtn.disabled = false;
+        checkoutBtn.textContent = 'Finalizar Pedido';
     }
 }
 
-// Função global para abrir/fechar o carrinho
-function toggleCart() {
-    const cartOverlay = document.getElementById('cart-overlay');
-    if (cartOverlay) {
-        cartOverlay.classList.toggle('hidden');
-        if (!cartOverlay.classList.contains('hidden')) {
-            updateCartUI(); // Atualiza o carrinho sempre que é aberto
-        }
-    }
+
+// --- Funções de Modal ---
+
+function openCart() {
+    if (cartOverlay) cartOverlay.classList.remove('hidden');
+    updateCartDisplay();
 }
 
-// Configura os eventos globais do carrinho
-function setupCartEvents() {
+function closeCart() {
+    if (cartOverlay) cartOverlay.classList.add('hidden');
+}
+
+
+// --- Inicialização e Listeners ---
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Listener para abrir o carrinho
     const cartButton = document.getElementById('cart-button');
-    const cartOverlay = document.getElementById('cart-overlay');
+    if (cartButton) cartButton.addEventListener('click', openCart);
+
+    // Listener para fechar o carrinho
     const closeCartBtn = document.getElementById('close-cart-btn');
+    if (closeCartBtn) closeCartBtn.addEventListener('click', closeCart);
+    
+    // Listener para o botão de Checkout
+    if (checkoutBtn) checkoutBtn.addEventListener('click', handleCheckout);
 
-    if (cartButton) cartButton.addEventListener('click', toggleCart);
-    if (closeCartBtn) closeCartBtn.addEventListener('click', toggleCart);
+    // Fecha o carrinho clicando no overlay
+    if (cartOverlay) {
+        cartOverlay.addEventListener('click', (e) => {
+            if (e.target === cartOverlay) {
+                closeCart();
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !cartOverlay.classList.contains('hidden')) {
+                closeCart();
+            }
+        });
+    }
 
-    if (cartOverlay) cartOverlay.addEventListener('click', (e) => {
-        if (e.target === cartOverlay) {
-            toggleCart();
-        }
-    });
-
-    // Atualização inicial (para contagem de itens)
-    updateCartUI();
-}
-
-// Roda a configuração de eventos em todas as páginas que importam este script
-document.addEventListener('DOMContentLoaded', setupCartEvents);
+    // Inicializa a exibição do carrinho
+    updateCartDisplay();
+});

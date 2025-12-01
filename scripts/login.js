@@ -1,3 +1,4 @@
+const API_URL = 'https://tcc-senai-tawny.vercel.app'; 
 document.addEventListener('DOMContentLoaded', () => {
     const loginInput = document.getElementById('login');
     const senhaInput = document.getElementById('senha');

@@ -4,26 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speed Market - Seu Mercado Rápido Online</title>
+    <title id="page-title">Supermercado - Speed Market</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/home.css">
     <style>
-        /* Define as cores do tailwind, use em seu CSS também */
         :root {
             --color-primary: #0A3D62;
-            /* Azul */
             --color-secondary: #4CAF50;
-            /* Verde */
             --color-background: #F7F7F7;
-            /* Cinza Claro */
-        }
-        .input-padrao {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            width: 100%;
-            box-sizing: border-box;
         }
     </style>
     <script>
@@ -38,15 +27,6 @@
                 }
             }
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const authToken = localStorage.getItem('authToken');
-            
-            if (!authToken) {
-                // Se não estiver logado, redireciona (Descomente se for uma página protegida)
-                // window.location.href = 'login.html'; 
-            }
-        });
     </script>
 </head>
 
@@ -60,33 +40,20 @@
                 <span class="text-xl font-extrabold" style="color: var(--color-primary);">Speed Market</span>
             </a>
 
-            <div
-                class="search-container flex items-center w-full max-w-lg mx-auto md:mx-0 bg-gray-100 rounded-full p-2 border border-gray-200">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2 text-gray-500" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-                <input type="search" id="input-busca" placeholder="O que você está procurando hoje?"
-                    class="bg-transparent w-full px-3 py-1 focus:outline-none text-gray-700">
-                <button id="clear-search-btn"
-                    class="clear-search-btn h-6 w-6 mr-2 text-gray-500 hidden">&times;</button>
-            </div>
-
-            <div class="flex items-center mt-3 md:mt-0 space-x-4">
-                
-                <a href="#" id="address-link"
-                    class="flex items-center text-sm font-semibold text-gray-600 hover:text-primary transition duration-150">
+            <div class="flex items-center">
+                <button id="back-to-home-btn"
+                    class="flex items-center text-sm font-semibold text-gray-600 hover:text-primary transition duration-150 mr-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
-                    <span id="user-location">Meu Endereço</span>
-                </a>
+                    Voltar
+                </button>
+                <h1 id="supermercado-nome" class="text-2xl font-bold text-gray-800">Carregando Supermercado...</h1>
+            </div>
 
+            <div class="flex items-center mt-3 md:mt-0 space-x-4">
                 <button id="profile-btn" class="relative p-2 rounded-full text-white"
                     style="background-color: var(--color-primary)">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -95,15 +62,14 @@
                             d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                 </button>
-                <button id="cart-button" class="relative p-2 rounded-full text-white transition duration-150"
+
+                <button id="cart-button" class="relative p-2 rounded-full text-white"
                     style="background-color: var(--color-primary)">
-                    <svg xmlns=" http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
-                    <span id="cart-count"
-                        class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">0</span>
                 </button>
             </div>
         </div>
@@ -117,15 +83,9 @@
             </div>
         </section>
 
-        <section class="mb-10">
-            <h2 class="text-2xl font-bold mb-4 text-gray-800" style="color: var(--color-primary);">Supermercados</h2>
-            <div id="grade-empresas" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            </div>
-        </section>
-
         <section>
-            <h2 class="text-2xl font-bold mb-4 text-gray-800" style="color: var(--color-primary);">Produtos em Destaque
-            </h2>
+            <h2 id="titulo-produtos" class="text-2xl font-bold mb-4 text-gray-800" style="color: var(--color-primary);">
+                Todos os Produtos</h2>
             <div id="grade-produtos" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
             </div>
         </section>
@@ -166,7 +126,6 @@
             </div>
         </div>
     </div>
-
     <div id="cart-overlay" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-50 hidden">
         <div class="absolute right-0 top-0 h-full w-full max-w-sm bg-white shadow-xl flex flex-col">
             <div class="p-4 border-b flex justify-between items-center">
@@ -178,8 +137,10 @@
             </div>
             <div class="p-4 border-t">
                 <p class="text-lg font-bold mb-2">Total: <span id="cart-total">R$ 0,00</span></p>
-                <button id="checkout-btn" class="w-full text-white font-bold py-3 rounded-lg transition duration-200"
-                    style="background-color: var(--color-secondary);">Finalizar Pedido</button>
+                <a href="checkout.html"
+                    class="w-full bg-secondary text-white font-bold py-3 px-4 rounded-lg text-center block hover:bg-opacity-90 transition duration-150">
+                    Finalizar Compra
+                </a>
             </div>
         </div>
     </div>
@@ -259,92 +220,9 @@
             </div>
         </div>
     </div>
-    <div id="address-modal"
-        class="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 hidden flex justify-center items-center p-4">
-        <div class="bg-white rounded-lg shadow-2xl w-full max-w-lg p-6 relative">
-            <button id="close-address-modal-btn"
-                class="absolute top-2 right-4 text-gray-700 hover:text-red-500 text-3xl font-light">&times;</button>
-            <h3 class="text-2xl font-bold mb-4" style="color: var(--color-primary);">Endereço de Entrega</h3>
-
-            <div id="current-address-display">
-                <h4 class="font-semibold text-lg text-gray-700 mb-2">Endereço Atual:</h4>
-                <div id="current-address-details" class="bg-gray-100 p-4 rounded-lg mb-4 space-y-1">
-                    <p id="addr-rua-cidade" class="font-medium text-gray-800">Rua e Cidade</p>
-                    <p id="addr-cep" class="text-sm text-gray-600">CEP</p>
-                    <p id="addr-complemento" class="text-sm text-gray-600 hidden"></p>
-                </div>
-
-                <button id="change-address-btn"
-                    class="w-full bg-secondary text-white py-3 rounded-lg font-bold hover:bg-opacity-90 transition duration-150">
-                    Trocar Endereço
-                </button>
-            </div>
-
-            <form id="address-form" class="hidden mt-6 space-y-3">
-                <h4 class="font-semibold text-lg text-gray-700 mb-2">Buscar Novo Endereço (ViaCEP)</h4>
-
-                <div>
-                    <label for="cep-input" class="block text-sm font-medium text-gray-700">CEP</label>
-                    <input type="text" id="cep-input" placeholder="Ex: 01001-000" class="input-padrao mt-1" maxlength="9">
-                    <button type="button" id="search-cep-btn"
-                        class="w-full bg-primary text-white py-2 rounded-lg font-bold hover:bg-opacity-90 transition duration-150 mt-1">
-                        Buscar CEP
-                    </button>
-                </div>
-
-                <div>
-                    <label for="rua-input" class="block text-sm font-medium text-gray-700">Rua</label>
-                    <input type="text" id="rua-input" placeholder="Rua" class="input-padrao mt-1" required>
-                </div>
-
-                <div class="flex space-x-3">
-                    <div class="flex-1">
-                        <label for="numero-input" class="block text-sm font-medium text-gray-700">Número</label>
-                        <input type="text" id="numero-input" placeholder="Nº" class="input-padrao mt-1" required>
-                    </div>
-                    <div class="flex-1">
-                        <label for="complemento-input" class="block text-sm font-medium text-gray-700">Complemento
-                            (Opcional)</label>
-                        <input type="text" id="complemento-input" placeholder="Apto, Bloco..." class="input-padrao mt-1">
-                    </div>
-                </div>
-
-                <div>
-                    <label for="bairro-input" class="block text-sm font-medium text-gray-700">Bairro</label>
-                    <input type="text" id="bairro-input" placeholder="Bairro" class="input-padrao mt-1" required>
-                </div>
-
-                <div class="flex space-x-3">
-                    <div class="flex-1">
-                        <label for="cidade-input" class="block text-sm font-medium text-gray-700">Cidade</label>
-                        <input type="text" id="cidade-input" placeholder="Cidade" class="input-padrao mt-1" required>
-                    </div>
-                    <div class="flex-1">
-                        <label for="estado-input" class="block text-sm font-medium text-gray-700">Estado (UF)</label>
-                        <input type="text" id="estado-input" placeholder="UF" class="input-padrao mt-1" required maxlength="2">
-                    </div>
-                </div>
-
-                <p id="address-error-message" class="text-sm text-red-500 hidden"></p>
-
-                <div class="flex space-x-3 pt-3">
-                    <button type="button" id="cancel-address-change-btn"
-                        class="flex-1 py-3 rounded-lg font-bold border border-gray-300 text-gray-700 hover:bg-gray-100 transition duration-150">
-                        Cancelar
-                    </button>
-                    <button type="submit"
-                        class="flex-1 bg-secondary text-white py-3 rounded-lg font-bold hover:bg-opacity-90 transition duration-150">
-                        Salvar Novo Endereço
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <script src="../scripts/config.js"></script> 
+    <script src="../scripts/config.js"></script>
     <script src="../scripts/cart.js"></script>
-    <script src="../scripts/home.js"></script> 
-    <script src="../scripts/profile_modal.js"></script> 
-    <script src="../scripts/address_modal.js"></script> 
+    <script src="../scripts/profile_modal.js"></script> <script src="../scripts/home.js"></script>
     <script src="../scripts/supermercado.js"></script>
 </body>
 

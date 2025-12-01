@@ -1,10 +1,11 @@
-// scripts/home.js
+// scripts/supermercado.js
 (function() { 
-
+    
+    // Estas variáveis são locais a este arquivo JS, evitando conflitos com home.js
     let categoriaAtiva = null;
+    let supermercadoId = null; 
     let produtoModalAberto = null; 
 
-    // CATEGORIAS
     const CATEGORIAS = [
         { nome: 'acougue', display: 'Açougue', icon: '🥩' },
         { nome: 'bebidas', display: 'Bebidas', icon: '🍹' },
@@ -16,92 +17,71 @@
         { nome: 'padaria', display: 'Padaria', icon: '🍞' },
     ];
 
-    // --- FUNÇÕES DE EMPRESA ---
+    function goToHome() {
+        window.location.href = 'home.html';
+    }
 
-    async function fetchEmpresas() {
+    function getSupermercadoIdFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('id');
+    }
+
+    async function fetchSupermercado(id) {
+        const authToken = localStorage.getItem('authToken');
+        const headers = { 'Content-Type': 'application/json' };
+        if (authToken) {
+            headers['Authorization'] = `Bearer ${authToken}`;
+        }
+
         try {
-            const authToken = localStorage.getItem('authToken');
-            const headers = { 'Content-Type': 'application/json' };
-            if (authToken) {
-                headers['Authorization'] = `Bearer ${authToken}`;
-            }
             // API_URL (global, do config.js) é acessível aqui
-            const response = await fetch(`${API_URL}/empresas`, {
+            const response = await fetch(`${API_URL}/empresas/${id}`, { 
                 method: 'GET',
                 headers: headers
             });
-
             if (!response.ok) {
-                if (response.status === 401) {
-                    console.warn('Token expirado ou inválido.');
-                }
-                throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error(`Erro ao buscar o supermercado: ${response.status}`);
             }
-            
+            return await response.json();
+        } catch (error) {
+            console.error('Erro ao buscar detalhes do supermercado:', error);
+            return null;
+        }
+    }
+
+    async function fetchProdutosDoSupermercado(id) {
+        const authToken = localStorage.getItem('authToken');
+        const headers = { 'Content-Type': 'application/json' };
+        if (authToken) {
+            headers['Authorization'] = `Bearer ${authToken}`;
+        }
+        
+        try {
+            const response = await fetch(`${API_URL}/produtos?id_supermercado=${id}`, {
+                method: 'GET',
+                headers: headers
+            });
+            if (!response.ok) {
+                throw new Error(`Erro ao buscar produtos: ${response.status}`);
+            }
             const data = await response.json();
             
             if (Array.isArray(data)) {
                 return data;
-            } else if (data && Array.isArray(data.empresas)) {
-                return data.empresas;
+            } else if (data && Array.isArray(data.produtos)) {
+                return data.produtos;
             }
             return [];
+
         } catch (error) {
-            console.error('Erro ao buscar empresas:', error);
+            console.error('Erro ao buscar produtos do supermercado:', error);
             return [];
         }
     }
 
-    function createEmpresaCard(empresa) {
-        const card = document.createElement('div');
-        card.className = 'bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 overflow-hidden cursor-pointer transform hover:-translate-y-1'; 
-
-        card.innerHTML = `
-            <img src="${empresa.img}" alt="${empresa.nome}" class="w-full h-40 object-cover">
-            <div class="p-4">
-                <h3 class="text-xl font-bold text-primary mb-1">${empresa.nome}</h3>
-            </div>
-        `;
-        card.addEventListener('click', () => {
-            window.location.href = `supermercado.html?id=${empresa.id}`;
-        });
-        return card;
-    }
-
-    async function displayEmpresas() {
-        const sectionEmpresas = document.querySelector('section:has(#grade-empresas)');
-        const gradeEmpresas = document.getElementById('grade-empresas');
-
-        if (categoriaAtiva) {
-            if (sectionEmpresas) sectionEmpresas.style.display = 'none';
-            return;
-        }
-
-        if (sectionEmpresas) sectionEmpresas.style.display = 'block';
-        
-        const empresas = await fetchEmpresas();
-        
-        if (gradeEmpresas) gradeEmpresas.innerHTML = ''; 
-        
-        if (empresas.length === 0) {
-            if (gradeEmpresas) gradeEmpresas.innerHTML = '<p class="text-gray-500 text-center col-span-full p-8">Nenhum supermercado encontrado no momento.</p>';
-            return;
-        }
-
-        empresas.forEach(empresa => {
-            const card = createEmpresaCard(empresa);
-            if (gradeEmpresas) gradeEmpresas.appendChild(card);
-        });
-    }
-
-
-    // --- FUNÇÕES DE CATEGORIAS ---
-
     function handleCategoriaClick(nomeCategoria) {
-        
         if (categoriaAtiva === nomeCategoria) {
             categoriaAtiva = null;
-            
         } else {
             categoriaAtiva = nomeCategoria;
         }
@@ -119,13 +99,11 @@
             }
         }
 
-        displayEmpresas();
         displayProdutos(categoriaAtiva);
     }
 
     function createCategoriaCard(categoria) {
         const card = document.createElement('div');
-        
         card.id = `cat-${categoria.nome}`;
         card.className = 'card-categoria flex flex-col items-center justify-center p-3 rounded-xl w-24 h-24 shadow-md hover:bg-gray-100 transition duration-200 cursor-pointer flex-shrink-0 text-center bg-white text-gray-700';
 
@@ -157,40 +135,6 @@
         });
     }
 
-
-    // --- FUNÇÕES DE PRODUTOS E MODAL ---
-
-    async function fetchProdutos() {
-        try {
-            const authToken = localStorage.getItem('authToken');
-            const headers = { 'Content-Type': 'application/json' };
-            if (authToken) {
-                headers['Authorization'] = `Bearer ${authToken}`;
-            }
-
-            const response = await fetch(`${API_URL}/produtos`, {
-                method: 'GET',
-                headers: headers
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            
-            const data = await response.json();
-            
-            if (Array.isArray(data)) {
-                return data;
-            } else if (data && Array.isArray(data.produtos)) {
-                return data.produtos;
-            }
-            return [];
-        } catch (error) {
-            console.error('Erro ao buscar produtos:', error);
-            return [];
-        }
-    }
-
     function openProductModal(produto) {
         produtoModalAberto = produto;
         
@@ -200,27 +144,17 @@
         const modalPreco = document.getElementById('modal-preco');
         const modalBtn = document.getElementById('modal-add-to-cart-btn');
         const modal = document.getElementById('product-modal');
-        
+
         if(modalImg) modalImg.src = produto.img;
         if(modalNome) modalNome.textContent = produto.nome;
         if(modalDescricao) modalDescricao.textContent = produto.descricao || 'Sem descrição disponível.';
-        // Garante que a formatação de preço usa a função global formatCurrency (se existir) ou fallback
-        const precoFormatado = typeof window.formatCurrency === 'function' 
-            ? window.formatCurrency(produto.preco) 
-            : `R$ ${produto.preco.toFixed(2).replace('.', ',')}`;
-
-        if(modalPreco) modalPreco.textContent = precoFormatado;
+        if(modalPreco) modalPreco.textContent = `R$ ${produto.preco.toFixed(2).replace('.', ',')}`;
         
         if (modalBtn) {
             modalBtn.textContent = 'Adicionar ao Carrinho';
             modalBtn.onclick = () => {
                 // addToCart (global, do cart.js) é acessível aqui
-                if (typeof window.addToCart === 'function') {
-                    window.addToCart(produto); 
-                } else {
-                    console.error("Função addToCart não encontrada!");
-                }
-                
+                addToCart(produto); 
                 if(modal) modal.classList.add('hidden'); 
                 produtoModalAberto = null;
             };
@@ -238,11 +172,10 @@
         card.innerHTML = `
             <div class="relative cursor-pointer" id="card-details-${produto.id}">
                 <img src="${produto.img}" alt="${produto.nome}" class="w-full h-32 object-contain p-2">
-                <span class="absolute top-2 right-2 bg-secondary text-white text-xs font-bold px-2 py-1 rounded-full">${produto.supermercado?.nome || 'Mercado'}</span>
+                <span class="absolute top-2 right-2 bg-secondary text-white text-xs font-bold px-2 py-1 rounded-full">${nomeCategoriaDisplay}</span>
             </div>
             <div class="p-3 cursor-pointer" id="card-name-price-${produto.id}">
                 <h4 class="text-sm font-semibold text-gray-800 line-clamp-2">${produto.nome}</h4>
-                <p class="text-xs text-gray-500 mt-1">${nomeCategoriaDisplay}</p>
             </div>
             <div class="p-3 border-t flex items-center justify-between">
                 <p class="text-lg font-bold text-primary">R$ ${(produto.preco || 0).toFixed(2).replace('.', ',')}</p>
@@ -253,7 +186,7 @@
                 </button>
             </div>
         `;
-        
+
         card.querySelector(`#card-details-${produto.id}`).addEventListener('click', () => {
             openProductModal(produto);
         });
@@ -263,34 +196,27 @@
         
         card.querySelector('.add-to-cart-btn').addEventListener('click', (e) => {
             e.stopPropagation(); 
-            // addToCart (global, do cart.js) é acessível aqui
-            if (typeof window.addToCart === 'function') {
-                window.addToCart(produto); 
-            } else {
-                console.error("Função addToCart não encontrada!");
-            }
+            addToCart(produto); 
         });
-
+        
         return card;
     }
 
-
     async function displayProdutos(filtroCategoria = null) {
-        const produtos = await fetchProdutos();
+        const produtos = await fetchProdutosDoSupermercado(supermercadoId);
         const gradeProdutos = document.getElementById('grade-produtos');
-        const tituloProdutos = document.querySelector('section:has(#grade-produtos) h2');
+        const tituloProdutos = document.getElementById('titulo-produtos');
 
         if (!gradeProdutos) return;
-        
+
         gradeProdutos.innerHTML = ''; 
 
         if (filtroCategoria) {
             const nomeDisplay = CATEGORIAS.find(c => c.nome === filtroCategoria)?.display || 'Produtos Filtrados';
             if (tituloProdutos) tituloProdutos.textContent = `Produtos em ${nomeDisplay}`;
         } else {
-            if (tituloProdutos) tituloProdutos.textContent = 'Produtos em Destaque';
+            if (tituloProdutos) tituloProdutos.textContent = 'Todos os Produtos';
         }
-
 
         const produtosFiltrados = filtroCategoria 
             ? produtos.filter(p => p.categoria === filtroCategoria)
@@ -307,16 +233,33 @@
         });
     }
 
+    async function initSupermercadoPage() {
+        supermercadoId = getSupermercadoIdFromUrl();
 
-    // --- FUNÇÕES DE INICIALIZAÇÃO E UTILIDADE ---
+        const nomeElement = document.getElementById('supermercado-nome');
+        const titleElement = document.getElementById('page-title');
 
-    document.addEventListener('DOMContentLoaded', () => {
+        if (!supermercadoId) {
+            if (nomeElement) nomeElement.textContent = 'Erro: Supermercado não especificado.';
+            return;
+        }
+
+        const info = await fetchSupermercado(supermercadoId);
+
+        if (info) {
+            if (nomeElement) nomeElement.textContent = info.nome; 
+            if (titleElement) titleElement.textContent = `${info.nome} - Speed Market`;
+        } else {
+            if (nomeElement) nomeElement.textContent = 'Supermercado não encontrado.';
+        }
+
         displayCategories(); 
-        displayEmpresas(); 
         displayProdutos(); 
 
-        // A LÓGICA DE ENDEREÇO FOI MOVIDA PARA address_modal.js
-        // A LÓGICA DE LOGOUT FOI MOVIDA PARA profile_modal.js
+        const backButton = document.getElementById('back-to-home-btn');
+        if(backButton) {
+            backButton.addEventListener('click', goToHome);
+        }
         
         const closeModalBtn = document.getElementById('close-modal-btn');
         if (closeModalBtn) {
@@ -326,6 +269,8 @@
                  produtoModalAberto = null;
             });
         }
-    });
+    }
+
+    document.addEventListener('DOMContentLoaded', initSupermercadoPage);
 
 })(); // Fim da IIFE
